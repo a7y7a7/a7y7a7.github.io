@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>آية أبو بكر | Video Editor & Colorist Portfolio</title>
+  
+  <script>
+    // Invalidate stale localStorage cache and guarantee latest Arabic updates
+    try {
+      localStorage.removeItem('user_portfolio_text_edits');
+      localStorage.removeItem('portfolio_language');
+    } catch(e) {}
+  </script>
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -1599,10 +1611,10 @@
       const heroName = document.getElementById('heroOwnerName');
       const navName = document.getElementById('navOwnerName');
       if (heroName) {
-        heroName.innerText = isEn ? 'AYAH ABO BAKR' : 'آية أبو بكر';
+        heroName.innerText = 'آية أبو بكر';
       }
       if (navName) {
-        navName.innerText = isEn ? 'AYAH ABO BAKR' : 'آية أبو بكر';
+        navName.innerText = 'آية أبو بكر';
       }
 
       // Update Toggle Button Text
@@ -2444,7 +2456,7 @@
           const targets = getEditableTargets();
           targets.forEach((el, idx) => {
             const key = el.id || ('elem_' + idx);
-            if (contentMap[key] !== undefined) {
+            if (contentMap[key] !== undefined && key !== 'heroOwnerName' && key !== 'heroDescription' && key !== 'navOwnerName' && key !== 'navOwnerRole') {
               el.innerText = contentMap[key];
             }
           });
