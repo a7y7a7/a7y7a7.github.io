@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="scroll-smooth">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AYAH ABO BAKR | Video Editor & Colorist Portfolio</title>
+  <title>آية أبو بكر | Video Editor & Colorist Portfolio</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -351,9 +351,9 @@
           <img id="navAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="w-full h-full object-cover">
         </div>
         <div class="flex flex-col">
-          <span class="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-red-400 transition-colors flex items-center gap-1.5">
-            <span id="navOwnerName">AYAH ABO BAKR</span> 
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 font-bold uppercase">PRO</span>
+          <span class="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-red-400 transition-colors flex items-center gap-1.5 font-cairo">
+            <span id="navOwnerName">آية أبو بكر</span> 
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 font-bold uppercase font-inter">PRO</span>
           </span>
           <div class="flex items-center gap-2">
             <span id="navOwnerRole" class="text-xs text-gray-400">Video Editor & Colorist</span>
@@ -470,8 +470,8 @@
       </div>
 
       <!-- 2. Her Name in the Center (Huge & Bold) -->
-      <h1 id="heroOwnerName" class="text-5xl sm:text-7xl md:text-8xl font-black text-white tracking-tight leading-none mb-3">
-        AYAH ABO BAKR
+      <h1 id="heroOwnerName" class="text-5xl sm:text-7xl md:text-8xl font-black text-white tracking-tight leading-none mb-3 font-cairo">
+        آية أبو بكر
       </h1>
 
       <!-- 3. Directly Below Her Name: "Video Editor & Colorist" -->
@@ -480,8 +480,8 @@
       </div>
 
       <!-- Bio / Headline Description -->
-      <p id="heroDescription" class="max-w-2xl mx-auto text-base sm:text-lg text-gray-300 mb-9 leading-relaxed" data-i18n="hero_desc">
-        Turning raw footage into cinematic visual stories that captivate audiences. Specialized in YouTube, high-retention Reels, and commercial ads.
+      <p id="heroDescription" class="max-w-2xl mx-auto text-base sm:text-lg text-gray-300 mb-9 leading-relaxed font-cairo" data-i18n="hero_desc">
+        أحوّل لقطاتكِ وأفكاركِ إلى قصص سينمائية تأسر الجمهور. متخصصة في مونتاج اليوتيوب، الريلز عالية الاستبقاء، والإعلانات التجارية.
       </p>
 
       <!-- CTA Buttons -->
@@ -837,7 +837,7 @@
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
         <i data-lucide="clapperboard" class="w-4 h-4 text-red-500"></i>
-        <span class="text-gray-400 font-bold" data-i18n="footer_tag">AYAH ABO BAKR • Professional Video Editor</span>
+        <span class="text-gray-400 font-bold" data-i18n="footer_tag">آية أبو بكر • Video Editor & Colorist</span>
       </div>
       <div data-i18n="footer_rights">
         © 2026 All Rights Reserved. Built for high performance.
@@ -1271,7 +1271,7 @@
         nav_edit_btn: "تعديل المحتوى ✍️",
         nav_contact: "تواصل معي",
         hero_avail: "متاحة للمشاريع",
-        hero_title: "🎬 فيديو ايديتور | Video Editor",
+        hero_title: "🎬 Video Editor & Colorist",
         hero_desc: "أحوّل لقطاتكِ وأفكاركِ إلى قصص سينمائية تأسر الجمهور. متخصصة في مونتاج اليوتيوب، الريلز عالية الاستبقاء، والإعلانات التجارية.",
         hero_showreel_btn: "شاهد الشوريل",
         hero_work_btn: "تصفح الأعمال",
@@ -1333,7 +1333,7 @@
         contact_sub: "متاحة لاستلام مشاريع جديدة، سلاسل يوتيوب، أو إعلانات لشركتكِ. دعنا نتحدث ونبدأ فوراً!",
         contact_wa: "واتساب: 01030806465",
         contact_email: "ayamu6465@gmail.com",
-        footer_tag: "آية أبو بكر • محررة ومونتيرة فيديو احترافية",
+        footer_tag: "آية أبو بكر • Video Editor & Colorist",
         footer_rights: "جميع الحقوق محفوظة © 2026. تم التصميم والبرمجة بأعلى جودة.",
         btn_play_local: "تشغيل فيديو من الجهاز 💻",
         btn_reels_vault: "خزينة الريلز (43 فيديو) 📂",
@@ -1561,7 +1561,7 @@
       }
     }
 
-    let currentLang = 'en';
+    let currentLang = 'ar';
     let currentFilter = 'all';
     let isShowingAll = false;
     let isLiveEditing = false;
@@ -2583,7 +2583,7 @@
     // ==========================================
     // Page & Portfolio Initialization
     // ==========================================
-    const initialLang = localStorage.getItem('portfolio_language') || 'en';
+    const initialLang = localStorage.getItem('portfolio_language') || 'ar';
     applyLanguage(initialLang);
     const initialTheme = localStorage.getItem('portfolio_theme') || 'crimson';
     applyTheme(initialTheme, false);
