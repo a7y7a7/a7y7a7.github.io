@@ -1,0 +1,2597 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AYAH ABO BAKR | Video Editor & Colorist Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              red: '#ff334b',
+              purple: '#8b5cf6',
+              dark: '#08090d',
+              card: '#12141d',
+              border: '#1e2230',
+              accent: '#3b82f6'
+            }
+          },
+          animation: {
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'float': 'float 5s ease-in-out infinite',
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.75', transform: 'scale(1.05)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #08090d;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    html[lang="ar"] body {
+      font-family: 'Cairo', sans-serif;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08090d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #222636;
+      border-radius: 4px;
+    }
+    :root {
+      --theme-c1: #ff334b;
+      --theme-c2: #f43f5e;
+      --theme-c3: #8b5cf6;
+      --theme-text-accent: #ff6b81;
+      --theme-border: rgba(255, 51, 75, 0.4);
+      --theme-border-hover: rgba(255, 51, 75, 0.85);
+      --theme-badge-bg: rgba(255, 51, 75, 0.15);
+      --theme-shadow: rgba(255, 51, 75, 0.35);
+      --theme-glow1: rgba(255, 51, 75, 0.12);
+      --theme-glow2: rgba(139, 92, 246, 0.12);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--theme-c1);
+    }
+
+    /* Before/After Split Screen Slider */
+    .comparison-container {
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+    .comparison-slider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--theme-c1) !important;
+      cursor: ew-resize;
+      z-index: 20;
+      box-shadow: 0 0 16px var(--theme-shadow) !important;
+    }
+    .comparison-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--theme-c1) !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    }
+
+    /* ==========================================
+       Liquid Glass Design System (Glassmorphism 2.0)
+       ========================================== */
+
+    /* Fluid Liquid Background Morphing Keyframes */
+    @keyframes liquidFlow1 {
+      0%, 100% {
+        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      }
+      33% {
+        border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+        transform: translate3d(80px, -45px, 0) rotate(115deg) scale(1.14);
+      }
+      66% {
+        border-radius: 38% 62% 60% 40% / 50% 30% 70% 50%;
+        transform: translate3d(-50px, 55px, 0) rotate(230deg) scale(0.95);
+      }
+    }
+
+    @keyframes liquidFlow2 {
+      0%, 100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      }
+      50% {
+        border-radius: 35% 65% 65% 35% / 45% 55% 45% 55%;
+        transform: translate3d(-80px, -65px, 0) rotate(-170deg) scale(1.16);
+      }
+    }
+
+    @keyframes liquidFlow3 {
+      0%, 100% {
+        border-radius: 50% 50% 40% 60% / 40% 50% 50% 60%;
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        border-radius: 65% 35% 55% 45% / 55% 45% 65% 35%;
+        transform: translate3d(60px, -55px, 0) scale(1.12);
+      }
+    }
+
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(3deg); }
+    }
+
+    .animate-liquid-1 {
+      animation: liquidFlow1 18s ease-in-out infinite;
+      will-change: transform, border-radius;
+    }
+
+    .animate-liquid-2 {
+      animation: liquidFlow2 24s ease-in-out infinite;
+      will-change: transform, border-radius;
+    }
+
+    .animate-liquid-3 {
+      animation: liquidFlow3 20s ease-in-out infinite;
+      will-change: transform, border-radius;
+    }
+
+    .animate-float-slow {
+      animation: floatGentle 10s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+      animation: floatGentle 14s ease-in-out infinite 3s;
+    }
+
+    /* Floating Liquid Glass Navbar */
+    .glass-nav {
+      background: rgba(10, 12, 18, 0.65) !important;
+      backdrop-filter: blur(28px) saturate(210%) !important;
+      -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.28) !important;
+      box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    /* Authentic Liquid Acrylic Glass Cards */
+    .glass-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.28) !important;
+      border-left: 1px solid rgba(255, 255, 255, 0.18) !important;
+      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3) !important;
+      backdrop-filter: blur(24px) saturate(200%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+      transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      position: relative;
+    }
+    .glass-card:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.035) 100%) !important;
+      border-color: var(--theme-border-hover) !important;
+      border-top-color: rgba(255, 255, 255, 0.55) !important;
+      border-left-color: rgba(255, 255, 255, 0.35) !important;
+      transform: translateY(-6px) scale(1.008) !important;
+      box-shadow: 0 25px 50px -10px var(--theme-shadow), 0 0 35px -5px var(--theme-badge-bg), inset 0 1px 2px 0 rgba(255, 255, 255, 0.35) !important;
+    }
+
+    /* Dot Grid Matrix */
+    .bg-dot-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1.2px, transparent 1.2px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 60%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 60%, transparent 100%);
+    }
+
+    /* Soundwave Equalizer Animation */
+    @keyframes soundWave {
+      0%, 100% { height: 3px; }
+      50% { height: 14px; }
+    }
+    .sound-bar {
+      display: inline-block;
+      width: 2.5px;
+      border-radius: 2px;
+      background: var(--theme-c1, #ff334b);
+      animation: soundWave 1.2s ease-in-out infinite;
+    }
+    .sound-bar:nth-child(2) { animation-delay: 0.25s; }
+    .sound-bar:nth-child(3) { animation-delay: 0.5s; }
+    .sound-bar:nth-child(4) { animation-delay: 0.15s; }
+    .sound-bar:nth-child(5) { animation-delay: 0.35s; }
+
+    /* Glass Pill Container */
+    .glass-pill {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.32) !important;
+      backdrop-filter: blur(20px) saturate(200%) !important;
+      -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+      box-shadow: 0 8px 25px -4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+    }
+
+    /* Live Visual In-Browser Editor Styles */
+    body.edit-mode-active [contenteditable="true"] {
+      outline: 2px dashed var(--theme-c1) !important;
+      outline-offset: 4px;
+      border-radius: 6px;
+      cursor: text !important;
+      transition: all 0.2s ease;
+      background-color: var(--theme-badge-bg) !important;
+    }
+    body.edit-mode-active [contenteditable="true"]:hover {
+      outline: 2px solid var(--theme-c1) !important;
+      background-color: var(--theme-badge-bg) !important;
+    }
+    body.edit-mode-active [contenteditable="true"]:focus {
+      outline: 2px solid #3b82f6 !important;
+      background-color: rgba(59, 130, 246, 0.18) !important;
+    }
+
+    /* Dynamic Theme System Overrides */
+    .bg-red-600 {
+      background-color: var(--theme-c1) !important;
+    }
+    .hover\:bg-red-500:hover {
+      background-color: var(--theme-c2) !important;
+    }
+    .text-red-400, .text-red-500, .text-red-600 {
+      color: var(--theme-text-accent) !important;
+    }
+    .border-red-500\/40, .border-red-500\/50, .border-red-500\/30, .border-red-500\/20 {
+      border-color: var(--theme-border) !important;
+    }
+    .hover\:border-red-500\/40:hover {
+      border-color: var(--theme-border-hover) !important;
+    }
+    .bg-red-500\/10, .bg-red-500\/20 {
+      background-color: var(--theme-badge-bg) !important;
+    }
+    .hover\:text-red-400:hover, .group-hover\:text-red-400:hover {
+      color: var(--theme-text-accent) !important;
+    }
+    .from-red-600 {
+      --tw-gradient-from: var(--theme-c1) var(--tw-gradient-from-position) !important;
+      --tw-gradient-to: var(--theme-c3, rgb(255 51 75 / 0)) var(--tw-gradient-to-position) !important;
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+    }
+    .via-rose-500 {
+      --tw-gradient-stops: var(--tw-gradient-from), var(--theme-c2) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+    }
+    .to-purple-600 {
+      --tw-gradient-to: var(--theme-c3) var(--tw-gradient-to-position) !important;
+    }
+    .shadow-red-600\/30, .shadow-red-600\/25, .shadow-red-600\/20, .shadow-red-500\/50, .shadow-red-500\/60, .shadow-red-950\/40 {
+      box-shadow: 0 10px 30px -5px var(--theme-shadow) !important;
+    }
+  </style>
+</head>
+<body class="selection:bg-red-500 selection:text-white">
+
+  <!-- Glassmorphic Liquid Aurora & Caustic Mesh Background -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <!-- Studio Caustics Mesh -->
+    <div class="absolute inset-0 bg-dot-grid opacity-60"></div>
+    
+    <!-- Organic Morphing Liquid Orbs (Smooth Continuous Fluid Movement) -->
+    <div id="glowBlob1" class="absolute -top-32 right-1/12 w-[720px] h-[720px] opacity-75 animate-liquid-1" 
+         style="background: radial-gradient(circle, var(--theme-c1, #ff334b) 0%, var(--theme-c2, #f43f5e) 45%, transparent 75%); filter: blur(75px);"></div>
+    
+    <div id="glowBlob2" class="absolute top-1/4 -left-28 w-[680px] h-[680px] opacity-70 animate-liquid-2" 
+         style="background: radial-gradient(circle, var(--theme-c3, #8b5cf6) 0%, var(--theme-c1, #ff334b) 50%, transparent 75%); filter: blur(85px);"></div>
+    
+    <div id="glowBlob3" class="absolute bottom-10 right-10 w-[620px] h-[620px] opacity-60 animate-liquid-3" 
+         style="background: radial-gradient(circle, var(--theme-c2, #f43f5e) 0%, var(--theme-c3, #8b5cf6) 55%, transparent 80%); filter: blur(90px);"></div>
+
+    <!-- Floating Liquid Acrylic Micro-Spheres (Lens Depth) -->
+    <div class="absolute top-1/4 right-1/4 w-36 h-36 rounded-full border border-white/20 bg-white/[0.03] backdrop-blur-2xl animate-float-slow shadow-2xl pointer-events-none"></div>
+    <div class="absolute bottom-1/3 left-1/5 w-28 h-28 rounded-full border border-white/15 bg-white/[0.02] backdrop-blur-2xl animate-float-delayed shadow-xl pointer-events-none"></div>
+    <div class="absolute top-2/3 right-1/6 w-44 h-44 rounded-full border border-white/15 bg-white/[0.02] backdrop-blur-3xl animate-float-slow shadow-2xl pointer-events-none"></div>
+    
+    <!-- Frosted Surface Layer -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#08090d]/10 via-[#08090d]/30 to-[#08090d]/85 backdrop-blur-[1.5px]"></div>
+  </div>
+
+  <!-- Floating Liquid Glass Navbar -->
+  <nav class="fixed top-2 sm:top-4 left-3 right-3 sm:left-6 sm:right-6 lg:left-12 lg:right-12 z-50 glass-nav rounded-2xl sm:rounded-3xl transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand / Logo with Avatar -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative w-11 h-11 rounded-xl overflow-hidden border-2 border-red-500/50 shadow-lg shadow-red-500/20 group-hover:scale-105 transition-transform bg-gradient-to-tr from-red-600 to-rose-400 flex-shrink-0">
+          <img id="navAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col">
+          <span class="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-red-400 transition-colors flex items-center gap-1.5">
+            <span id="navOwnerName">AYAH ABO BAKR</span> 
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 font-bold uppercase">PRO</span>
+          </span>
+          <div class="flex items-center gap-2">
+            <span id="navOwnerRole" class="text-xs text-gray-400">Video Editor & Colorist</span>
+            <div class="hidden sm:inline-flex items-center gap-0.5 h-2.5 opacity-80" title="Audio & Visual Design Active">
+              <span class="sound-bar" style="width: 2px;"></span>
+              <span class="sound-bar" style="width: 2px;"></span>
+              <span class="sound-bar" style="width: 2px;"></span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-7 text-sm font-semibold text-gray-300">
+        <a href="#showreel" class="hover:text-red-400 transition-colors flex items-center gap-1.5" data-i18n="nav_showreel">
+          <i data-lucide="play-circle" class="w-4 h-4 text-red-400"></i> Showreel
+        </a>
+        <a href="#works" class="hover:text-red-400 transition-colors" data-i18n="nav_work">Work</a>
+        <a href="#color-grading" class="hover:text-red-400 transition-colors" data-i18n="nav_color">Color Grade</a>
+        <a href="#tools" class="hover:text-red-400 transition-colors" data-i18n="nav_tools">Tools</a>
+        <a href="#testimonials" class="hover:text-red-400 transition-colors" data-i18n="nav_reviews">Reviews</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5">
+        <!-- Template & Theme Switcher Button -->
+        <button onclick="openThemeModal()" class="px-3.5 py-2 rounded-xl font-bold text-xs bg-gray-900/90 hover:bg-gray-800 text-amber-300 border border-amber-500/40 shadow-lg shadow-amber-500/10 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer">
+          <i data-lucide="palette" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span data-i18n="nav_theme_btn">🎨 Themes (القوالب)</span>
+        </button>
+
+        <!-- Edit Mode Button in Navbar -->
+        <button onclick="toggleLiveEdit(true)" class="px-3.5 py-2 rounded-xl font-bold text-xs bg-gradient-to-r from-red-600 to-purple-600 text-white shadow-lg shadow-red-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 border border-white/20">
+          <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+          <span data-i18n="nav_edit_btn">Edit Page ✍️</span>
+        </button>
+
+        <!-- Real Language Switcher (EN / العربية) -->
+        <button id="langToggle" onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl border border-gray-700 bg-gray-900/80 text-xs font-bold hover:border-red-400 transition-all text-gray-200 flex items-center gap-1.5 shadow">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-red-400"></i>
+          <span id="langLabel">العربية</span>
+        </button>
+
+        <a href="#contact" class="hidden sm:flex relative group px-5 py-2 rounded-xl font-bold text-xs bg-gradient-to-r from-red-600 to-rose-500 text-white shadow-lg shadow-red-600/25 hover:shadow-red-600/40 hover:scale-[1.02] active:scale-[0.98] transition-all items-center gap-2" data-i18n="nav_contact">
+          <span>Contact Me</span>
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section: Centered Photo + Big Name + Video Editor Title -->
+  <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+    <!-- Viewfinder Corner Framing Guides -->
+    <div class="absolute top-28 left-6 sm:left-12 w-6 h-6 border-t-2 border-l-2 border-white/20 pointer-events-none rounded-tl"></div>
+    <div class="absolute top-28 right-6 sm:right-12 w-6 h-6 border-t-2 border-r-2 border-white/20 pointer-events-none rounded-tr"></div>
+    <div class="absolute bottom-10 left-6 sm:left-12 w-6 h-6 border-b-2 border-l-2 border-white/20 pointer-events-none rounded-bl"></div>
+    <div class="absolute bottom-10 right-6 sm:right-12 w-6 h-6 border-b-2 border-r-2 border-white/20 pointer-events-none rounded-br"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      
+      <!-- Cinema Camera Live Timecode & Format HUD -->
+      <div class="inline-flex items-center gap-2.5 sm:gap-3 px-4 py-1.5 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-2xl text-[11px] font-mono text-gray-300 tracking-wider mb-6">
+        <span class="inline-flex items-center gap-1.5 text-red-500 font-bold">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+          REC
+        </span>
+        <span class="text-gray-600">•</span>
+        <span id="heroTimecode" class="text-white font-bold tracking-widest font-mono">00:00:24:12</span>
+        <span class="text-gray-600 hidden sm:inline">•</span>
+        <span class="text-gray-400 hidden sm:inline">4K UHD</span>
+        <span class="text-gray-600 hidden sm:inline">•</span>
+        <span class="text-amber-400/90 font-bold hidden sm:inline">24.00 FPS</span>
+        <span class="text-gray-600 hidden md:inline">•</span>
+        <span class="text-emerald-400/90 font-bold hidden md:inline">PRORES 422HQ</span>
+        <span class="text-gray-600 hidden md:inline">•</span>
+        <div class="hidden md:flex items-center gap-0.5 h-3.5 pl-0.5">
+          <span class="sound-bar" style="animation-delay: 0s;"></span>
+          <span class="sound-bar" style="animation-delay: 0.2s;"></span>
+          <span class="sound-bar" style="animation-delay: 0.4s;"></span>
+          <span class="sound-bar" style="animation-delay: 0.15s;"></span>
+          <span class="sound-bar" style="animation-delay: 0.3s;"></span>
+        </div>
+      </div>
+      
+      <!-- 1. The Centered Photo with Glow & Live Upload -->
+      <div class="relative mx-auto w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 mb-6 group">
+        <!-- Neon Ambient Glow Aura -->
+        <div class="absolute -inset-3 bg-gradient-to-tr from-red-600 via-rose-500 to-purple-600 rounded-full blur-2xl opacity-75 group-hover:opacity-100 transition duration-700 animate-pulse-glow"></div>
+        
+        <!-- Glowing Ring Container -->
+        <div class="relative w-full h-full rounded-full p-2 bg-gradient-to-tr from-red-600 via-rose-400 to-purple-600 shadow-2xl">
+          <div class="relative w-full h-full rounded-full overflow-hidden bg-gray-950 border-4 border-gray-900 shadow-inner">
+            <!-- Profile Image -->
+            <img id="profileImage" 
+                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" 
+                 alt="Video Editor Portrait" 
+                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+            
+            <!-- Hover / Click to Change Photo Overlay -->
+            <label for="photoUploadInput" class="absolute inset-0 bg-black/60 backdrop-blur-sm rounded-full flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity">
+              <i data-lucide="camera" class="w-8 h-8 text-red-400 mb-1"></i>
+              <span class="text-xs font-bold" data-i18n="photo_change_btn">Change Photo</span>
+            </label>
+            <input type="file" id="photoUploadInput" accept="image/*" class="hidden">
+          </div>
+        </div>
+
+        <!-- Floating Status Badge -->
+        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-gray-950/90 backdrop-blur-md border border-emerald-500/50 text-emerald-400 text-xs font-bold flex items-center gap-2 shadow-xl whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span data-i18n="photo_status">Available for Projects</span>
+        </div>
+      </div>
+
+      <!-- 2. Her Name in the Center (Huge & Bold) -->
+      <h1 id="heroOwnerName" class="text-5xl sm:text-7xl md:text-8xl font-black text-white tracking-tight leading-none mb-3">
+        AYAH ABO BAKR
+      </h1>
+
+      <!-- 3. Directly Below Her Name: "Video Editor & Colorist" -->
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-2xl bg-gradient-to-r from-red-600/20 via-rose-500/20 to-purple-600/20 border border-red-500/40 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-rose-300 to-amber-300 font-black text-2xl sm:text-3xl md:text-4xl mb-5 shadow-xl">
+        <span data-i18n="hero_title">🎬 Video Editor & Colorist</span>
+      </div>
+
+      <!-- Bio / Headline Description -->
+      <p id="heroDescription" class="max-w-2xl mx-auto text-base sm:text-lg text-gray-300 mb-9 leading-relaxed" data-i18n="hero_desc">
+        Turning raw footage into cinematic visual stories that captivate audiences. Specialized in YouTube, high-retention Reels, and commercial ads.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <button onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview')" class="px-7 py-3.5 rounded-xl font-bold bg-white text-gray-900 hover:bg-gray-200 transition-all flex items-center gap-3 shadow-xl hover:scale-105">
+          <i data-lucide="play" class="w-5 h-5 fill-current text-red-600"></i>
+          <span data-i18n="hero_showreel_btn">Watch Showreel</span>
+        </button>
+
+        <a href="#works" class="px-7 py-3.5 rounded-xl font-bold glass-card text-white hover:bg-white/10 transition-all flex items-center gap-2">
+          <span data-i18n="hero_work_btn">Explore Work</span>
+          <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Quick Stats Counter -->
+      <div id="statsGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-gray-800/80">
+        <div class="p-4 rounded-xl glass-card text-center">
+          <div class="text-3xl sm:text-4xl font-black text-white mb-1 font-inter">50M+</div>
+          <div class="text-xs sm:text-sm text-gray-400" data-i18n="stat_views_lbl">Total Views</div>
+        </div>
+        <div class="p-4 rounded-xl glass-card text-center">
+          <div class="text-3xl sm:text-4xl font-black text-red-400 mb-1 font-inter">250+</div>
+          <div class="text-xs sm:text-sm text-gray-400" data-i18n="stat_projects_lbl">Completed Projects</div>
+        </div>
+        <div class="p-4 rounded-xl glass-card text-center">
+          <div class="text-3xl sm:text-4xl font-black text-white mb-1 font-inter">5+</div>
+          <div class="text-xs sm:text-sm text-gray-400" data-i18n="stat_exp_lbl">Years Experience</div>
+        </div>
+        <div class="p-4 rounded-xl glass-card text-center">
+          <div class="text-3xl sm:text-4xl font-black text-amber-400 mb-1 font-inter">100%</div>
+          <div class="text-xs sm:text-sm text-gray-400" data-i18n="stat_ontime_lbl">On-Time Delivery</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Showreel Section -->
+  <section id="showreel" class="py-16 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold text-red-400 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20" data-i18n="showreel_tag">FEATURED REEL</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3" data-i18n="showreel_title">Showreel</h2>
+        <p class="text-gray-400 text-sm mt-2" data-i18n="showreel_sub">A curated montage of my best cinematic and commercial work.</p>
+      </div>
+
+      <!-- Video Player Wrapper -->
+      <div class="relative group rounded-2xl overflow-hidden p-1 bg-gradient-to-r from-red-600 via-purple-600 to-pink-600 shadow-2xl shadow-red-950/40">
+        <div class="relative aspect-video rounded-xl overflow-hidden bg-black flex items-center justify-center">
+          <img src="https://lh3.googleusercontent.com/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY=w1200" 
+               onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY&sz=w1200';"
+               alt="AYAH ABO BAKR Showreel" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" />
+          
+          <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
+
+          <!-- Play Button Overlay -->
+          <button onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview')" 
+                  class="absolute z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-red-600/90 text-white flex items-center justify-center hover:scale-110 hover:bg-red-500 transition-all shadow-2xl shadow-red-500/50">
+            <i data-lucide="play" class="w-8 h-8 sm:w-10 sm:h-10 fill-current translate-x-0.5"></i>
+          </button>
+
+          <div class="absolute bottom-4 right-4 left-4 flex justify-between items-center text-xs sm:text-sm text-gray-300 pointer-events-none">
+            <span class="bg-black/60 backdrop-blur px-3 py-1.5 rounded-lg border border-white/10 font-inter">4K UHD • 2026</span>
+            <span class="bg-black/60 backdrop-blur px-3 py-1.5 rounded-lg border border-white/10 font-inter">01:45 Min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Works & Filter Section -->
+  <section id="works" class="py-20 bg-black/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-bold text-red-400 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20" data-i18n="works_tag">PORTFOLIO</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white mt-3" data-i18n="works_title">Selected Work</h2>
+          <p class="text-gray-400 text-sm mt-2" data-i18n="works_sub">Filter by platform or watch full video.</p>
+        </div>
+
+        <!-- Filter Buttons & Direct Video Actions -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+          <div class="flex flex-wrap gap-2 text-xs sm:text-sm" id="filterContainer">
+            <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl bg-red-600 text-white font-bold transition-all shadow-lg shadow-red-600/20" data-i18n="filter_all">All (43)</button>
+            <button data-filter="reels" class="filter-btn px-4 py-2 rounded-xl glass-card text-gray-300 hover:text-white font-medium transition-all" data-i18n="filter_reels">Reels & TikTok (37)</button>
+            <button data-filter="commercial" class="filter-btn px-4 py-2 rounded-xl glass-card text-gray-300 hover:text-white font-medium transition-all" data-i18n="filter_commercial">Commercials (1)</button>
+            <button data-filter="youtube" class="filter-btn px-4 py-2 rounded-xl glass-card text-gray-300 hover:text-white font-medium transition-all" data-i18n="filter_youtube">Podcasts & Shows (4)</button>
+            <button data-filter="motion" class="filter-btn px-4 py-2 rounded-xl glass-card text-gray-300 hover:text-white font-medium transition-all" data-i18n="filter_motion">Motion (1)</button>
+          </div>
+
+          <!-- Video Options (Local Video & All 43 Reels Vault) -->
+          <div class="flex items-center gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 sm:border-l sm:border-gray-800 sm:pl-3">
+            <button onclick="triggerLocalVideoUpload()" class="px-3.5 py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/40 text-xs font-bold transition-all flex items-center gap-1.5 shadow hover:scale-105" title="Play a video file from your computer">
+              <i data-lucide="laptop" class="w-3.5 h-3.5"></i>
+              <span data-i18n="btn_play_local">Play from Device 💻</span>
+            </button>
+            <input type="file" id="localVideoPicker" accept="video/mp4,video/quicktime,video/webm,video/*" class="hidden">
+
+            <button onclick="openAllReelsVault()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-red-600/30 to-purple-600/30 hover:from-red-600/40 hover:to-purple-600/40 text-white border border-red-500/40 text-xs font-bold transition-all flex items-center gap-1.5 shadow hover:scale-105" title="Browse all 43 videos from Ayah's Google Drive">
+              <i data-lucide="film" class="w-3.5 h-3.5 text-red-400"></i>
+              <span data-i18n="btn_reels_vault">Reels Vault (43 Videos) 📂</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid of Projects (Dynamically rendered with real Google Drive video frames) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="projectsGrid">
+        <!-- Rendered by renderProjectsGrid() -->
+      </div>
+
+      <!-- Load More / Show All 43 Reels Toggle -->
+      <div class="mt-12 text-center" id="loadMoreSection">
+        <button id="toggleReelsBtn" onclick="toggleShowAllReels()" class="px-8 py-3.5 rounded-xl font-bold bg-gradient-to-r from-red-600 via-rose-500 to-purple-600 text-white shadow-xl shadow-red-600/30 transition-all hover:scale-105 active:scale-95 inline-flex items-center gap-2 border border-white/20">
+          <i data-lucide="film" class="w-5 h-5"></i>
+          <span id="toggleReelsText">Show All 43 Reels 🎬 (عرض جميع الـ 43 ريلز)</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Before & After Color Grading Section -->
+  <section id="color-grading" class="py-20 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold text-red-400 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20" data-i18n="color_tag">COLOR GRADING</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3" data-i18n="color_title">Before & After</h2>
+        <p class="text-gray-400 text-sm mt-2" data-i18n="color_sub">Drag the slider to compare Flat LOG with the final film grade.</p>
+      </div>
+
+      <!-- Comparison Slider Box -->
+      <div class="comparison-container rounded-2xl aspect-video max-w-4xl mx-auto border border-gray-800 shadow-2xl" id="sliderWrapper">
+        
+        <!-- After (Graded) Image -->
+        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1400&q=80" 
+             alt="Color Graded - After" 
+             class="absolute inset-0 w-full h-full object-cover">
+        
+        <!-- Badge: After -->
+        <div class="absolute top-4 left-4 z-10 px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-lg shadow" data-i18n="color_badge_after">
+          After (Rec.709 Graded)
+        </div>
+
+        <!-- Before (Log/Flat) Image with clip-path -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden" id="beforeClip" style="width: 50%;">
+          <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1400&q=80" 
+               alt="Flat LOG - Before" 
+               class="absolute inset-0 w-full h-full object-cover filter contrast-75 brightness-125 saturate-50 grayscale-[30%]">
+          <!-- Badge: Before -->
+          <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-gray-900/80 backdrop-blur text-gray-300 text-xs font-bold rounded-lg border border-gray-700" data-i18n="color_badge_before">
+            Before (Flat LOG)
+          </div>
+        </div>
+
+        <!-- Slider Line & Handle -->
+        <div class="comparison-slider" id="dragLine" style="left: 50%;">
+          <div class="comparison-handle">
+            <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-4 text-xs text-gray-500" data-i18n="color_tip">
+        💡 Drag left/right to compare highlights, shadows, and skin tones
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Software & Workflow Section -->
+  <section id="tools" class="py-20 bg-black/50 border-y border-gray-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold text-red-400 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20" data-i18n="tools_tag">TOOLKIT</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3" data-i18n="tools_title">Tools & Process</h2>
+        <p class="text-gray-400 text-sm mt-2" data-i18n="tools_sub">Engineered for speed, narrative depth, and high visual quality.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        
+        <!-- Premiere Pro -->
+        <div class="p-6 rounded-2xl glass-card flex flex-col items-center text-center group">
+          <div class="w-14 h-14 rounded-2xl bg-[#9999FF]/10 text-[#9999FF] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+            <span class="font-bold text-xl font-inter">Pr</span>
+          </div>
+          <h4 class="font-bold text-white text-sm">Premiere Pro</h4>
+          <span class="text-[11px] text-gray-400 mt-1" data-i18n="tool_pr_desc">Core Video Editing</span>
+        </div>
+
+        <!-- After Effects -->
+        <div class="p-6 rounded-2xl glass-card flex flex-col items-center text-center group">
+          <div class="w-14 h-14 rounded-2xl bg-[#D291FF]/10 text-[#D291FF] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+            <span class="font-bold text-xl font-inter">Ae</span>
+          </div>
+          <h4 class="font-bold text-white text-sm">After Effects</h4>
+          <span class="text-[11px] text-gray-400 mt-1" data-i18n="tool_ae_desc">Motion Graphics & VFX</span>
+        </div>
+
+        <!-- DaVinci Resolve -->
+        <div class="p-6 rounded-2xl glass-card flex flex-col items-center text-center group">
+          <div class="w-14 h-14 rounded-2xl bg-[#FF4F64]/10 text-[#FF4F64] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+            <span class="font-bold text-xl font-inter">Dv</span>
+          </div>
+          <h4 class="font-bold text-white text-sm">DaVinci Resolve</h4>
+          <span class="text-[11px] text-gray-400 mt-1" data-i18n="tool_dv_desc">Color Grading & Finishing</span>
+        </div>
+
+        <!-- Photoshop -->
+        <div class="p-6 rounded-2xl glass-card flex flex-col items-center text-center group">
+          <div class="w-14 h-14 rounded-2xl bg-[#31A8FF]/10 text-[#31A8FF] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+            <span class="font-bold text-xl font-inter">Ps</span>
+          </div>
+          <h4 class="font-bold text-white text-sm">Photoshop</h4>
+          <span class="text-[11px] text-gray-400 mt-1" data-i18n="tool_ps_desc">Thumbnails & Artwork</span>
+        </div>
+
+        <!-- Adobe Audition -->
+        <div class="p-6 rounded-2xl glass-card flex flex-col items-center text-center group">
+          <div class="w-14 h-14 rounded-2xl bg-[#00E5FF]/10 text-[#00E5FF] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+            <span class="font-bold text-xl font-inter">Au</span>
+          </div>
+          <h4 class="font-bold text-white text-sm">Audition</h4>
+          <span class="text-[11px] text-gray-400 mt-1" data-i18n="tool_au_desc">Audio Cleanup & SFX</span>
+        </div>
+
+        <!-- CapCut Pro -->
+        <div class="p-6 rounded-2xl glass-card flex flex-col items-center text-center group">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+            <span class="font-bold text-xl font-inter">Cc</span>
+          </div>
+          <h4 class="font-bold text-white text-sm">CapCut Pro</h4>
+          <span class="text-[11px] text-gray-400 mt-1" data-i18n="tool_cc_desc">Fast Viral Trends</span>
+        </div>
+
+      </div>
+
+      <!-- Workflow Steps -->
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="glass-card p-6 rounded-2xl border-t-2 border-t-red-500">
+          <span class="text-3xl font-black text-red-500/40 font-inter">01</span>
+          <h4 class="text-base font-bold text-white mt-2" data-i18n="step_1_title">Rough Cut & Assembly</h4>
+          <p class="text-xs text-gray-400 mt-1" data-i18n="step_1_desc">Curating the best takes and structuring the narrative without wasted seconds.</p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl border-t-2 border-t-purple-500">
+          <span class="text-3xl font-black text-purple-500/40 font-inter">02</span>
+          <h4 class="text-base font-bold text-white mt-2" data-i18n="step_2_title">Pacing & Sound Design</h4>
+          <p class="text-xs text-gray-400 mt-1" data-i18n="step_2_desc">Beat syncing, dynamic SFX, motion titles, and seamless transitions.</p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl border-t-2 border-t-blue-500">
+          <span class="text-3xl font-black text-blue-500/40 font-inter">03</span>
+          <h4 class="text-base font-bold text-white mt-2" data-i18n="step_3_title">Color Grading</h4>
+          <p class="text-xs text-gray-400 mt-1" data-i18n="step_3_desc">Creating the cinematic mood and matching camera color profiles.</p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl border-t-2 border-t-emerald-500">
+          <span class="text-3xl font-black text-emerald-500/40 font-inter">04</span>
+          <h4 class="text-base font-bold text-white mt-2" data-i18n="step_4_title">4K Mastering</h4>
+          <p class="text-xs text-gray-400 mt-1" data-i18n="step_4_desc">Exporting in pristine 4K optimized for platform algorithms.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials & Client Reviews -->
+  <section id="testimonials" class="py-20 relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col sm:flex-row items-center justify-between mb-12 gap-6 text-center sm:text-start">
+        <div>
+          <span class="text-xs font-bold text-red-400 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20" data-i18n="reviews_tag">TESTIMONIALS</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white mt-3" data-i18n="reviews_title">Client Reviews</h2>
+          <p class="text-gray-400 text-sm mt-1" data-i18n="reviews_sub">What creators and brands say about working with Ayah.</p>
+        </div>
+
+        <!-- Add Review Action Button -->
+        <button onclick="openReviewModal()" class="px-5 py-2.5 rounded-xl font-bold bg-gradient-to-r from-red-600 via-rose-500 to-purple-600 text-white shadow-lg shadow-red-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border border-white/20 text-xs sm:text-sm shrink-0">
+          <i data-lucide="message-square-plus" class="w-4 h-4"></i>
+          <span data-i18n="btn_add_review">Write a Review ✍️ (أضف تقييمك)</span>
+        </button>
+      </div>
+
+      <!-- Testimonials Grid (Rendered dynamically by renderTestimonialsGrid()) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="testimonialsGrid">
+        <!-- Rendered via JavaScript with persistent custom reviews -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact & Hire Me Section -->
+  <section id="contact" class="py-20 relative bg-gradient-to-b from-transparent to-red-950/20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-red-500/20 text-center relative overflow-hidden">
+        
+        <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <span class="text-xs font-bold text-red-400 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20" data-i18n="contact_tag">LET'S CONNECT</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white mt-4 mb-4" data-i18n="contact_title">
+          Have a Project in Mind?
+        </h2>
+        <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base mb-8" data-i18n="contact_sub">
+          Available for new projects, YouTube series, and brand campaigns. Let's make something iconic!
+        </p>
+
+        <!-- Quick Contact Actions -->
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-10">
+          
+          <!-- WhatsApp Direct -->
+          <a id="contactWhatsApp" href="https://wa.me/201030806465" target="_blank" class="px-6 py-3.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-all flex items-center gap-2 shadow-lg shadow-emerald-600/20 hover:scale-105">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span id="whatsAppLabel" data-i18n="contact_wa">WhatsApp: 01030806465</span>
+          </a>
+
+          <!-- Email Direct -->
+          <a id="contactEmail" href="mailto:ayamu6465@gmail.com" class="px-6 py-3.5 rounded-xl font-bold bg-gray-800 hover:bg-gray-700 text-white transition-all flex items-center gap-2 hover:scale-105 border border-gray-700">
+            <i data-lucide="mail" class="w-5 h-5 text-red-400"></i>
+            <span id="emailLabel" data-i18n="contact_email">ayamu6465@gmail.com</span>
+          </a>
+
+        </div>
+
+        <!-- Social Handles -->
+        <div class="flex items-center justify-center gap-4 text-gray-400">
+          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-white hover:border-red-500 transition-colors">
+            <i data-lucide="youtube" class="w-5 h-5"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-white hover:border-red-500 transition-colors">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-white hover:border-red-500 transition-colors">
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-white hover:border-red-500 transition-colors">
+            <i data-lucide="twitter" class="w-5 h-5"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-gray-900 text-center text-xs text-gray-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <i data-lucide="clapperboard" class="w-4 h-4 text-red-500"></i>
+        <span class="text-gray-400 font-bold" data-i18n="footer_tag">AYAH ABO BAKR • Professional Video Editor</span>
+      </div>
+      <div data-i18n="footer_rights">
+        © 2026 All Rights Reserved. Built for high performance.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Live Visual Editor Toolbar -->
+  <div id="liveEditorToolbar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-3">
+    
+    <!-- Inactive State Button -->
+    <button id="enableEditBtn" onclick="toggleLiveEdit(true)" class="px-5 py-3 rounded-full bg-gradient-to-r from-red-600 via-rose-500 to-purple-600 text-white font-bold text-xs sm:text-sm shadow-2xl shadow-red-500/60 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border-2 border-white/40 animate-bounce">
+      <i data-lucide="edit-3" class="w-4 h-4"></i>
+      <span data-i18n-en="Edit Page Directly ✍️" data-i18n-ar="عدّلي بياناتكِ ونصوصكِ مباشرة ✍️">Edit Page Directly ✍️</span>
+    </button>
+
+    <!-- Active State Controls (Initially Hidden) -->
+    <div id="activeEditControls" class="hidden flex-wrap items-center justify-center gap-2 p-2.5 rounded-2xl bg-gray-950/95 backdrop-blur-xl border border-red-500/50 shadow-2xl shadow-black/90 max-w-[95vw]">
+      
+      <div class="flex items-center gap-2 px-3 py-1.5 bg-red-500/10 rounded-xl border border-red-500/30 text-red-400 text-xs font-bold">
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+        <span class="hidden sm:inline" data-i18n-en="Edit mode active (Click any text to edit)" data-i18n-ar="وضع التعديل نشط (اضغطي على أي نص لتعديله)">Edit mode active (Click any text to edit)</span>
+        <span class="sm:hidden">Edit Mode</span>
+      </div>
+
+      <!-- Action 1: Download Modified File -->
+      <button onclick="downloadUpdatedHTML()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-lg hover:scale-105 active:scale-95">
+        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+        <span data-i18n-en="Download index.html" data-i18n-ar="تنزيل الملف المحدّث">Download index.html</span>
+      </button>
+
+      <!-- Action 2: Copy for AI Chat -->
+      <button onclick="copyEditsForAI()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-lg hover:scale-105 active:scale-95">
+        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+        <span data-i18n-en="Copy Edits for Chat" data-i18n-ar="نسخ التعديلات للشات">Copy Edits for Chat</span>
+      </button>
+
+      <!-- Action 3: Change Theme & Template -->
+      <button onclick="openThemeModal()" class="px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-lg hover:scale-105 active:scale-95">
+        <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+        <span data-i18n-en="Templates 🎨" data-i18n-ar="تغيير القالب 🎨">تغيير القالب 🎨</span>
+      </button>
+
+      <!-- Close / Exit Edit Mode -->
+      <button onclick="toggleLiveEdit(false)" class="p-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all text-xs" title="Done editing">
+        <i data-lucide="x" class="w-4 h-4 text-red-400"></i>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="editorToast" class="fixed top-24 left-1/2 -translate-x-1/2 z-[10000] px-5 py-3 rounded-2xl bg-gray-900 border border-emerald-500 text-emerald-300 text-xs sm:text-sm font-bold shadow-2xl transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2">
+    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+    <span id="toastMsg">Changes copied!</span>
+  </div>
+
+  <!-- Video Modal Popup (Supports Google Drive, Local MP4/MOV, YouTube, Vimeo) -->
+  <div id="videoModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+    <div id="videoModalBox" class="relative w-full max-w-4xl h-[78vh] sm:h-auto sm:aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl border border-gray-800 flex flex-col justify-between">
+      
+      <!-- Top Modal Bar -->
+      <div class="z-30 p-3 bg-gradient-to-b from-black/95 to-black/60 flex items-center justify-between pointer-events-auto border-b border-white/10 shrink-0">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="px-2.5 py-1 rounded-lg bg-red-600/90 text-white text-[11px] font-bold flex items-center gap-1 shrink-0">
+            <i data-lucide="play" class="w-3 h-3 fill-current"></i>
+            <span id="modalSourceBadge">Google Drive</span>
+          </span>
+          <span id="modalVideoTitle" class="text-xs text-gray-300 font-medium truncate max-w-[130px] sm:max-w-xs">AYAH ABO BAKR • Video Showcase</span>
+        </div>
+
+        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <!-- Open in Google Drive / Direct Mobile Play -->
+          <a id="modalDriveLink" href="#" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs border border-red-400/40 flex items-center gap-1.5 font-bold transition-all shadow-lg shadow-red-600/30 hover:scale-105" title="Open directly in Google Drive app / Native player">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span id="modalDriveLinkText" data-i18n-en="Direct Play ↗" data-i18n-ar="تشغيل مباشر ↗">تشغيل مباشر ↗</span>
+          </a>
+
+          <!-- Local File Trigger from Modal -->
+          <button onclick="triggerLocalVideoUpload()" class="px-2 py-1 rounded-lg bg-gray-900/80 hover:bg-gray-800 text-gray-300 hover:text-white text-xs border border-gray-700 flex items-center gap-1 transition-colors" title="Play video from computer">
+            <i data-lucide="laptop" class="w-3 h-3 text-emerald-400"></i>
+            <span class="hidden sm:inline">Device</span>
+          </button>
+
+          <!-- Close Button -->
+          <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-black/70 text-gray-300 hover:text-white hover:bg-red-600 transition-colors flex items-center justify-center">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Player Frame Area -->
+      <div class="relative flex-1 w-full h-full bg-black flex items-center justify-center overflow-hidden">
+        <!-- Iframe Player (YouTube / Vimeo / Google Drive preview) -->
+        <iframe id="modalIframe" class="w-full h-full hidden" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        <!-- Native HTML5 Video Player (Local MP4, MOV, WebM files) -->
+        <video id="modalVideoPlayer" class="w-full h-full hidden" controls autoplay playsinline></video>
+      </div>
+
+      <!-- Mobile Direct Stream Helper Banner -->
+      <div id="modalMobileHelp" class="z-30 px-3 py-2 bg-gradient-to-t from-black via-black/95 to-black/60 border-t border-white/10 flex items-center justify-between gap-2 text-[11px] text-gray-300 pointer-events-auto shrink-0">
+        <span class="truncate flex items-center gap-1.5">
+          <i data-lucide="smartphone" class="w-3.5 h-3.5 text-amber-400 shrink-0"></i>
+          <span id="modalMobileHelpText" data-i18n-ar="لو الفيديو معلّق على الموبايل:" data-i18n-en="If video doesn't play on mobile:">لو الفيديو معلّق على الموبايل:</span>
+        </span>
+        <a id="modalDirectStreamBtn" href="#" target="_blank" rel="noopener noreferrer" class="shrink-0 px-3 py-1 rounded-lg bg-white/10 hover:bg-red-600 text-white font-bold transition-all border border-white/20 flex items-center gap-1 text-[11px] shadow">
+          <span id="modalDirectStreamBtnText" data-i18n-ar="تشغيل في درايف ↗" data-i18n-en="Open in Drive ↗">تشغيل في درايف ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- All 43 Reels Vault Modal (Google Drive Explorer) -->
+  <div id="allReelsModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative w-full max-w-4xl max-h-[85vh] rounded-3xl bg-gray-950 border border-red-500/30 shadow-2xl flex flex-col overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 border-b border-gray-800 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-400 shrink-0">
+            <i data-lucide="film" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+              <span data-i18n-en="Google Drive Reels Vault" data-i18n-ar="خزينة ريلز جوجل درايف">Google Drive Reels Vault</span>
+              <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-400 font-bold border border-red-500/30">43 Files</span>
+            </h3>
+            <p class="text-xs text-gray-400 mt-0.5" data-i18n-en="Click any reel to play instantly, or open the folder in Google Drive." data-i18n-ar="اضغطي على أي ريل لتشغيله فوراً، أو افتحي المجلد بالكامل في درايف.">Click any reel to play instantly, or open the folder in Google Drive.</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <a href="https://drive.google.com/drive/folders/1TJ9zk6RkSqkMMkEbvZnoRzjeHkD5HF6Q" target="_blank" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/40 text-xs font-bold transition-all hover:scale-105">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span data-i18n-en="Drive Folder" data-i18n-ar="مجلد درايف">Drive Folder</span>
+          </a>
+
+          <button onclick="closeAllReelsVault()" class="w-9 h-9 rounded-xl bg-gray-900 hover:bg-red-600 text-gray-300 hover:text-white transition-colors flex items-center justify-center">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="px-5 py-3 bg-gray-900/40 border-b border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="relative w-full sm:w-80">
+          <i data-lucide="search" class="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input type="text" id="reelsSearchInput" oninput="filterReelsVault()" placeholder="Search reel name / ابحثي بالاسم..." class="w-full pl-9 pr-3 py-1.5 rounded-xl bg-gray-950 border border-gray-800 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors">
+        </div>
+        <div class="text-xs text-gray-400">
+          <span id="reelsCountLabel">43 Reels Loaded</span>
+        </div>
+      </div>
+
+      <!-- Scrollable Video List -->
+      <div class="p-4 sm:p-6 overflow-y-auto max-h-[55vh] space-y-2.5" id="reelsVaultList">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Write a Client Review Modal -->
+  <div id="reviewModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative w-full max-w-lg rounded-3xl bg-gray-950 border border-red-500/40 shadow-2xl p-6 sm:p-8 overflow-hidden">
+      
+      <!-- Ambient Glow Behind Modal -->
+      <div class="absolute -top-12 -right-12 w-40 h-40 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Close Button -->
+      <button onclick="closeReviewModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-900 hover:bg-red-600 text-gray-400 hover:text-white transition-colors flex items-center justify-center z-10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="flex items-center gap-3.5 mb-6 relative z-10">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-400 flex items-center justify-center text-white shadow-lg shadow-red-600/30 shrink-0">
+          <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-black text-white" data-i18n="review_modal_title">Share Your Experience ⭐</h3>
+          <p class="text-xs text-gray-400" data-i18n="review_modal_sub">Your review will be featured live on Ayah's portfolio!</p>
+        </div>
+      </div>
+
+      <!-- Review Form -->
+      <form id="clientReviewForm" onsubmit="handleReviewSubmit(event)" class="space-y-4 relative z-10">
+        
+        <!-- Interactive Star Rating Picker -->
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1.5" data-i18n="review_label_rating">Your Rating (التقييم):</label>
+          <div class="flex items-center gap-2 p-3 rounded-2xl bg-gray-900/80 border border-gray-800" id="starPickerContainer">
+            <!-- Dynamic interactive stars injected via JavaScript -->
+          </div>
+          <input type="hidden" id="reviewRatingInput" value="5">
+        </div>
+
+        <!-- Name Input -->
+        <div>
+          <label for="reviewAuthorName" class="block text-xs font-bold text-gray-300 mb-1" data-i18n="review_label_name">Your Name / Channel (الاسم أو القناة): *</label>
+          <input type="text" id="reviewAuthorName" required placeholder="e.g. Samy Abdelaziz / صانع محتوى" class="w-full px-4 py-2.5 rounded-xl bg-gray-900 border border-gray-800 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors">
+        </div>
+
+        <!-- Role / Brand Input -->
+        <div>
+          <label for="reviewAuthorRole" class="block text-xs font-bold text-gray-300 mb-1" data-i18n="review_label_role">Your Role / Platform (المجال أو المنصة):</label>
+          <input type="text" id="reviewAuthorRole" placeholder="e.g. YouTube Creator (500K) / Brand Owner" class="w-full px-4 py-2.5 rounded-xl bg-gray-900 border border-gray-800 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors">
+        </div>
+
+        <!-- Review Text Input -->
+        <div>
+          <label for="reviewTextContent" class="block text-xs font-bold text-gray-300 mb-1" data-i18n="review_label_comment">Your Feedback (رأيك في المونتاج والسرعة): *</label>
+          <textarea id="reviewTextContent" rows="3" required placeholder="اكتب رأيك وتجربتك في جودة المونتاج وسرعة التسليم..." class="w-full px-4 py-2.5 rounded-xl bg-gray-900 border border-gray-800 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors resize-none"></textarea>
+        </div>
+
+        <!-- WhatsApp Notify Option -->
+        <label class="flex items-center gap-2.5 p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 cursor-pointer text-xs text-emerald-300 select-none hover:bg-emerald-950/60 transition-colors">
+          <input type="checkbox" id="reviewSendWhatsApp" checked class="w-4 h-4 rounded text-emerald-500 focus:ring-0 bg-gray-900 border-gray-700">
+          <span data-i18n="review_send_wa">Send a copy to Ayah on WhatsApp 💬 (إرسال نسخة لآية على واتساب)</span>
+        </label>
+
+        <!-- Submit Buttons -->
+        <div class="pt-2 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeReviewModal()" class="px-4 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-400 hover:text-white text-xs font-bold transition-colors">
+            <span data-i18n="review_cancel_btn">Cancel (إلغاء)</span>
+          </button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-500 to-purple-600 text-white font-bold text-xs sm:text-sm shadow-xl shadow-red-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border border-white/20">
+            <i data-lucide="check" class="w-4 h-4"></i>
+            <span data-i18n="review_submit_btn">Publish Review 🎉 (نشر التقييم فوراً)</span>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Theme & Template Switcher Modal -->
+  <div id="themeModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative w-full max-w-4xl max-h-[90vh] rounded-3xl bg-gray-950 border border-gray-800 shadow-2xl p-6 sm:p-8 overflow-hidden flex flex-col">
+      
+      <!-- Ambient Glow Behind Modal -->
+      <div class="absolute -top-12 -right-12 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Close Button -->
+      <button onclick="closeThemeModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-900 hover:bg-red-600 text-gray-400 hover:text-white transition-colors flex items-center justify-center z-10 cursor-pointer">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="flex items-center gap-3.5 mb-5 relative z-10">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl shadow-amber-500/20 shrink-0">
+          <i data-lucide="palette" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-xl sm:text-2xl font-black text-white" data-i18n="theme_modal_title">
+            Choose Your Portfolio Template 🎨 (اختاري قالب البورتفوليو)
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1" data-i18n="theme_modal_sub">
+            اضغطي على أي قالب لتجربته فوراً على كامل الموقع مع فيديوهاتكِ وتقييماتكِ!
+          </p>
+        </div>
+      </div>
+
+      <!-- Theme Cards Container (Scrollable) -->
+      <div id="themeCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-y-auto pr-1 py-2" style="max-height: 55vh;">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="pt-4 mt-4 border-t border-gray-900 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-gray-400">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>يتم حفظ القالب الذي تختارينه تلقائياً ويبقى ثابتاً في موقعكِ.</span>
+        </div>
+        <button onclick="closeThemeModal()" class="px-5 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-bold transition-all cursor-pointer">
+          إغلاق (Close)
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons if available
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+      try { lucide.createIcons(); } catch (e) {}
+    }
+
+    // ==========================================
+    // Complete Verified Google Drive 43 Videos Collection
+    // ==========================================
+    const allDriveVideos = [
+      { id: "1Sy8j3kofQ1a-jaFO9JxiL-abuskzkoZs", name: "1", size: "79.7 MB", date: "06 Oct", category: "reels", aspect: "portrait", titleEn: "Talking Head High-Retention Reel #1", titleAr: "ريل تحفيزي عالي الاستبقاء 1", descEn: "Kinetic typography, fast cuts, and custom sound design.", descAr: "مونتاج نصوص تفاعلية وإيقاع سريع ومؤثرات صوتية.", tags: ["Sound Design", "Premiere Pro"], previewUrl: "https://drive.google.com/file/d/1Sy8j3kofQ1a-jaFO9JxiL-abuskzkoZs/preview" },
+      { id: "1dpB3oOQ6vCM-Iqt57LvZue3z2QwOjrT2", name: "1", size: "48.3 MB", date: "06 Oct", category: "reels", aspect: "portrait", titleEn: "Dynamic Social Engagement Reel #2", titleAr: "ريلز تفاعلي ديناميكي 2", descEn: "Attention-grabbing hook with seamless transitions.", descAr: "هوك جذاب وانتقالات ناعمة لرفع معدل المشاهدة.", tags: ["Viral Hook", "After Effects"], previewUrl: "https://drive.google.com/file/d/1dpB3oOQ6vCM-Iqt57LvZue3z2QwOjrT2/preview" },
+      { id: "1MjNyO4L86eWi5UqaASWfNlvZerXuqotZ", name: "ads02.mp4", size: "35.7 MB", date: "04 Jul", category: "commercial", aspect: "landscape", titleEn: "Commercial Brand Campaign (ads02)", titleAr: "إعلان ترويجي تجاري (ads02)", descEn: "Precise beat synchronization and commercial color grading.", descAr: "إيقاع تقطيع متناسق مع الموسيقى وتصحيح ألوان إعلاني.", tags: ["Color Grade", "Commercial"], previewUrl: "https://drive.google.com/file/d/1MjNyO4L86eWi5UqaASWfNlvZerXuqotZ/preview" },
+      { id: "1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY", name: "0710(78).mp4", size: "218.5 MB", date: "28 Aug", category: "reels", aspect: "portrait", titleEn: "Master Showcase Reel 0710(78)", titleAr: "الشوريل الرئيسي الاستعراضي", descEn: "Cinematic montage of visual pacing and sound design.", descAr: "مونتاج استعراضي متكامل يجمع أفضل اللقطات والمؤثرات.", tags: ["Master Edit", "4K UHD"], previewUrl: "https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview" },
+      { id: "13peBlNB_-bFpIosovHa2xOEPST9Eajtb", name: "khof.mp4", size: "53.2 MB", date: "18 Jul", category: "youtube", aspect: "landscape", titleEn: 'Cinematic Narrative: "Khof"', titleAr: 'سرد سينمائي درامي: "خوف"', descEn: "Psychological pacing, soundscapes, and dramatic mood.", descAr: "مونتاج درامي وسرد نفسي مع تدريج لوني مظلم وسينمائي.", tags: ["Cinematic", "DaVinci Resolve"], previewUrl: "https://drive.google.com/file/d/13peBlNB_-bFpIosovHa2xOEPST9Eajtb/preview" },
+      { id: "1ToyYKHroikPuPSP_FIyrV8zUJ8n8VvjI", name: "Norin 1.mp4", size: "14.8 MB", date: "10 Jul", category: "youtube", aspect: "landscape", titleEn: 'Client Talk Show: "Norin" #1', titleAr: 'برنامج حواري: "نورين" 1', descEn: "Crisp dialogue cleanup, multi-cam switching, and brand styling.", descAr: "تنقية صوت الحوار وتقطيع كاميرات متزامن وتنسيق هوية العميل.", tags: ["Multi-Cam", "Audition SFX"], previewUrl: "https://drive.google.com/file/d/1ToyYKHroikPuPSP_FIyrV8zUJ8n8VvjI/preview" },
+      { id: "16_P9JKCfJ_A6nU303OyIiVMN_9J-jooS", name: "نورين 2.mp4", size: "14 MB", date: "10 Jul", category: "youtube", aspect: "landscape", titleEn: 'Client Talk Show: "Norin" #2', titleAr: 'برنامج حواري: "نورين" 2', descEn: "Multi-angle podcast edit with subtitle animations.", descAr: "مونتاج حواري متعدد الزوايا مع نصوص توضيحية.", tags: ["Subtitles", "Podcast Edit"], previewUrl: "https://drive.google.com/file/d/16_P9JKCfJ_A6nU303OyIiVMN_9J-jooS/preview" },
+      { id: "1z3zvsuC-DnyOlXWMegOW9rKmeUCp3LO6", name: "norin3.mp4", size: "62 MB", date: "10 Jul", category: "youtube", aspect: "landscape", titleEn: 'Client Talk Show: "Norin" #3', titleAr: 'برنامج حواري: "نورين" 3', descEn: "In-depth studio interview cut with clean audio pacing.", descAr: "حوار ستوديو مطول مع ضبط إيقاع الحديث والتنقل بين الزوايا.", tags: ["Studio Cut", "Premiere Pro"], previewUrl: "https://drive.google.com/file/d/1z3zvsuC-DnyOlXWMegOW9rKmeUCp3LO6/preview" },
+      { id: "1fFcTkTPHRKcp2QzZs52BGENAvFi642xu", name: "F 1.mp4", size: "69.5 MB", date: "18 Oct", category: "motion", aspect: "portrait", titleEn: "Fashion & Motion Visual Cut", titleAr: "مونتاج استعراضي للأزياء والموشن", descEn: "Dynamic transitions, visual rhythm, and color harmony.", descAr: "انتقالات سريعة مع إيقاع بصري وتنسيق ألوان سينمائي.", tags: ["Fashion Cut", "After Effects"], previewUrl: "https://drive.google.com/file/d/1fFcTkTPHRKcp2QzZs52BGENAvFi642xu/preview" },
+      { id: "11f4DE0PcWsiInc1OS6b_VypFjZUAMv4l", name: "0710(72).mp4", size: "33.9 MB", date: "16 Aug", category: "reels", aspect: "portrait", titleEn: "Viral Fast-Paced Reel 0710(72)", titleAr: "ريلز فيرال فائق السرعة والتأثير", descEn: "High-retention cuts, zoom punches, and sound design.", descAr: "تقطيعات حماسية ومؤثرات صوتية مصممة لأعلى تفاعل.", tags: ["Sound Effects", "Premiere Pro"], previewUrl: "https://drive.google.com/file/d/11f4DE0PcWsiInc1OS6b_VypFjZUAMv4l/preview" },
+      { id: "19_v-PAy2jlcjPNuWvjWgDKfOCG7XOepx", name: "1 (1).mp4", size: "9.1 MB", date: "10 Oct", category: "reels", aspect: "portrait", titleEn: "Quick Hook Short Reel", titleAr: "ريلز سريع بخطاف بصري", descEn: "Fast opening hook engineered for scroll-stopping impact.", descAr: "بداية خاطفة للأنظار تجذب انتباه المشاهد في أول ثانية.", tags: ["3s Hook", "Fast Pacing"], previewUrl: "https://drive.google.com/file/d/19_v-PAy2jlcjPNuWvjWgDKfOCG7XOepx/preview" },
+      { id: "1qXBsGHRoxwRwis5_z8k_8DJ0CNO9llx1", name: "1 (2).mp4", size: "8.3 MB", date: "11 Oct", category: "reels", aspect: "portrait", titleEn: "Punchy Micro-Reel", titleAr: "ريلز ميكرو سريع الإيقاع", descEn: "Short, punchy edit with tight visual timing.", descAr: "مونتاج فائق الدقة والإيجاز بأعلى كفاءة بصرية.", tags: ["Micro Cut", "CapCut Pro"], previewUrl: "https://drive.google.com/file/d/1qXBsGHRoxwRwis5_z8k_8DJ0CNO9llx1/preview" },
+      { id: "1-QU62AccG11K-3WidjzU-PLreB4DLEDQ", name: "1.mp4", size: "91.3 MB", date: "28 Apr", category: "reels", aspect: "portrait", titleEn: "Full Production Reel (91MB)", titleAr: "ريلز إنتاج كامل عالي الجودة", descEn: "Polished audio-visual synchronization and color grading.", descAr: "مزامنة صوتية بصرية احترافية وتدريج لوني دقيق.", tags: ["Color Grade", "Audio Sync"], previewUrl: "https://drive.google.com/file/d/1-QU62AccG11K-3WidjzU-PLreB4DLEDQ/preview" },
+      { id: "1CvvfkiH9MMUzS1UciL-JJRlD9KN0PNPg", name: "1.mp4", size: "55.7 MB", date: "02 Oct", category: "reels", aspect: "portrait", titleEn: "Talking Head Retention Edit", titleAr: "مونتاج توكينج هيد عالي الاستبقاء", descEn: "B-roll overlays, kinetic text, and audio depth.", descAr: "توزيع مشاهد B-Roll ونصوص حركية ومؤثرات صوتية.", tags: ["B-Roll", "Kinetic Text"], previewUrl: "https://drive.google.com/file/d/1CvvfkiH9MMUzS1UciL-JJRlD9KN0PNPg/preview" },
+      { id: "1OSclJKj8APBi7FWUCFU8sCbf-M6bu7Jw", name: "1.mp4", size: "37.7 MB", date: "28 Apr", category: "reels", aspect: "portrait", titleEn: "Creative Flow Reel", titleAr: "ريلز انسيابي إبداعي", descEn: "Seamless camera movement and fluid transitions.", descAr: "حركة كاميرا سلسة وانتقالات طبيعية غير مرئية.", tags: ["Transitions", "Visual Flow"], previewUrl: "https://drive.google.com/file/d/1OSclJKj8APBi7FWUCFU8sCbf-M6bu7Jw/preview" },
+      { id: "1sfvLi-emgg6lzm3VSyKxO4bemqR3rIcx", name: "1.mp4", size: "83.9 MB", date: "28 Apr", category: "reels", aspect: "portrait", titleEn: "High-Energy Impact Reel", titleAr: "ريلز طاقة وحماس عالي", descEn: "Intense sound effects, flash cuts, and punch-ins.", descAr: "تقطيع حماسي ومؤثرات صوتية مكثفة.", tags: ["High Energy", "Punch-ins"], previewUrl: "https://drive.google.com/file/d/1sfvLi-emgg6lzm3VSyKxO4bemqR3rIcx/preview" },
+      { id: "1QLJslH-dUizXTlhDss6swJfz4ZVPz8kh", name: "2.mp4", size: "73.1 MB", date: "02 Oct", category: "reels", aspect: "portrait", titleEn: "Typography & Sound Reel #2", titleAr: "ريلز نصوص حركية وهندسة صوتية 2", descEn: "Highlighted keywords, custom sound cues, and pacing.", descAr: "إبراز الكلمات المفتاحية ومؤثرات صوتية متزامنة.", tags: ["Motion Titles", "Sound FX"], previewUrl: "https://drive.google.com/file/d/1QLJslH-dUizXTlhDss6swJfz4ZVPz8kh/preview" },
+      { id: "1FnTuUeikLjl1Y6Djrr48o8QAXBoSCcYW", name: "3.mp4", size: "73.5 MB", date: "02 Oct", category: "reels", aspect: "portrait", titleEn: "Cinematic Grade Reel #3", titleAr: "ريلز بتدريج سينمائي 3", descEn: "Rich contrast, skin tone balance, and film curves.", descAr: "تباين سينمائي غني وتوحيد ألوان البشرة.", tags: ["Film Look", "DaVinci Resolve"], previewUrl: "https://drive.google.com/file/d/1FnTuUeikLjl1Y6Djrr48o8QAXBoSCcYW/preview" },
+      { id: "1lIyeT2XAELqshrw0lkJrARSIby1iABwo", name: "4.mp4", size: "32.2 MB", date: "02 Oct", category: "reels", aspect: "portrait", titleEn: "Speed Ramping Reel #4", titleAr: "ريلز تسريع وإبطاء إيقاعي 4", descEn: "Smooth speed ramps synced to musical beats.", descAr: "تسريع وإبطاء احترافي متزامن مع دقات الموسيقى.", tags: ["Speed Ramp", "Beat Sync"], previewUrl: "https://drive.google.com/file/d/1lIyeT2XAELqshrw0lkJrARSIby1iABwo/preview" },
+      { id: "1uUtsh_z9uMQQGdb1FN-CxjBYjX59HgGz", name: "0620(1).mp4", size: "41.9 MB", date: "04 Jul", category: "reels", aspect: "portrait", titleEn: "Viral Hook Reel 0620(1)", titleAr: "ريلز فيرال تفاعلي 0620-1", descEn: "Engineered retention curve and visual cues.", descAr: "هندسة احتفاظ بالمشاهد وإشارات بصرية ذكية.", tags: ["Retention Curve", "Premiere Pro"], previewUrl: "https://drive.google.com/file/d/1uUtsh_z9uMQQGdb1FN-CxjBYjX59HgGz/preview" },
+      { id: "1FjeuNFTRuYybuwCVC57rcuMCDSUTIhHE", name: "0620(2).mp4", size: "98 MB", date: "21 Jun", category: "reels", aspect: "portrait", titleEn: "In-Depth Reel Edit 0620(2)", titleAr: "مونتاج ريلز متكامل 0620-2", descEn: "Comprehensive social edit with multi-layer SFX.", descAr: "مونتاج متعدد الطبقات مع هندسة صوتية متكاملة.", tags: ["Multi-Layer", "Sound Design"], previewUrl: "https://drive.google.com/file/d/1FjeuNFTRuYybuwCVC57rcuMCDSUTIhHE/preview" },
+      { id: "1Hvc3_M381SzpO9OSU1-MkAXZOaGxw-RA", name: "0708 (1)(1).mp4", size: "40.6 MB", date: "08 Jul", category: "reels", aspect: "portrait", titleEn: "Creative Pacing Reel 0708", titleAr: "ريلز إبداعي متناسق 0708", descEn: "Perfect narrative tempo without wasted seconds.", descAr: "إيقاع سردي محكم دون إهدار أي ثانية.", tags: ["Narrative Tempo", "Transitions"], previewUrl: "https://drive.google.com/file/d/1Hvc3_M381SzpO9OSU1-MkAXZOaGxw-RA/preview" },
+      { id: "19Z68Ct14Wxz7qQljNhqN3DnALMkQrb54", name: "0710(1).mp4", size: "48 MB", date: "10 Jul", category: "reels", aspect: "portrait", titleEn: "Dynamic Cut Reel 0710(1)", titleAr: "ريلز تقطيع ديناميكي 0710-1", descEn: "Snappy pacing, zooms, and custom graphics.", descAr: "إيقاع سريع مع زووم وجرافيك توضيحي.", tags: ["Dynamic Cut", "Graphics"], previewUrl: "https://drive.google.com/file/d/19Z68Ct14Wxz7qQljNhqN3DnALMkQrb54/preview" },
+      { id: "1ubHovCqfg0ibbOGwsgzdu8WSSXsh2Zyp", name: "0710(2).mp4", size: "44.9 MB", date: "17 Jul", category: "reels", aspect: "portrait", titleEn: "Storyline Reel 0710(2)", titleAr: "ريلز قصة متتابعة 0710-2", descEn: "Visual story progression with seamless cutaways.", descAr: "تسلسل بصري متناسق مع لقطات تكميلية.", tags: ["Storytelling", "Cutaways"], previewUrl: "https://drive.google.com/file/d/1ubHovCqfg0ibbOGwsgzdu8WSSXsh2Zyp/preview" },
+      { id: "1yMMdHZ4TPTR72MY1p5jVjiMqCSEuNNC-", name: "0710(6).mp4", size: "19.8 MB", date: "18 Jul", category: "reels", aspect: "portrait", titleEn: "Quick Social Reel 0710(6)", titleAr: "ريلز سوشيال سريع 0710-6", descEn: "Ultra-fast delivery for TikTok and Shorts.", descAr: "مونتاج خفيف وسريع ملائم لتيك توك ويوتيوب شورتس.", tags: ["Shorts / TikTok", "Snappy Edit"], previewUrl: "https://drive.google.com/file/d/1yMMdHZ4TPTR72MY1p5jVjiMqCSEuNNC-/preview" },
+      { id: "12fPIPX1RgmjcM0qfIaB7G-GxEMnMX_d_", name: "0710(10).mp4", size: "62.7 MB", date: "13 Jul", category: "reels", aspect: "portrait", titleEn: "High-Retention Cut 0710(10)", titleAr: "ريلز عالي الاستبقاء 0710-10", descEn: "Audio riser builds, drops, and visual popups.", descAr: "بناء تصاعدي بالمؤثرات الصوتية وانتقالات حيوية.", tags: ["Audio Builds", "Popups"], previewUrl: "https://drive.google.com/file/d/12fPIPX1RgmjcM0qfIaB7G-GxEMnMX_d_/preview" },
+      { id: "1ZT9bH6im3B1UTpsYbXOphH6r4qOytLZp", name: "0710(12).mp4", size: "40.6 MB", date: "13 Jul", category: "reels", aspect: "portrait", titleEn: "Energy Motion Reel 0710(12)", titleAr: "ريلز طاقة وحركة 0710-12", descEn: "High visual tempo with bold animated captions.", descAr: "حركة سريعة مع نصوص عريضة تفاعلية.", tags: ["Animated Text", "High Tempo"], previewUrl: "https://drive.google.com/file/d/1ZT9bH6im3B1UTpsYbXOphH6r4qOytLZp/preview" },
+      { id: "1MpJmMa0Dcn_MbXTx1Pnpvi8jHSqvjliF", name: "0710(14).mp4", size: "14.1 MB", date: "21 Jul", category: "reels", aspect: "portrait", titleEn: "Micro-Cut Reel 0710(14)", titleAr: "ريلز ميكرو-كات 0710-14", descEn: "Punchy, ultra-short video format.", descAr: "فيديو قصير خاطف ومكثف.", tags: ["Micro Video", "Viral"], previewUrl: "https://drive.google.com/file/d/1MpJmMa0Dcn_MbXTx1Pnpvi8jHSqvjliF/preview" },
+      { id: "1BjPrE52ox-hqyHteKRT97US3IcoCEJ57", name: "0710(24).mp4", size: "29.5 MB", date: "24 Jul", category: "reels", aspect: "portrait", titleEn: "Seamless Transition Reel 0710(24)", titleAr: "ريلز انتقالات احترافية 0710-24", descEn: "Creative match cuts and smooth visual wipes.", descAr: "انتقالات ماتش-كات ومسحات بصرية متقنة.", tags: ["Match Cuts", "After Effects"], previewUrl: "https://drive.google.com/file/d/1BjPrE52ox-hqyHteKRT97US3IcoCEJ57/preview" },
+      { id: "12db4KBIFfOBY2wMfDxh3fxrGu1Xa-mYX", name: "0710(25).mp4", size: "46.7 MB", date: "25 Jul", category: "reels", aspect: "portrait", titleEn: "Hook & Pacing Reel 0710(25)", titleAr: "ريلز هوك وإيقاع 0710-25", descEn: "Engaging start with steady rhythmic pacing.", descAr: "مقدمة مشوقة مع ضبط وتيرة وسرعة المشاهد.", tags: ["Hook Master", "Pacing"], previewUrl: "https://drive.google.com/file/d/12db4KBIFfOBY2wMfDxh3fxrGu1Xa-mYX/preview" },
+      { id: "1HZBOdfTYRZTr6I4bxDcDh3LW_0VlXb0m", name: "0710(28).mp4", size: "49.2 MB", date: "25 Jul", category: "reels", aspect: "portrait", titleEn: "Pacing Master Reel 0710(28)", titleAr: "ريلز إيقاع احترافي 0710-28", descEn: "Tightly synced cuts and audio accents.", descAr: "تزامن إيقاعي دقيق وتأكيدات صوتية.", tags: ["Audio Accents", "Premiere Pro"], previewUrl: "https://drive.google.com/file/d/1HZBOdfTYRZTr6I4bxDcDh3LW_0VlXb0m/preview" },
+      { id: "1lXevD5YeybiO1ERi-6b5-S5PaDTDZYr0", name: "0710(29).mp4", size: "40.1 MB", date: "28 Jul", category: "reels", aspect: "portrait", titleEn: "VFX & Titles Reel 0710(29)", titleAr: "ريلز مؤثرات بصرية ونصوص 0710-29", descEn: "Subtle VFX overlays and eye-catching titles.", descAr: "مؤثرات بصرية سينمائية وعناوين ملفتة.", tags: ["VFX Overlays", "Titles"], previewUrl: "https://drive.google.com/file/d/1lXevD5YeybiO1ERi-6b5-S5PaDTDZYr0/preview" },
+      { id: "1t-e1A-vJxJnf6oxO-aaw4trkUtf2n_Ey", name: "0710(35).mp4", size: "29.1 MB", date: "31 Jul", category: "reels", aspect: "portrait", titleEn: "Zoom & Punch Reel 0710(35)", titleAr: "ريلز زووم وتكبير 0710-35", descEn: "Dynamic reframing and optical zoom punches.", descAr: "إعادة تأطير حركي وتكبير ديناميكي ذكي.", tags: ["Reframing", "Zoom Punch"], previewUrl: "https://drive.google.com/file/d/1t-e1A-vJxJnf6oxO-aaw4trkUtf2n_Ey/preview" },
+      { id: "1PIu-uhhrbLyEs_QlTttw2x02HcPPU8wj", name: "0710(37).mp4", size: "85.1 MB", date: "06 Aug", category: "reels", aspect: "portrait", titleEn: "High-Bitrate Reel 0710(37)", titleAr: "ريلز بأعلى بيت-ريت 0710-37", descEn: "Sharp 4K vertical export optimized for social algorithms.", descAr: "تصدير رأسي بدقة 4K حادة ملائم لخوارزميات النشر.", tags: ["4K Export", "Social Algo"], previewUrl: "https://drive.google.com/file/d/1PIu-uhhrbLyEs_QlTttw2x02HcPPU8wj/preview" },
+      { id: "1mLRBaYL2XeP1Yi7rlD6SWw3N52nPWjhx", name: "0710(74).mp4", size: "80.5 MB", date: "22 Aug", category: "reels", aspect: "portrait", titleEn: "Cinematic Grade Reel 0710(74)", titleAr: "ريلز تلوين سينمائي 0710-74", descEn: "Film emulation, skin tone perfection, and deep contrast.", descAr: "محاكاة ألوان سينمائية وتدرج ظلال عميق.", tags: ["Skin Tones", "DaVinci Resolve"], previewUrl: "https://drive.google.com/file/d/1mLRBaYL2XeP1Yi7rlD6SWw3N52nPWjhx/preview" },
+      { id: "1ruU1c9swU0ZPJPvffOCOhpgNQa0G9RPt", name: "0710(81).mp4", size: "69.8 MB", date: "04 Sep", category: "reels", aspect: "portrait", titleEn: "Social Trend Reel 0710(81)", titleAr: "ريلز تريندات السوشيال 0710-81", descEn: "Viral pacing, audio memes, and visual humor.", descAr: "إيقاع فيرال وتنسيق موسيقى وتريندات.", tags: ["Viral Trends", "Humor / Memes"], previewUrl: "https://drive.google.com/file/d/1ruU1c9swU0ZPJPvffOCOhpgNQa0G9RPt/preview" },
+      { id: "15Wncbm2Y3JIHxAQ97uocZy_z8P5OUkj8", name: "0715 (3).mp4", size: "100.8 MB", date: "15 Jul", category: "reels", aspect: "portrait", titleEn: "Comprehensive Cut 0715(3)", titleAr: "مونتاج مكثف وشامل 0715-3", descEn: "Dense visual storytelling and sound design.", descAr: "سرد بصري مكثف وهندسة صوتية دقيقة.", tags: ["Visual Story", "Sound Design"], previewUrl: "https://drive.google.com/file/d/15Wncbm2Y3JIHxAQ97uocZy_z8P5OUkj8/preview" },
+      { id: "1jMLe8cgF9VrI38ZNKjxsrmylae0GTltC", name: "0720(2).mp4", size: "90.2 MB", date: "20 Jul", category: "reels", aspect: "portrait", titleEn: "Storytelling Reel 0720(2)", titleAr: "ريلز سرد بصري 0720-2", descEn: "Visual engagement across each second of footage.", descAr: "جذب انتباه المشاهد في كل ثانية من الفيديو.", tags: ["High Retention", "Premiere Pro"], previewUrl: "https://drive.google.com/file/d/1jMLe8cgF9VrI38ZNKjxsrmylae0GTltC/preview" },
+      { id: "1fgUWXtCefVPlxSYHCp9E6TD5mBvAC-k7", name: "0802(2).mp4", size: "34.7 MB", date: "03 Aug", category: "reels", aspect: "portrait", titleEn: "Beat Sync Reel 0802(2)", titleAr: "ريلز تزامن إيقاعي 0802-2", descEn: "Precise musical downbeat cuts and transitions.", descAr: "تقطيع على دقات الموسيقى وانتقالات حركية.", tags: ["Beat Sync", "Transitions"], previewUrl: "https://drive.google.com/file/d/1fgUWXtCefVPlxSYHCp9E6TD5mBvAC-k7/preview" },
+      { id: "1uEQxEeG4Mi0_sn-WXgAbERtGhQXJ_QTx", name: "0805(20).mp4", size: "27.2 MB", date: "01 Sep", category: "reels", aspect: "portrait", titleEn: "Clean Minimal Reel 0805(20)", titleAr: "ريلز مينيمال نظيف 0805-20", descEn: "Elegant, uncluttered edit for sophisticated brands.", descAr: "مونتاج هادئ وأنيق مناسب للعلامات التجارية الراقية.", tags: ["Minimal Style", "Branding"], previewUrl: "https://drive.google.com/file/d/1uEQxEeG4Mi0_sn-WXgAbERtGhQXJ_QTx/preview" },
+      { id: "19WemdIFnXH1jb--byWIVCIdOppJIVpFn", name: "1114 (1)(2).mp4", size: "99.2 MB", date: "20 Nov", category: "reels", aspect: "portrait", titleEn: "Deep Retention Reel 1114-2", titleAr: "ريلز استبقاء عميق 1114-2", descEn: "Curated sound design, text popups, and zoom effects.", descAr: "مؤثرات صوتية مدروسة ونصوص وتكبير تدريجي.", tags: ["Sound Design", "Zooms"], previewUrl: "https://drive.google.com/file/d/19WemdIFnXH1jb--byWIVCIdOppJIVpFn/preview" },
+      { id: "1SvrO3Lgz6Ha8VSXX7mVdvcLC_6-RTPGT", name: "1114 (1)(4).mp4", size: "31 MB", date: "23 Nov", category: "reels", aspect: "portrait", titleEn: "Short Punchy Reel 1114-4", titleAr: "ريلز قصير قوي التأثير 1114-4", descEn: "High-density value packed in a short timeframe.", descAr: "فيديو قصير مكثف يقدم أعلى قيمة في أقل وقت.", tags: ["Punchy Edit", "Viral Hook"], previewUrl: "https://drive.google.com/file/d/1SvrO3Lgz6Ha8VSXX7mVdvcLC_6-RTPGT/preview" },
+      { id: "14FR-P3H4Wo7ROjFQ1Q9Dtii2mFDvGK8f", name: "1790659553957_0929.mp4", size: "48.3 MB", date: "06 Oct", category: "reels", aspect: "portrait", titleEn: "Mobile-First Reel 0929", titleAr: "ريلز مخصص للموبايل 0929", descEn: "Full 9:16 immersion with thumb-stopping aesthetics.", descAr: "تجربة رأسية 9:16 كاملة مصممة لإيقاف التمرير فوراً.", tags: ["9:16 Vertical", "High Impact"], previewUrl: "https://drive.google.com/file/d/14FR-P3H4Wo7ROjFQ1Q9Dtii2mFDvGK8f/preview" }
+    ];
+
+    // ==========================================
+    // Complete Bilingual Dictionary (EN / AR)
+    // ==========================================
+    const i18n = {
+      en: {
+        nav_showreel: "Showreel",
+        nav_work: "Work",
+        nav_color: "Color Grade",
+        nav_tools: "Tools",
+        nav_reviews: "Reviews",
+        nav_edit_btn: "Edit Page ✍️",
+        nav_contact: "Contact Me",
+        hero_avail: "Available for Projects",
+        hero_title: "🎬 Video Editor & Colorist",
+        hero_desc: "Turning raw footage into cinematic visual stories that captivate audiences. Specialized in YouTube, high-retention Reels, and commercial ads.",
+        hero_showreel_btn: "Watch Showreel",
+        hero_work_btn: "Explore Work",
+        stat_views_lbl: "Total Views",
+        stat_projects_lbl: "Completed Projects",
+        stat_exp_lbl: "Years Experience",
+        stat_ontime_lbl: "On-Time Delivery",
+        photo_change_btn: "Change Photo",
+        photo_status: "Available for Projects",
+        showreel_tag: "FEATURED REEL",
+        showreel_title: "Showreel",
+        showreel_sub: "A curated montage of my best cinematic and commercial work.",
+        works_tag: "PORTFOLIO",
+        works_title: "Selected Work",
+        works_sub: "Filter by platform or watch full video.",
+        filter_all: "All (43)",
+        filter_reels: "Reels & TikTok (37)",
+        filter_commercial: "Commercials (1)",
+        filter_youtube: "Podcasts & Shows (4)",
+        filter_motion: "Motion (1)",
+        color_tag: "COLOR GRADING",
+        color_title: "Before & After",
+        color_sub: "Drag the slider to compare Flat LOG with the final film grade.",
+        color_badge_after: "After (Rec.709 Graded)",
+        color_badge_before: "Before (Flat LOG)",
+        color_tip: "💡 Drag left/right to compare highlights, shadows, and skin tones",
+        tools_tag: "TOOLKIT",
+        tools_title: "Tools & Process",
+        tools_sub: "Engineered for speed, narrative depth, and high visual quality.",
+        tool_pr_desc: "Core Video Editing",
+        tool_ae_desc: "Motion Graphics & VFX",
+        tool_dv_desc: "Color Grading & Finishing",
+        tool_ps_desc: "Thumbnails & Artwork",
+        tool_au_desc: "Audio Cleanup & SFX",
+        tool_cc_desc: "Fast Viral Trends",
+        step_1_title: "Rough Cut & Assembly",
+        step_1_desc: "Curating the best takes and structuring the narrative without wasted seconds.",
+        step_2_title: "Pacing & Sound Design",
+        step_2_desc: "Beat syncing, dynamic SFX, motion titles, and seamless transitions.",
+        step_3_title: "Color Grading",
+        step_3_desc: "Creating the cinematic mood and matching camera color profiles.",
+        step_4_title: "4K Mastering",
+        step_4_desc: "Exporting in pristine 4K optimized for platform algorithms.",
+        reviews_tag: "TESTIMONIALS",
+        reviews_title: "Client Reviews",
+        reviews_sub: "What creators and brands say about working with Ayah.",
+        btn_add_review: "Write a Review ✍️",
+        review_modal_title: "Share Your Experience ⭐",
+        review_modal_sub: "Your review will be featured live on Ayah's portfolio!",
+        review_label_rating: "Your Rating:",
+        review_label_name: "Your Name / Channel: *",
+        review_label_role: "Your Role / Platform:",
+        review_label_comment: "Your Feedback: *",
+        review_send_wa: "Send a copy to Ayah on WhatsApp 💬",
+        review_cancel_btn: "Cancel",
+        review_submit_btn: "Publish Review 🎉",
+        contact_tag: "LET'S CONNECT",
+        contact_title: "Have a Project in Mind?",
+        contact_sub: "Available for new projects, YouTube series, and brand campaigns. Let's make something iconic!",
+        contact_wa: "WhatsApp: 01030806465",
+        contact_email: "ayamu6465@gmail.com",
+        footer_tag: "AYAH ABO BAKR • Professional Video Editor",
+        footer_rights: "© 2026 All Rights Reserved. Built for high performance.",
+        btn_play_local: "Play from Device 💻",
+        btn_reels_vault: "Reels Vault (43 Videos) 📂",
+        nav_theme_btn: "🎨 Themes",
+        theme_modal_title: "Choose Your Portfolio Template 🎨",
+        theme_modal_sub: "Click any template to instantly preview it live across all your videos!"
+      },
+      ar: {
+        nav_showreel: "الشوريل",
+        nav_work: "الأعمال",
+        nav_color: "تصحيح الألوان",
+        nav_tools: "البرامج",
+        nav_reviews: "الآراء",
+        nav_edit_btn: "تعديل المحتوى ✍️",
+        nav_contact: "تواصل معي",
+        hero_avail: "متاحة للمشاريع",
+        hero_title: "🎬 فيديو ايديتور | Video Editor",
+        hero_desc: "أحوّل لقطاتكِ وأفكاركِ إلى قصص سينمائية تأسر الجمهور. متخصصة في مونتاج اليوتيوب، الريلز عالية الاستبقاء، والإعلانات التجارية.",
+        hero_showreel_btn: "شاهد الشوريل",
+        hero_work_btn: "تصفح الأعمال",
+        stat_views_lbl: "إجمالي المشاهدات",
+        stat_projects_lbl: "مشروع تم إنجازه",
+        stat_exp_lbl: "سنوات خبرة",
+        stat_ontime_lbl: "التزام بالمواعيد",
+        photo_change_btn: "تغيير صورتكِ الآن",
+        photo_status: "متاحة لاستلام مشاريع",
+        showreel_tag: "FEATURED REEL",
+        showreel_title: "الشوريل الإبداعي",
+        showreel_sub: "ملخص لأفضل لقطات ومشاريع المونتاج السينمائي والإعلاني.",
+        works_tag: "PORTFOLIO",
+        works_title: "معرض الأعمال",
+        works_sub: "تصفحي حسب المنصة واضغطي لتشغيل أي فيديو.",
+        filter_all: "الكل (43)",
+        filter_reels: "ريلز & تيك توك (37)",
+        filter_commercial: "إعلانات تجارية (1)",
+        filter_youtube: "بودكاست وبرامج (4)",
+        filter_motion: "موشن (1)",
+        color_tag: "COLOR GRADING",
+        color_title: "قبل وبعد التلوين",
+        color_sub: "اسحبي المؤشر لمقارنة ملف الـ LOG الخام والنتيجة السينمائية النهائية.",
+        color_badge_after: "بعد التلوين (Graded)",
+        color_badge_before: "قبل (Flat LOG)",
+        color_tip: "💡 اسحبي الدائرة يميناً ويساراً لمقارنة الإضاءة والظلال وألوان البشرة",
+        tools_tag: "TOOLKIT",
+        tools_title: "البرامج وسير العمل",
+        tools_sub: "نظام عمل متكامل لضمان أقصى جودة سينمائية وأسرع وقت تسليم.",
+        tool_pr_desc: "المونتاج الأساسي",
+        tool_ae_desc: "موشن جرافيك وVFX",
+        tool_dv_desc: "تدريج الألوان",
+        tool_ps_desc: "تصميم الثامبنيل (Thumbnails)",
+        tool_au_desc: "هندسة وتنقية الصوت",
+        tool_cc_desc: "المونتاج السريع للترندات",
+        step_1_title: "فرز اللقطات والقص (Rough Cut)",
+        step_1_desc: "اختيار أقوى اللحظات وبناء هيكل القصة دون إهدار ثانية واحدة.",
+        step_2_title: "الإيقاع والمؤثرات (Pacing & SFX)",
+        step_2_desc: "ضبط التزامن الموسيقي، المؤثرات الصوتية، النصوص، والانتقالات.",
+        step_3_title: "تصحيح الألوان (Color Grading)",
+        step_3_desc: "إعطاء الفيديو المود السينمائي وتوحيد تدرج ألوان الكاميرات.",
+        step_4_title: "التصدير النهائي بدقة 4K",
+        step_4_desc: "تصدير بدقة 4K مع ضبط البيت-ريت المناسب لخوارزميات المنصات.",
+        reviews_tag: "TESTIMONIALS",
+        reviews_title: "آراء وتقييمات العملاء",
+        reviews_sub: "ما يقوله صناع المحتوى والشركات عن العمل الإبداعي مع آية.",
+        btn_add_review: "أضف تقييمك ورأيك ✍️",
+        review_modal_title: "شارك رأيك وتجربتك ⭐",
+        review_modal_sub: "سيتم نشر تقييمك فوراً في معرض الآراء بموقع آية!",
+        review_label_rating: "تقييمك (من 1 إلى 5 نجوم):",
+        review_label_name: "اسمك أو اسم قناتك / شركتك: *",
+        review_label_role: "المجال أو المنصة (مثال: صانع محتوى / براند):",
+        review_label_comment: "رأيك في جودة المونتاج وسرعة التسليم: *",
+        review_send_wa: "إرسال نسخة لآية على واتساب أيضاً 💬",
+        review_cancel_btn: "إلغاء",
+        review_submit_btn: "نشر التقييم فوراً 🎉",
+        contact_tag: "LET'S CONNECT",
+        contact_title: "هل لديكِ فكرة مشروع؟",
+        contact_sub: "متاحة لاستلام مشاريع جديدة، سلاسل يوتيوب، أو إعلانات لشركتكِ. دعنا نتحدث ونبدأ فوراً!",
+        contact_wa: "واتساب: 01030806465",
+        contact_email: "ayamu6465@gmail.com",
+        footer_tag: "آية أبو بكر • محررة ومونتيرة فيديو احترافية",
+        footer_rights: "جميع الحقوق محفوظة © 2026. تم التصميم والبرمجة بأعلى جودة.",
+        btn_play_local: "تشغيل فيديو من الجهاز 💻",
+        btn_reels_vault: "خزينة الريلز (43 فيديو) 📂",
+        nav_theme_btn: "🎨 القوالب",
+        theme_modal_title: "اختاري قالب وثيم البورتفوليو 🎨",
+        theme_modal_sub: "اضغطي على أي قالب لتجربته فوراً على كامل الموقع مع فيديوهاتكِ وتقييماتكِ!"
+      }
+    };
+
+    // ==========================================
+    // Multi-Template & Theme System (5 Unique Creative Styles)
+    // ==========================================
+    const portfolioThemes = [
+      {
+        id: "crimson",
+        nameEn: "Cinematic Crimson",
+        nameAr: "السينمائي الفخم (Crimson)",
+        tagEn: "Default • Hollywood Tone",
+        tagAr: "الافتراضي • سينمائي جريء",
+        descEn: "Warm crimson neon & deep obsidian. Bold cinematic presence for high-impact reels & showreels.",
+        descAr: "نيون سينمائي أحمر مع تدرجات دافئة تركز بقوة على لقطات الشوريل والريلز عالية الاستبقاء.",
+        colors: ["#ff334b", "#f43f5e", "#8b5cf6"],
+        vars: {
+          "--theme-c1": "#ff334b",
+          "--theme-c2": "#f43f5e",
+          "--theme-c3": "#8b5cf6",
+          "--theme-text-accent": "#ff6b81",
+          "--theme-border": "rgba(255, 51, 75, 0.4)",
+          "--theme-border-hover": "rgba(255, 51, 75, 0.85)",
+          "--theme-badge-bg": "rgba(255, 51, 75, 0.15)",
+          "--theme-shadow": "rgba(255, 51, 75, 0.35)",
+          "--theme-glow1": "rgba(255, 51, 75, 0.12)",
+          "--theme-glow2": "rgba(139, 92, 246, 0.12)"
+        }
+      },
+      {
+        id: "cyber",
+        nameEn: "Cyber Neon & Violet",
+        nameAr: "الموشن والفايرال (Cyber Violet)",
+        tagEn: "Motion Graphics & Viral",
+        tagAr: "موشن جرافيكس & ريلز سريعة",
+        descEn: "Electric violet & cyber cyan. High-energy aesthetic for fast viral reels and motion designers.",
+        descAr: "بنفسجي كهربائي وتدرجات سيان نيون تناسب الموشن ريلز وصناع المحتوى السريع والتريندات.",
+        colors: ["#8b5cf6", "#a855f7", "#06b6d4"],
+        vars: {
+          "--theme-c1": "#8b5cf6",
+          "--theme-c2": "#a855f7",
+          "--theme-c3": "#06b6d4",
+          "--theme-text-accent": "#c084fc",
+          "--theme-border": "rgba(139, 92, 246, 0.45)",
+          "--theme-border-hover": "rgba(6, 182, 212, 0.85)",
+          "--theme-badge-bg": "rgba(139, 92, 246, 0.18)",
+          "--theme-shadow": "rgba(139, 92, 246, 0.4)",
+          "--theme-glow1": "rgba(139, 92, 246, 0.18)",
+          "--theme-glow2": "rgba(6, 182, 212, 0.18)"
+        }
+      },
+      {
+        id: "gold",
+        nameEn: "Luxury Gold & Noir",
+        nameAr: "الفخامة الملكية (Luxury Gold)",
+        tagEn: "Commercial & Brands",
+        tagAr: "إعلانات تجارية وبراندات كبرى",
+        descEn: "Warm champagne gold on deep noir. Premium high-fashion elegance for commercial campaigns.",
+        descAr: "أسود فاحم مع ذهب ملكي دافئ مخصص للإعلانات التجارية الراقية وحملات البراندات العالمية.",
+        colors: ["#d97706", "#f59e0b", "#b45309"],
+        vars: {
+          "--theme-c1": "#d97706",
+          "--theme-c2": "#f59e0b",
+          "--theme-c3": "#b45309",
+          "--theme-text-accent": "#fbbf24",
+          "--theme-border": "rgba(245, 158, 11, 0.45)",
+          "--theme-border-hover": "rgba(251, 191, 36, 0.85)",
+          "--theme-badge-bg": "rgba(245, 158, 11, 0.18)",
+          "--theme-shadow": "rgba(217, 119, 6, 0.4)",
+          "--theme-glow1": "rgba(245, 158, 11, 0.14)",
+          "--theme-glow2": "rgba(217, 119, 6, 0.12)"
+        }
+      },
+      {
+        id: "emerald",
+        nameEn: "Clean Emerald Studio",
+        nameAr: "الاستوديو النظيف (Clean Emerald)",
+        tagEn: "Podcasts & Media Shows",
+        tagAr: "بودكاست واستوديوهات عصرية",
+        descEn: "Refreshing emerald & mint tones. Crisp readability and modern creative studio atmosphere.",
+        descAr: "أخضر زمردي ونعناعي مريح للعين، ممتاز للبودكاست وبرامج الحوار وصناع الميديا واليوتيوب.",
+        colors: ["#059669", "#10b981", "#06b6d4"],
+        vars: {
+          "--theme-c1": "#059669",
+          "--theme-c2": "#10b981",
+          "--theme-c3": "#06b6d4",
+          "--theme-text-accent": "#34d399",
+          "--theme-border": "rgba(16, 185, 129, 0.45)",
+          "--theme-border-hover": "rgba(52, 211, 153, 0.85)",
+          "--theme-badge-bg": "rgba(16, 185, 129, 0.18)",
+          "--theme-shadow": "rgba(16, 185, 129, 0.4)",
+          "--theme-glow1": "rgba(16, 185, 129, 0.15)",
+          "--theme-glow2": "rgba(6, 182, 212, 0.14)"
+        }
+      },
+      {
+        id: "sapphire",
+        nameEn: "Hollywood Sapphire Blue",
+        nameAr: "أزرق هوليوود (Sapphire Blue)",
+        tagEn: "Cinematic Color Grade",
+        tagAr: "تصحيح ألوان وإنتاج سينمائي",
+        descEn: "Deep royal blue & cosmic indigo. High-end film production tone reminiscent of DaVinci suites.",
+        descAr: "أزرق ملكي ونيلي سينمائي يمنح طابع استوديوهات إنتاج وتلوين الأفلام السينمائية العالمية.",
+        colors: ["#2563eb", "#3b82f6", "#0284c7"],
+        vars: {
+          "--theme-c1": "#2563eb",
+          "--theme-c2": "#3b82f6",
+          "--theme-c3": "#0284c7",
+          "--theme-text-accent": "#60a5fa",
+          "--theme-border": "rgba(37, 99, 235, 0.45)",
+          "--theme-border-hover": "rgba(96, 165, 250, 0.85)",
+          "--theme-badge-bg": "rgba(37, 99, 235, 0.18)",
+          "--theme-shadow": "rgba(37, 99, 235, 0.4)",
+          "--theme-glow1": "rgba(37, 99, 235, 0.16)",
+          "--theme-glow2": "rgba(2, 132, 199, 0.14)"
+        }
+      }
+    ];
+
+    let currentThemeId = 'crimson';
+
+    function applyTheme(themeId, notify = false) {
+      const theme = portfolioThemes.find(t => t.id === themeId) || portfolioThemes[0];
+      currentThemeId = theme.id;
+      document.documentElement.setAttribute('data-theme', theme.id);
+      try {
+        localStorage.setItem('portfolio_theme', theme.id);
+      } catch (e) {}
+
+      // Update root CSS variables
+      const root = document.documentElement;
+      for (const [key, val] of Object.entries(theme.vars)) {
+        root.style.setProperty(key, val);
+      }
+
+      // Update fluid liquid background orbs
+      const g1 = document.getElementById('glowBlob1');
+      const g2 = document.getElementById('glowBlob2');
+      const g3 = document.getElementById('glowBlob3');
+      if (g1) g1.style.background = `radial-gradient(circle, ${theme.vars['--theme-c1']} 0%, ${theme.vars['--theme-c2']} 45%, transparent 75%)`;
+      if (g2) g2.style.background = `radial-gradient(circle, ${theme.vars['--theme-c3']} 0%, ${theme.vars['--theme-c1']} 50%, transparent 75%)`;
+      if (g3) g3.style.background = `radial-gradient(circle, ${theme.vars['--theme-c2']} 0%, ${theme.vars['--theme-c3']} 55%, transparent 80%)`;
+
+      renderThemeCards();
+
+      if (notify) {
+        const name = currentLang === 'ar' ? theme.nameAr : theme.nameEn;
+        showToast(currentLang === 'ar' ? `✨ تم تفعيل قالب: ${name} بنجاح!` : `✨ Activated theme: ${name}!`);
+      }
+    }
+
+    function renderThemeCards() {
+      const container = document.getElementById('themeCardsContainer');
+      if (!container) return;
+
+      const isAr = currentLang === 'ar';
+      container.innerHTML = portfolioThemes.map(theme => {
+        const isActive = theme.id === currentThemeId;
+        const name = isAr ? theme.nameAr : theme.nameEn;
+        const tag = isAr ? theme.tagAr : theme.tagEn;
+        const desc = isAr ? theme.descAr : theme.descEn;
+
+        const swatches = theme.colors.map(c => `
+          <span class="w-5 h-5 rounded-full shadow-md border border-white/20" style="background-color: ${c};"></span>
+        `).join('');
+
+        return `
+          <div class="relative p-5 rounded-2xl glass-card flex flex-col justify-between transition-all duration-300 ${isActive ? 'border-2 ring-2 ring-offset-2 ring-offset-gray-950 shadow-2xl' : 'hover:scale-[1.02]'}" 
+               style="${isActive ? `border-color: ${theme.colors[0]}; --tw-ring-color: ${theme.colors[0]};` : ''}">
+            
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border" 
+                      style="background-color: ${theme.colors[0]}22; color: ${theme.colors[0]}; border-color: ${theme.colors[0]}44;">
+                  ${tag}
+                </span>
+                <div class="flex items-center gap-1.5">
+                  ${swatches}
+                </div>
+              </div>
+
+              <h4 class="text-base font-black text-white mb-1.5 flex items-center justify-between">
+                <span>${name}</span>
+                ${isActive ? `<span class="text-xs px-2 py-0.5 rounded-md font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Active ✅</span>` : ''}
+              </h4>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                ${desc}
+              </p>
+            </div>
+
+            <button type="button" 
+                    onclick="applyTheme('${theme.id}', true)" 
+                    class="w-full py-2.5 px-4 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-lg ${isActive ? 'bg-gray-800 text-gray-400 cursor-default' : 'text-white hover:scale-105 active:scale-95 cursor-pointer'}"
+                    style="${!isActive ? `background: linear-gradient(135deg, ${theme.colors[0]}, ${theme.colors[1]});` : ''}"
+                    ${isActive ? 'disabled' : ''}>
+              <span>${isActive ? (isAr ? 'القالب المفعّل حالياً ✅' : 'Currently Active ✅') : (isAr ? 'تطبيق هذا القالب ✨' : 'Activate Template ✨')}</span>
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openThemeModal() {
+      const modal = document.getElementById('themeModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        renderThemeCards();
+      }
+    }
+
+    function closeThemeModal() {
+      const modal = document.getElementById('themeModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    let currentLang = 'en';
+    let currentFilter = 'all';
+    let isShowingAll = false;
+    let isLiveEditing = false;
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const isEn = lang === 'en';
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', isEn ? 'ltr' : 'rtl');
+
+      const dict = i18n[lang] || i18n.en;
+
+      // Update elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          const icon = el.querySelector('i[data-lucide]');
+          if (icon) {
+            const iconClone = icon.cloneNode(true);
+            el.innerHTML = '';
+            el.appendChild(iconClone);
+            el.appendChild(document.createTextNode(' ' + dict[key]));
+          } else {
+            el.innerText = dict[key];
+          }
+        }
+      });
+
+      // Update cards that have data-i18n-en and data-i18n-ar
+      document.querySelectorAll('[data-i18n-en]').forEach(el => {
+        el.innerText = isEn ? el.getAttribute('data-i18n-en') : el.getAttribute('data-i18n-ar');
+      });
+
+      // Update Owner Names
+      const heroName = document.getElementById('heroOwnerName');
+      const navName = document.getElementById('navOwnerName');
+      if (heroName) {
+        heroName.innerText = isEn ? 'AYAH ABO BAKR' : 'آية أبو بكر';
+      }
+      if (navName) {
+        navName.innerText = isEn ? 'AYAH ABO BAKR' : 'آية أبو بكر';
+      }
+
+      // Update Toggle Button Text
+      const langLabel = document.getElementById('langLabel');
+      if (langLabel) {
+        langLabel.innerText = isEn ? 'العربية' : 'English';
+      }
+
+      localStorage.setItem('portfolio_language', lang);
+
+      // Re-render dynamic project grid with localized titles and tags
+      if (typeof renderProjectsGrid === 'function') {
+        renderProjectsGrid();
+      }
+      if (typeof renderTestimonialsGrid === 'function') {
+        renderTestimonialsGrid();
+      }
+      if (typeof renderThemeCards === 'function') {
+        renderThemeCards();
+      }
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function toggleLanguage() {
+      const nextLang = currentLang === 'en' ? 'ar' : 'en';
+      applyLanguage(nextLang);
+      showToast(nextLang === 'en' ? 'Switched to English 🇺🇸' : 'تم التبديل للغة العربية 🇸🇦');
+    }
+
+    // Sync Hero Name with Nav Name
+    const heroNameEl = document.getElementById('heroOwnerName');
+    const navNameEl = document.getElementById('navOwnerName');
+    if (heroNameEl && navNameEl) {
+      heroNameEl.addEventListener('input', () => {
+        navNameEl.innerText = heroNameEl.innerText;
+      });
+      navNameEl.addEventListener('input', () => {
+        heroNameEl.innerText = navNameEl.innerText;
+      });
+    }
+
+    // Enhanced Video Modal Handlers (Supports Google Drive, Local MP4/MOV, YouTube, Vimeo)
+    const modal = document.getElementById('videoModal');
+    const modalIframe = document.getElementById('modalIframe');
+    const modalVideoPlayer = document.getElementById('modalVideoPlayer');
+
+    function formatVideoUrl(url) {
+      if (!url) return '';
+      url = url.trim();
+
+      // 1. Google Drive link converter
+      if (url.includes('drive.google.com')) {
+        let fileId = '';
+        const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+        if (match && match[1]) {
+          fileId = match[1];
+        } else {
+          const idMatch = url.match(/id=([a-zA-Z0-9_-]+)/);
+          if (idMatch && idMatch[1]) fileId = idMatch[1];
+        }
+        if (fileId) {
+          return `https://drive.google.com/file/d/${fileId}/preview`;
+        }
+      }
+
+      // 2. YouTube converter
+      if (url.includes('youtube.com/watch?v=')) {
+        const id = url.split('watch?v=')[1]?.split('&')[0];
+        return `https://www.youtube.com/embed/${id}`;
+      }
+      if (url.includes('youtu.be/')) {
+        const id = url.split('youtu.be/')[1]?.split('?')[0];
+        return `https://www.youtube.com/embed/${id}`;
+      }
+
+      // 3. Vimeo converter
+      if (url.includes('vimeo.com/') && !url.includes('player.vimeo.com')) {
+        const id = url.split('vimeo.com/')[1]?.split('?')[0];
+        return `https://player.vimeo.com/video/${id}`;
+      }
+
+      return url;
+    }
+
+    function openVideoModal(url, title = '') {
+      if (!url) return;
+      const formatted = formatVideoUrl(url);
+      const isLocalOrDirect = formatted.match(/\.(mp4|mov|webm|ogg|m4v)($|\?)/i) || formatted.startsWith('blob:') || formatted.startsWith('data:');
+
+      const badge = document.getElementById('modalSourceBadge');
+      const titleEl = document.getElementById('modalVideoTitle');
+      const driveLink = document.getElementById('modalDriveLink');
+      const streamBtn = document.getElementById('modalDirectStreamBtn');
+      const mobileHelp = document.getElementById('modalMobileHelp');
+      const isAr = currentLang === 'ar';
+
+      if (titleEl) {
+        titleEl.innerText = title || (isLocalOrDirect ? 'Local Video Playback' : 'AYAH ABO BAKR • Video Showcase');
+      }
+
+      if (badge) {
+        if (isLocalOrDirect) {
+          badge.innerText = isAr ? 'فيديو من الجهاز' : 'Device Video';
+        } else if (url.includes('drive.google.com')) {
+          badge.innerText = 'Google Drive';
+        } else {
+          badge.innerText = isAr ? 'فيديو أونلاين' : 'Online Video';
+        }
+      }
+
+      // Extract direct Drive URL for 100% reliable mobile playback
+      let directUrl = formatted;
+      if (url.includes('drive.google.com')) {
+        const fileIdMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+        const fileId = fileIdMatch ? fileIdMatch[1] : '';
+        directUrl = fileId ? `https://drive.google.com/file/d/${fileId}/view` : url.replace('/preview', '/view');
+      }
+
+      if (driveLink) {
+        if (url.includes('drive.google.com')) {
+          driveLink.classList.remove('hidden');
+          driveLink.href = directUrl;
+        } else {
+          driveLink.classList.add('hidden');
+        }
+      }
+
+      if (streamBtn) {
+        if (url.includes('drive.google.com')) {
+          streamBtn.href = directUrl;
+          if (mobileHelp) mobileHelp.classList.remove('hidden');
+        } else {
+          if (mobileHelp) mobileHelp.classList.add('hidden');
+        }
+      }
+
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 640;
+
+      if (isLocalOrDirect) {
+        modalIframe.classList.add('hidden');
+        modalIframe.src = '';
+        modalVideoPlayer.classList.remove('hidden');
+        modalVideoPlayer.src = formatted;
+        modalVideoPlayer.play().catch(() => {});
+      } else {
+        modalVideoPlayer.classList.add('hidden');
+        modalVideoPlayer.pause();
+        modalVideoPlayer.src = '';
+        modalIframe.classList.remove('hidden');
+        const sep = formatted.includes('?') ? '&' : '?';
+        // On mobile, avoid autoplay=1 which causes iOS Safari iframe autoplay block
+        modalIframe.src = (isMobile || formatted.includes('autoplay')) ? formatted : (formatted + sep + 'autoplay=1');
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      if (modalIframe) modalIframe.src = '';
+      if (modalVideoPlayer) {
+        modalVideoPlayer.pause();
+        modalVideoPlayer.src = '';
+      }
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeVideoModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!modal.classList.contains('hidden')) closeVideoModal();
+        const allReels = document.getElementById('allReelsModal');
+        if (allReels && !allReels.classList.contains('hidden')) closeAllReelsVault();
+      }
+    });
+
+    // Local Video Upload & Playback from Device
+    function triggerLocalVideoUpload() {
+      const picker = document.getElementById('localVideoPicker');
+      if (picker) picker.click();
+    }
+
+    const localVideoPicker = document.getElementById('localVideoPicker');
+    if (localVideoPicker) {
+      localVideoPicker.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const blobUrl = URL.createObjectURL(file);
+          openVideoModal(blobUrl, file.name);
+          showToast(currentLang === 'ar' ? `🎬 تم تشغيل "${file.name}" مباشرة من جهازكِ!` : `🎬 Playing "${file.name}" from your device!`);
+        }
+      });
+    }
+
+    function renderProjectsGrid() {
+      const grid = document.getElementById('projectsGrid');
+      if (!grid) return;
+
+      let filtered = allDriveVideos;
+      if (currentFilter !== 'all') {
+        filtered = allDriveVideos.filter(item => item.category === currentFilter);
+      }
+
+      // If 'all' and not expanded, show first 12; otherwise show all matching
+      const itemsToRender = (currentFilter === 'all' && !isShowingAll) ? filtered.slice(0, 12) : filtered;
+
+      grid.innerHTML = itemsToRender.map((item, idx) => {
+        const isAr = currentLang === 'ar';
+        const title = isAr ? item.titleAr : item.titleEn;
+        const desc = isAr ? item.descAr : item.descEn;
+        const tags = item.tags || ['Sound Design', 'Premiere Pro'];
+
+        let badgeBg = 'bg-red-600 shadow-red-600/40';
+        let badgeLabel = isAr ? 'ريلز' : 'Reel';
+        if (item.category === 'commercial') {
+          badgeBg = 'bg-amber-600 shadow-amber-600/40';
+          badgeLabel = isAr ? 'إعلاني' : 'Commercial';
+        } else if (item.category === 'youtube') {
+          badgeBg = 'bg-blue-600 shadow-blue-600/40';
+          badgeLabel = isAr ? 'بودكاست' : 'Podcast / Show';
+        } else if (item.category === 'motion') {
+          badgeBg = 'bg-purple-600 shadow-purple-600/40';
+          badgeLabel = isAr ? 'موشن' : 'Motion';
+        }
+
+        const isPortrait = item.aspect === 'portrait';
+        const aspectClass = isPortrait ? 'aspect-[9/16]' : 'aspect-video';
+
+        return `
+          <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:translate-y-[-4px] hover:border-red-500/60 hover:shadow-2xl hover:shadow-red-950/40 relative border border-white/5" data-category="${item.category}" data-id="${item.id}">
+            <!-- Media Container -->
+            <div class="relative ${aspectClass} bg-gray-950 overflow-hidden cursor-pointer" onclick="openVideoModal('${item.previewUrl}', '${title.replace(/'/g, "\\'")}')">
+              
+              <!-- Fallback Poster (Underneath image, guarantees no broken image icon) -->
+              <div class="fallback-poster absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-red-950/40 flex flex-col items-center justify-center p-4 text-center select-none pointer-events-none">
+                <div class="w-12 h-12 rounded-2xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-400 mb-2 shadow-lg">
+                  <i data-lucide="film" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-bold text-gray-200 line-clamp-2">${title}</span>
+                <span class="text-[10px] font-mono text-gray-500 mt-1">${item.name}</span>
+              </div>
+
+              <!-- Real Video Poster Frame directly from Google Drive CDN -->
+              <img src="https://lh3.googleusercontent.com/d/${item.id}=w600" 
+                   onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=${item.id}&sz=w600'; this.onerror=function(){ this.style.display='none'; };" 
+                   alt="${title}" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 relative z-10" 
+                   loading="lazy">
+              
+              <!-- Subtle Vignette Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30 z-20 pointer-events-none"></div>
+
+              <!-- Top Left: Reel Index -->
+              <div class="absolute top-3 left-3 z-30 bg-black/70 backdrop-blur-md text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded-lg border border-white/10 shadow">
+                #${String(idx + 1).padStart(2, '0')}
+              </div>
+
+              <!-- Top Right: Category Badge -->
+              <div class="absolute top-3 right-3 z-30 ${badgeBg} text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase shadow-lg tracking-wider">
+                ${badgeLabel}
+              </div>
+
+              <!-- Center Glowing Play Button -->
+              <div class="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-xl shadow-red-600/50 group-hover:scale-110 group-hover:bg-red-500 transition-all duration-300 border border-white/20">
+                  <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
+                </div>
+              </div>
+
+              <!-- Bottom Bar inside Thumbnail -->
+              <div class="absolute bottom-3 right-3 left-3 z-30 flex justify-between items-center text-xs text-gray-300 pointer-events-none">
+                <span class="flex items-center gap-1 font-inter text-[10px] bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10">
+                  <i data-lucide="play-circle" class="w-3 h-3 text-red-400"></i> Google Drive
+                </span>
+                <span class="bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-mono border border-white/10 text-gray-300">
+                  ${item.size}
+                </span>
+              </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="text-sm font-bold text-white group-hover:text-red-400 transition-colors line-clamp-1" data-editable="true">${title}</h3>
+                <p class="text-gray-400 text-xs mt-1 line-clamp-2 leading-relaxed" data-editable="true">${desc}</p>
+                
+                <!-- Skill & Software Tags -->
+                <div class="flex flex-wrap gap-1.5 mt-2.5">
+                  ${tags.map(t => `<span class="px-2 py-0.5 rounded-md bg-gray-900 border border-gray-800 text-[10px] text-gray-300 font-medium">${t}</span>`).join('')}
+                </div>
+              </div>
+
+              <!-- Bottom Row with File Name & Watch CTA -->
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-800/80 text-[11px]">
+                <span class="font-mono text-gray-400 truncate max-w-[120px]" title="${item.name}">${item.name}</span>
+                <button onclick="openVideoModal('${item.previewUrl}', '${title.replace(/'/g, "\\'")}')" class="text-red-400 hover:text-red-300 font-bold flex items-center gap-1 transition-colors hover:scale-105 active:scale-95">
+                  <span>${isAr ? 'شاهد الفيديو' : 'Watch Video'}</span>
+                  <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Update Load More Button visibility & text
+      const loadMoreSec = document.getElementById('loadMoreSection');
+      const toggleText = document.getElementById('toggleReelsText');
+      if (loadMoreSec && toggleText) {
+        if (currentFilter === 'all') {
+          loadMoreSec.classList.remove('hidden');
+          toggleText.innerText = isShowingAll 
+            ? (currentLang === 'ar' ? 'عرض أقل 🔼' : 'Show Less 🔼')
+            : (currentLang === 'ar' ? `عرض جميع الـ 43 ريلز 🎬 (${filtered.length - 12} فيديو إضافي)` : `Show All 43 Reels 🎬 (${filtered.length - 12} more)`);
+        } else {
+          loadMoreSec.classList.add('hidden');
+        }
+      }
+
+      if (window.lucide) lucide.createIcons();
+      if (isLiveEditing) setupDeletableItems(true);
+    }
+
+    function toggleShowAllReels() {
+      isShowingAll = !isShowingAll;
+      renderProjectsGrid();
+    }
+
+    function setupFilterButtons() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.onclick = () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('active', 'bg-red-600', 'text-white');
+            b.classList.add('glass-card', 'text-gray-300');
+          });
+          btn.classList.add('active', 'bg-red-600', 'text-white');
+          btn.classList.remove('glass-card', 'text-gray-300');
+
+          currentFilter = btn.getAttribute('data-filter') || 'all';
+          isShowingAll = false;
+          renderProjectsGrid();
+        };
+      });
+    }
+
+    function openAllReelsVault() {
+      const modalVault = document.getElementById('allReelsModal');
+      if (modalVault) {
+        modalVault.classList.remove('hidden');
+        modalVault.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        renderReelsVaultList(allDriveVideos);
+      }
+    }
+
+    function closeAllReelsVault() {
+      const modalVault = document.getElementById('allReelsModal');
+      if (modalVault) {
+        modalVault.classList.add('hidden');
+        modalVault.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    function filterReelsVault() {
+      const query = (document.getElementById('reelsSearchInput')?.value || '').toLowerCase().trim();
+      const filtered = allDriveVideos.filter(item => item.name.toLowerCase().includes(query) || (item.titleEn && item.titleEn.toLowerCase().includes(query)) || (item.titleAr && item.titleAr.includes(query)) || item.size.toLowerCase().includes(query));
+      renderReelsVaultList(filtered);
+      const countLabel = document.getElementById('reelsCountLabel');
+      if (countLabel) {
+        countLabel.innerText = `${filtered.length} of ${allDriveVideos.length} Reels`;
+      }
+    }
+
+    function renderReelsVaultList(items) {
+      const list = document.getElementById('reelsVaultList');
+      if (!list) return;
+      if (!items || items.length === 0) {
+        list.innerHTML = `<div class="p-8 text-center text-sm text-gray-500">${currentLang === 'ar' ? 'لا توجد فيديوهات مطابقة للبحث' : 'No reels matching your search.'}</div>`;
+        return;
+      }
+
+      list.innerHTML = items.map((item, idx) => `
+        <div class="p-3.5 rounded-2xl glass-card border border-gray-800 hover:border-red-500/40 flex items-center justify-between gap-4 transition-all group hover:bg-gray-900/60">
+          <div class="flex items-center gap-3 min-w-0">
+            <span class="w-7 h-7 rounded-lg bg-gray-800 text-gray-400 text-xs font-mono font-bold flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-colors">
+              ${idx + 1}
+            </span>
+            <div class="w-12 h-14 rounded-lg overflow-hidden bg-gray-950 shrink-0 border border-gray-800">
+              <img src="https://lh3.googleusercontent.com/d/${item.id}=w200" onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=${item.id}&sz=w200';" alt="${item.name}" class="w-full h-full object-cover">
+            </div>
+            <div class="min-w-0">
+              <h5 class="text-sm font-bold text-white truncate group-hover:text-red-400 transition-colors">${currentLang === 'ar' ? item.titleAr : item.titleEn}</h5>
+              <div class="flex items-center gap-2 text-[11px] text-gray-400 mt-0.5">
+                <span class="font-mono text-gray-500">${item.name}</span>
+                <span>•</span>
+                <span>📁 ${item.size}</span>
+                <span>•</span>
+                <span>📅 ${item.date}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="closeAllReelsVault(); openVideoModal('${item.previewUrl}', '${(currentLang === 'ar' ? item.titleAr : item.titleEn).replace(/'/g, "\\'")}')" class="px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-lg shadow-red-600/30 hover:scale-105 active:scale-95">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+              <span>${currentLang === 'ar' ? 'تشغيل' : 'Play'}</span>
+            </button>
+            <a href="https://drive.google.com/file/d/${item.id}/view" target="_blank" class="p-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors text-xs" title="Open on Google Drive">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      `).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // ==========================================
+    // Interactive Testimonials & Client Review Submissions
+    // ==========================================
+    const initialTestimonials = [
+      {
+        id: "rev_1",
+        name: "Samy Abdelaziz",
+        roleEn: "Tech Creator (400K+ Subs)",
+        roleAr: "صانع محتوى تقني (400K+ مشترك)",
+        stars: 5,
+        textEn: "Ayah took our YouTube channel to an entirely new level! After editing our latest 3 videos, our average view retention jumped from 35% to 58%.",
+        textAr: "آية نقلت جودة قناتنا إلى مستوى آخر تماماً! بعد مونتاجها لأول 3 فيديوهات، ارتفع معدل الاحتفاظ بالمشاهد من 35% إلى 58%.",
+        color: "from-red-600 to-rose-500",
+        isCustom: false
+      },
+      {
+        id: "rev_2",
+        name: "Mona Al-Rashed",
+        roleEn: "Marketing Lead - Fashion Brand",
+        roleAr: "مسؤولة تسويق - براند أزياء",
+        stars: 5,
+        textEn: "Incredible turnaround time and creative flair. Her motion typography and sound effects doubled our conversion rate on our Reels campaign.",
+        textAr: "سرعة خيالية والتزام صارم بالمواعيد. كانت اللمسة الإبداعية في المؤثرات وانتقالات النصوص هي السبب في مضاعفة المبيعات.",
+        color: "from-blue-600 to-cyan-500",
+        isCustom: false
+      },
+      {
+        id: "rev_3",
+        name: "Khaled Al-Shammari",
+        roleEn: "Independent Commercial Director",
+        roleAr: "مخرج إعلانات مستقل",
+        stars: 5,
+        textEn: "Deep understanding of color science and musical rhythm. She grasped the vision immediately and overdelivered on every milestone.",
+        textAr: "فهم عميق لتصحيح الألوان وإيقاع الموسيقى. تفهم الرؤية العامة وتنفذ أفضل مما نتخيل دائماً.",
+        color: "from-purple-600 to-pink-500",
+        isCustom: false
+      }
+    ];
+
+    function getDeletedReviewIds() {
+      try {
+        const stored = localStorage.getItem('user_deleted_reviews');
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return [];
+    }
+
+    function markReviewDeleted(id) {
+      try {
+        const list = getDeletedReviewIds();
+        if (!list.includes(id)) {
+          list.push(id);
+          localStorage.setItem('user_deleted_reviews', JSON.stringify(list));
+        }
+        const custom = getCustomReviews().filter(r => r.id !== id);
+        saveCustomReviews(custom);
+      } catch (e) {}
+    }
+
+    function getCustomReviews() {
+      try {
+        const stored = localStorage.getItem('user_client_reviews');
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return [];
+    }
+
+    function saveCustomReviews(reviews) {
+      try {
+        localStorage.setItem('user_client_reviews', JSON.stringify(reviews));
+      } catch (e) {}
+    }
+
+    function renderTestimonialsGrid() {
+      const container = document.getElementById('testimonialsGrid');
+      if (!container) return;
+
+      const deletedIds = getDeletedReviewIds();
+      const customReviews = getCustomReviews().filter(r => !deletedIds.includes(r.id));
+      const allReviews = [...customReviews, ...initialTestimonials.filter(r => !deletedIds.includes(r.id))];
+      const isAr = currentLang === 'ar';
+
+      container.innerHTML = allReviews.map((rev) => {
+        const role = isAr ? (rev.roleAr || rev.roleEn) : (rev.roleEn || rev.roleAr);
+        const text = isAr ? (rev.textAr || rev.textEn) : (rev.textEn || rev.textAr);
+        const starCount = rev.stars || 5;
+        const initial = rev.name ? rev.name.trim().charAt(0).toUpperCase() : '★';
+        const colorGrad = rev.color || 'from-red-600 to-rose-400';
+
+        const starIcons = Array(starCount).fill('<i data-lucide="star" class="w-4 h-4 fill-current text-amber-400"></i>').join('');
+
+        return `
+          <div class="review-card glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:border-red-500/40 relative group" data-review-id="${rev.id}">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex gap-1 text-amber-400">
+                  ${starIcons}
+                </div>
+                ${rev.isCustom ? `<span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">${isAr ? 'عميل موثق ✅' : 'Verified Client ✅'}</span>` : ''}
+              </div>
+              <p class="text-sm text-gray-300 leading-relaxed italic" data-editable="true">
+                "${text}"
+              </p>
+            </div>
+
+            <div class="flex items-center gap-3.5 mt-6 pt-4 border-t border-gray-800/80">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-tr ${colorGrad} flex items-center justify-center font-black text-white text-base shadow-lg shrink-0">
+                ${initial}
+              </div>
+              <div class="min-w-0">
+                <h5 class="text-sm font-bold text-white group-hover:text-red-400 transition-colors truncate" data-editable="true">${rev.name}</h5>
+                <p class="text-xs text-gray-400 truncate" data-editable="true">${role}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        try { lucide.createIcons(); } catch (e) {}
+      }
+      if (isLiveEditing) setupDeletableItems(true);
+    }
+
+    function renderStarPicker(activeCount) {
+      const container = document.getElementById('starPickerContainer');
+      if (!container) return;
+      const ratingInput = document.getElementById('reviewRatingInput');
+      if (ratingInput) ratingInput.value = activeCount;
+
+      let html = '';
+      for (let i = 1; i <= 5; i++) {
+        const isFilled = i <= activeCount;
+        html += `
+          <button type="button" onclick="setReviewRating(${i})" class="w-8 h-8 rounded-lg flex items-center justify-center transition-all ${isFilled ? 'text-amber-400 scale-110' : 'text-gray-600 hover:text-amber-300'}">
+            <i data-lucide="star" class="w-6 h-6 ${isFilled ? 'fill-current' : ''}"></i>
+          </button>
+        `;
+      }
+      html += `<span class="ml-2 text-xs font-bold text-amber-400 font-mono">${activeCount} / 5</span>`;
+      container.innerHTML = html;
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        try { lucide.createIcons(); } catch (e) {}
+      }
+    }
+
+    function setReviewRating(stars) {
+      renderStarPicker(stars);
+    }
+
+    function openReviewModal() {
+      const modal = document.getElementById('reviewModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        renderStarPicker(5);
+      }
+    }
+
+    function closeReviewModal() {
+      const modal = document.getElementById('reviewModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    function handleReviewSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('reviewAuthorName')?.value.trim();
+      const role = document.getElementById('reviewAuthorRole')?.value.trim();
+      const text = document.getElementById('reviewTextContent')?.value.trim();
+      const rating = parseInt(document.getElementById('reviewRatingInput')?.value) || 5;
+      const sendWa = document.getElementById('reviewSendWhatsApp')?.checked;
+
+      if (!name || !text) {
+        alert(currentLang === 'ar' ? 'يرجى إدخال اسمك ورأيك في المونتاج.' : 'Please enter your name and review feedback.');
+        return;
+      }
+
+      const colors = [
+        'from-red-600 to-rose-400',
+        'from-purple-600 to-pink-400',
+        'from-emerald-600 to-teal-400',
+        'from-blue-600 to-cyan-400',
+        'from-amber-600 to-orange-400'
+      ];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      const newReview = {
+        id: 'rev_' + Date.now(),
+        name: name,
+        roleEn: role || 'Content Creator',
+        roleAr: role || 'صانع محتوى',
+        stars: rating,
+        textEn: text,
+        textAr: text,
+        color: randomColor,
+        isCustom: true,
+        date: new Date().toLocaleDateString()
+      };
+
+      const customReviews = getCustomReviews();
+      customReviews.unshift(newReview);
+      saveCustomReviews(customReviews);
+
+      renderTestimonialsGrid();
+      closeReviewModal();
+      document.getElementById('clientReviewForm')?.reset();
+
+      showToast(currentLang === 'ar' ? '🎉 شكراً لك! تم نشر تقييمك ورأيك في الموقع بنجاح.' : '🎉 Thank you! Your review was published successfully.');
+
+      // If send to WhatsApp was chosen, open WhatsApp with pre-filled message
+      if (sendWa) {
+        const starEmoji = '⭐'.repeat(rating);
+        const waMsg = currentLang === 'ar'
+          ? `مرحباً آية، لقد قمت بإضافة رأيي وتقييمي على موقعكِ:\n\n👤 الاسم: ${name}\n💼 المجال: ${role || 'عميل'}\n${starEmoji} التقييم: ${rating}/5\n💬 الرأي: "${text}"`
+          : `Hi Ayah, I just submitted a review on your portfolio website:\n\n👤 Name: ${name}\n💼 Role: ${role || 'Client'}\n${starEmoji} Rating: ${rating}/5\n💬 Feedback: "${text}"`;
+        
+        const waUrl = `https://wa.me/201030806465?text=${encodeURIComponent(waMsg)}`;
+        setTimeout(() => {
+          window.open(waUrl, '_blank');
+        }, 800);
+      }
+    }
+
+    // Before/After Slider Interaction
+    const container = document.getElementById('sliderWrapper');
+    const beforeClip = document.getElementById('beforeClip');
+    const dragLine = document.getElementById('dragLine');
+
+    let isDragging = false;
+
+    function moveSlider(x) {
+      const rect = container.getBoundingClientRect();
+      let pos = (x - rect.left) / rect.width;
+      if (pos < 0.05) pos = 0.05;
+      if (pos > 0.95) pos = 0.95;
+      const percentage = (pos * 100).toFixed(1);
+      
+      dragLine.style.left = `${percentage}%`;
+      beforeClip.style.width = `${percentage}%`;
+    }
+
+    container.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      moveSlider(e.clientX);
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      moveSlider(e.clientX);
+    });
+
+    // Touch Support for mobile
+    container.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      moveSlider(e.touches[0].clientX);
+    });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      moveSlider(e.touches[0].clientX);
+    });
+
+    // Profile Photo Live Preview & Local Storage
+    const photoUploadInput = document.getElementById('photoUploadInput');
+    const profileImage = document.getElementById('profileImage');
+    const navAvatar = document.getElementById('navAvatar');
+
+    const savedPhoto = localStorage.getItem('user_portfolio_photo');
+    if (savedPhoto) {
+      if (profileImage) profileImage.src = savedPhoto;
+      if (navAvatar) navAvatar.src = savedPhoto;
+    }
+
+    if (photoUploadInput) {
+      photoUploadInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            const dataUrl = event.target.result;
+            if (profileImage) profileImage.src = dataUrl;
+            if (navAvatar) navAvatar.src = dataUrl;
+            try {
+              localStorage.setItem('user_portfolio_photo', dataUrl);
+            } catch (err) {
+              console.warn('Storage quota exceeded for localStorage');
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // ==========================================
+    // Live In-Browser Visual Editor Logic + Deletion
+    // ==========================================
+    function getEditableTargets() {
+      return document.querySelectorAll('h1, h2, h3, h4, h5, p, #heroOwnerName, #navOwnerName, #navOwnerRole, #whatsAppLabel, #emailLabel, [data-editable="true"]');
+    }
+
+    function setupDeletableItems(enable) {
+      if (enable) {
+        const items = document.querySelectorAll('.project-card, #testimonials .glass-card, #tools .glass-card, #statsGrid > div, section[id]');
+        items.forEach(el => {
+          if (!el.querySelector(':scope > .quick-delete-btn')) {
+            const style = window.getComputedStyle(el);
+            if (style.position === 'static') {
+              el.style.position = 'relative';
+            }
+
+            const isSection = el.tagName === 'SECTION';
+            const delBtn = document.createElement('button');
+            delBtn.className = `quick-delete-btn absolute ${isSection ? 'top-6 left-6' : 'top-2.5 left-2.5'} z-40 px-3 py-1.5 rounded-xl bg-red-600/95 hover:bg-red-500 text-white text-xs font-bold shadow-xl border border-white/20 flex items-center gap-1.5 transition-all cursor-pointer hover:scale-105 active:scale-95`;
+            delBtn.innerHTML = `<span>🗑️</span> <span>${isSection ? (currentLang === 'ar' ? 'مسح هذا القسم' : 'Delete Section') : (currentLang === 'ar' ? 'مسح' : 'Delete')}</span>`;
+            delBtn.title = 'Click to delete this item';
+
+            delBtn.onclick = function(e) {
+              e.stopPropagation();
+              e.preventDefault();
+              const label = isSection ? (currentLang === 'ar' ? 'هذا القسم' : 'this section') : (currentLang === 'ar' ? 'هذا العنصر' : 'this item');
+              if (confirm(currentLang === 'ar' ? `هل أنتِ متأكدة من مسح ${label} نهائياً؟` : `Are you sure you want to delete ${label}?`)) {
+                const reviewId = el.getAttribute('data-review-id');
+                if (reviewId) {
+                  markReviewDeleted(reviewId);
+                }
+                el.style.transition = 'all 0.3s ease';
+                el.style.transform = 'scale(0.85)';
+                el.style.opacity = '0';
+                setTimeout(() => {
+                  el.remove();
+                  showToast(currentLang === 'ar' ? `🗑️ تم مسح ${label} بنجاح!` : `🗑️ Deleted successfully!`);
+                }, 300);
+              }
+            };
+
+            el.appendChild(delBtn);
+
+            // If project card, add a Video Link Button
+            if (el.classList.contains('project-card') && !el.querySelector('.quick-video-btn')) {
+              const vidBtn = document.createElement('button');
+              vidBtn.className = 'quick-video-btn absolute bottom-3 right-3 z-40 px-2.5 py-1 rounded-lg bg-blue-600/95 hover:bg-blue-500 text-white text-[11px] font-bold shadow-lg border border-white/20 flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95';
+              vidBtn.innerHTML = '<span>🎬</span> <span>تغيير الفيديو (Drive / جهاز)</span>';
+              vidBtn.title = 'تغيير رابط الفيديو أو اختياره مباشرة من جهازكِ';
+              vidBtn.onclick = function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                const clickContainer = el.querySelector('[onclick*="openVideoModal"]');
+                const chooseLocal = confirm(currentLang === 'ar' ? 'هل تريدين اختيار فيديو من جهازكِ؟\n(اضغطي OK للاختيار من جهازكِ، أو Cancel لإدخال رابط Google Drive / YouTube)' : 'Do you want to choose a video from your computer?\n(Click OK to pick a local file, or Cancel to enter a Drive/YouTube link)');
+                if (chooseLocal) {
+                  const input = document.createElement('input');
+                  input.type = 'file';
+                  input.accept = 'video/*';
+                  input.onchange = function(ev) {
+                    const f = ev.target.files[0];
+                    if (f) {
+                      const blob = URL.createObjectURL(f);
+                      if (clickContainer) clickContainer.setAttribute('onclick', `openVideoModal('${blob}', '${f.name.replace(/'/g, "\\'")}')`);
+                      showToast(currentLang === 'ar' ? `🎬 تم ربط الفيديو من جهازكِ ("${f.name}") بنجاح!` : `🎬 Linked local video ("${f.name}")!`);
+                    }
+                  };
+                  input.click();
+                } else {
+                  const newLink = prompt(currentLang === 'ar' ? 'أدخلي رابط Google Drive أو YouTube:' : 'Enter Google Drive or YouTube URL:');
+                  if (newLink && newLink.trim()) {
+                    if (clickContainer) {
+                      clickContainer.setAttribute('onclick', `openVideoModal('${newLink.trim()}')`);
+                    }
+                    showToast(currentLang === 'ar' ? '🎬 تم تحديث رابط الفيديو بنجاح!' : '🎬 Video link updated successfully!');
+                  }
+                }
+              };
+              el.appendChild(vidBtn);
+            }
+          }
+        });
+      } else {
+        document.querySelectorAll('.quick-delete-btn').forEach(btn => btn.remove());
+        document.querySelectorAll('.quick-video-btn').forEach(btn => btn.remove());
+      }
+    }
+
+    // Auto-save edited texts to localStorage so work is never lost
+    function autoSaveContent() {
+      try {
+        const targets = getEditableTargets();
+        const contentMap = {};
+        targets.forEach((el, idx) => {
+          const key = el.id || ('elem_' + idx);
+          contentMap[key] = el.innerText;
+        });
+        localStorage.setItem('user_portfolio_text_edits', JSON.stringify(contentMap));
+      } catch (e) {}
+    }
+
+    function restoreAutoSavedContent() {
+      try {
+        const saved = localStorage.getItem('user_portfolio_text_edits');
+        if (saved) {
+          const contentMap = JSON.parse(saved);
+          const targets = getEditableTargets();
+          targets.forEach((el, idx) => {
+            const key = el.id || ('elem_' + idx);
+            if (contentMap[key] !== undefined) {
+              el.innerText = contentMap[key];
+            }
+          });
+        }
+      } catch (e) {}
+    }
+
+    function toggleLiveEdit(enable) {
+      isLiveEditing = enable;
+      document.body.classList.toggle('edit-mode-active', enable);
+      
+      const enableBtn = document.getElementById('enableEditBtn');
+      const activeControls = document.getElementById('activeEditControls');
+
+      if (enable) {
+        enableBtn.classList.add('hidden');
+        activeControls.classList.remove('hidden');
+        activeControls.classList.add('flex');
+        setupDeletableItems(true);
+        showToast(currentLang === 'ar' ? '✍️ وضع التعديل نشط! يتم حفظ ما تكتبينه تلقائياً.' : '✍️ Edit mode active! Changes auto-save as you type.');
+      } else {
+        enableBtn.classList.remove('hidden');
+        activeControls.classList.add('hidden');
+        activeControls.classList.remove('flex');
+        setupDeletableItems(false);
+      }
+
+      const targets = getEditableTargets();
+      targets.forEach(el => {
+        if (el.tagName !== 'BUTTON') {
+          el.contentEditable = enable ? 'true' : 'false';
+          el.setAttribute('spellcheck', 'false');
+          if (enable && !el.dataset.autosaveBound) {
+            el.addEventListener('input', autoSaveContent);
+            el.dataset.autosaveBound = "true";
+          }
+        }
+      });
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('editorToast');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toastMsg) toastMsg.innerText = msg;
+      if (toast) {
+        toast.classList.remove('opacity-0', 'pointer-events-none');
+        toast.classList.add('opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('opacity-100');
+          toast.classList.add('opacity-0', 'pointer-events-none');
+        }, 4000);
+      }
+    }
+
+    function downloadUpdatedHTML() {
+      const wasEditing = isLiveEditing;
+      toggleLiveEdit(false);
+
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelectorAll('.quick-delete-btn').forEach(b => b.remove());
+      clone.querySelectorAll('.quick-video-btn').forEach(b => b.remove());
+      clone.classList.remove('edit-mode-active');
+      clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
+      const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      showToast(currentLang === 'ar' ? '🎉 تم تنزيل الملف المحدّث وحفظ التغييرات!' : '🎉 Downloaded updated index.html successfully!');
+
+      if (wasEditing) {
+        setTimeout(() => toggleLiveEdit(true), 600);
+      }
+    }
+
+    function copyEditsForAI() {
+      const name = document.getElementById('heroOwnerName')?.innerText.trim() || document.getElementById('navOwnerName')?.innerText.trim() || 'AYAH ABO BAKR';
+      const headline = document.getElementById('heroDescription')?.innerText.trim().replace(/\s+/g, ' ') || '';
+      const rawWa = document.getElementById('whatsAppLabel')?.innerText.trim() || '01030806465';
+      const whatsapp = rawWa.replace(/^(WhatsApp:|واتساب:)\s*/i, '').trim();
+      const email = document.getElementById('emailLabel')?.innerText.trim() || 'ayamu6465@gmail.com';
+
+      const summaryText = `I have updated my portfolio details, please update index.html:
+- Name: ${name}
+- Role: Video Editor & Colorist
+- Bio: ${headline}
+- WhatsApp: ${whatsapp}
+- Email: ${email}`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(summaryText).then(() => {
+          showToast(currentLang === 'ar' ? '📋 تم نسخ التعديلات! الصقيها هنا في الشات.' : '📋 Copied! Paste into the chat to apply.');
+        }).catch(() => {
+          prompt('Copy this text and send it in chat:', summaryText);
+        });
+      } else {
+        prompt('Copy this text and send it in chat:', summaryText);
+      }
+    }
+
+    // ==========================================
+    // Cinema Camera 24 FPS Timecode HUD Ticker
+    // ==========================================
+    function initCinemaTimecode() {
+      const tc = document.getElementById('heroTimecode');
+      if (!tc) return;
+      let f = 12, s = 24, m = 0, h = 0;
+      setInterval(() => {
+        f++;
+        if (f >= 24) {
+          f = 0;
+          s++;
+          if (s >= 60) {
+            s = 0;
+            m++;
+            if (m >= 60) {
+              m = 0;
+              h++;
+            }
+          }
+        }
+        const pad = n => String(n).padStart(2, '0');
+        tc.innerText = `${pad(h)}:${pad(m)}:${pad(s)}:${pad(f)}`;
+      }, 1000 / 24);
+    }
+
+    // ==========================================
+    // Page & Portfolio Initialization
+    // ==========================================
+    const initialLang = localStorage.getItem('portfolio_language') || 'en';
+    applyLanguage(initialLang);
+    const initialTheme = localStorage.getItem('portfolio_theme') || 'crimson';
+    applyTheme(initialTheme, false);
+    setupFilterButtons();
+    renderProjectsGrid();
+    renderTestimonialsGrid();
+    restoreAutoSavedContent();
+    initCinemaTimecode();
+  </script>
+</body>
+</html>
