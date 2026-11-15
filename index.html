@@ -1292,55 +1292,50 @@
   <!-- ==========================================================================
        LIGHTBOX VIDEO MODAL (Zero-Lag Mobile Player + Direct Drive Play)
        ========================================================================== -->
-  <div id="videoModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
-    <div id="videoModalBox" class="relative w-full max-w-4xl h-[80vh] sm:h-auto sm:aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl border border-amber-500/30 flex flex-col justify-between">
+  <div id="videoModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-2 sm:p-4" onclick="handleModalBackdropClick(event)">
+    <div id="videoModalBox" class="relative w-full max-w-4xl max-h-[92vh] h-auto rounded-2xl overflow-hidden bg-[#100a05] shadow-2xl border border-amber-500/30 flex flex-col" onclick="event.stopPropagation()">
       
       <!-- Top Modal Bar -->
-      <div class="z-30 p-3 bg-gradient-to-b from-black/95 to-black/60 flex items-center justify-between border-b border-white/10 shrink-0">
+      <div class="z-30 px-3 py-2.5 bg-black/90 flex items-center justify-between border-b border-amber-500/20 shrink-0">
         <div class="flex items-center gap-2 min-w-0">
-          <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-black text-[11px] font-bold flex items-center gap-1 shrink-0">
-            <i class="fa-solid fa-play text-[10px]"></i>
-            <span id="modalSourceBadge">Google Drive</span>
+          <span class="px-2 py-0.5 rounded-lg bg-amber-500 text-black text-[10px] font-black tracking-tight shrink-0">
+            <i class="fa-solid fa-play text-[9px] mr-1"></i> HD 4K
           </span>
-          <span id="modalVideoTitle" class="text-xs text-gray-300 font-medium truncate max-w-[150px] sm:max-w-xs">Ayah Abo Bakr • Video Showcase</span>
+          <span id="modalVideoTitle" class="text-xs text-gray-200 font-bold truncate max-w-[160px] sm:max-w-md"></span>
         </div>
 
         <div class="flex items-center gap-2 shrink-0">
-          <!-- Open Directly in Drive App (Instant Mobile Play) -->
-          <a id="modalDriveLink" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-xs border border-amber-300/40 flex items-center gap-1.5 font-bold transition-all shadow hover:scale-105" title="تشغيل مباشر بدون أي حظر كوكيز">
+          <!-- Big Direct Drive Button for Instant Phone Playback -->
+          <a id="modalDriveLink" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-xs border border-amber-300/40 flex items-center gap-1.5 font-black transition-all shadow" title="فتح وتشغيل الفيديو بجودة كاملة في درايف">
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
             <span data-i18n="modal_direct_play">تشغيل مباشر ↗</span>
           </a>
 
           <!-- Close Button -->
           <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-amber-500 hover:text-black text-gray-300 transition-colors flex items-center justify-center cursor-pointer">
-            <i class="fa-solid fa-xmark text-sm"></i>
+            <i class="fa-solid fa-xmark text-base"></i>
           </button>
         </div>
       </div>
 
-      <!-- Player Frame Area -->
-      <div class="relative flex-1 w-full h-full bg-black flex items-center justify-center overflow-hidden">
-        <iframe id="modalIframe" class="w-full h-full hidden" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <video id="modalVideoPlayer" class="w-full h-full hidden" controls autoplay playsinline></video>
+      <!-- Player Frame Area with guaranteed mobile dimensions -->
+      <div id="modalPlayerContainer" class="relative w-full bg-black flex items-center justify-center overflow-hidden aspect-[9/16] sm:aspect-video max-h-[68vh] min-h-[320px]">
+        <iframe id="modalIframe" class="w-full h-full border-0 hidden" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true"></iframe>
+        <video id="modalVideoPlayer" class="w-full h-full hidden" controls autoplay playsinline webkit-playsinline></video>
       </div>
 
-      <!-- Modal Footer (Mobile Assist + Direct WhatsApp Action) -->
-      <div class="z-30 px-3 py-2 bg-gradient-to-t from-black via-black/95 to-black/60 border-t border-white/10 flex items-center justify-between gap-2 text-[11px] text-gray-300 shrink-0">
-        <span class="truncate flex items-center gap-1.5">
-          <i class="fa-solid fa-mobile-screen text-amber-400"></i>
-          <span data-i18n="modal_mobile_tip">لو الفيديو معلّق على الموبايل:</span>
-        </span>
-        <div class="flex items-center gap-2">
-          <a id="modalDirectStreamBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-amber-500 hover:text-black text-white font-bold transition-all border border-white/20 text-[11px]">
-            <span>فتح في درايف ↗</span>
-          </a>
-          <a href="https://wa.me/201030806465?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Ayah%D8%8C%20%D8%B1%D8%A3%D9%8A%D8%AA%20%D9%87%D8%B0%D8%A7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%D9%83%D9%90%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%85%D9%85%D8%A7%D8%AB%D9%84" target="_blank" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all text-[11px] flex items-center gap-1">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span>طلب فيديو مماثل</span>
-          </a>
-        </div>
+      <!-- Bottom Quick Mobile Assist Bar -->
+      <div class="z-30 px-3 py-2.5 bg-black/95 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-300 shrink-0">
+        <a id="modalDirectStreamBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-black font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.01] transition-transform">
+          <i class="fa-solid fa-circle-play text-sm"></i>
+          <span>لو مشغل المتصفح بطيء أو محظور: اضغطي للتشغيل الفوري في تطبيق درايف ↗</span>
+        </a>
+        <a href="https://wa.me/201030806465?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Ayah%D8%8C%20%D8%B1%D8%A3%D9%8A%D8%AA%20%D9%87%D8%B0%D8%A7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%D9%83%D9%90%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%85%D9%85%D8%A7%D8%AB%D9%84" target="_blank" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shrink-0">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>طلب فيديو مماثل</span>
+        </a>
       </div>
+
     </div>
   </div>
 
@@ -1911,6 +1906,17 @@
       if (driveLink) driveLink.href = directUrl;
       if (streamBtn) streamBtn.href = directUrl;
 
+      // Smart aspect ratio detection (9:16 for Reels, 16:9 for Widescreen / Documentaries)
+      const playerContainer = document.getElementById('modalPlayerContainer');
+      const isWidescreen = title.toLowerCase().includes('showcase') || title.includes('الشوريل') || title.includes('دوكيومنتري') || title.toLowerCase().includes('documentary');
+      if (playerContainer) {
+        if (isWidescreen) {
+          playerContainer.className = "relative w-full bg-black flex items-center justify-center overflow-hidden aspect-video max-h-[68vh] min-h-[260px]";
+        } else {
+          playerContainer.className = "relative w-full bg-black flex items-center justify-center overflow-hidden aspect-[9/16] sm:max-w-sm sm:mx-auto max-h-[72vh] min-h-[340px]";
+        }
+      }
+
       if (isLocalOrDirect) {
         modalIframe.classList.add('hidden');
         modalIframe.src = '';
@@ -1928,6 +1934,12 @@
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
+    }
+
+    function handleModalBackdropClick(event) {
+      if (event.target === document.getElementById('videoModal')) {
+        closeVideoModal();
+      }
     }
 
     function closeVideoModal() {
