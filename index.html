@@ -1477,9 +1477,9 @@
 
       <!-- Footer Bar with Direct Drive Help & WhatsApp CTA -->
       <div class="lightbox-footer-bar">
-        <a id="lightboxFooterDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex-1 py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-all text-center">
-          <i class="fa-solid fa-circle-play text-sm text-amber-400"></i>
-          <span data-i18n="modal_mobile_hint">لو مشغل الهاتف بطيء: اضغطي للتشغيل الفوري في تطبيق درايف ↗</span>
+        <a id="lightboxFooterDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-black font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all text-center shadow-lg hover:brightness-110 active:scale-95">
+          <i class="fa-solid fa-play text-xs text-black"></i>
+          <span data-i18n="modal_mobile_hint">تشغيل فوري في تطبيق درايف بدقة 4K ↗</span>
         </a>
         <a href="https://wa.me/201030806465?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Ayah%D8%8C%20%D8%B1%D8%A3%D9%8A%D8%AA%20%D9%87%D8%B0%D8%A7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%D9%83%D9%90%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%85%D9%85%D8%A7%D8%AB%D9%84" id="lightboxWaBtn" target="_blank" rel="noopener noreferrer" class="py-2 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shrink-0 transition-all shadow">
           <i class="fa-brands fa-whatsapp text-sm"></i>
@@ -1726,7 +1726,7 @@
         footer_tag: "Ayah Abo Bakr • Video Editor & Colorist",
         footer_rights: "© 2026 All Rights Reserved. Engineered for speed and royal elegance.",
         modal_direct_play: "Drive 4K ↗",
-        modal_mobile_hint: "If phone player is slow: Tap to stream instantly in Google Drive ↗",
+        modal_mobile_hint: "Stream Instantly in Drive 4K ↗",
         modal_wa_order: "Order Similar Video",
         modal_mobile_tip: "If video doesn't play on mobile:",
         vault_title: "Google Drive Reels Vault",
@@ -1794,7 +1794,7 @@
         footer_tag: "Ayah Abo Bakr • Video Editor & Colorist",
         footer_rights: "جميع الحقوق محفوظة © 2026. تم التصميم والبرمجة بأعلى معايير السرعة والسلاسة الملكية.",
         modal_direct_play: "درايف 4K ↗",
-        modal_mobile_hint: "لو مشغل الهاتف بطيء: اضغطي للتشغيل الفوري في تطبيق درايف ↗",
+        modal_mobile_hint: "تشغيل فوري في تطبيق درايف بدقة 4K ↗",
         modal_wa_order: "طلب فيديو مماثل",
         modal_mobile_tip: "لو الفيديو معلّق على الموبايل:",
         vault_title: "خزينة فيديوهات جوجل درايف",
@@ -2082,20 +2082,42 @@
       const isDirectVideo = cleanUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('data:video/');
 
       if (gdriveId) {
-        // High-performance Google Drive preview with Mobile Desktop Viewport Emulation
-        // Eliminates mobile touch overlay freezes & iOS WebKit ITP stalls
-        const scaler = document.createElement('div');
-        scaler.className = `gdrive-iframe-scaler ${!isVert ? 'widescreen-frame' : ''}`;
+        const driveViewUrl = `https://drive.google.com/file/d/${gdriveId}/view`;
+        const posterUrl = `https://lh3.googleusercontent.com/d/${gdriveId}=w1200`;
 
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://drive.google.com/file/d/${gdriveId}/preview`;
-        iframe.className = `lightbox-video-frame gdrive-preview-iframe ${!isVert ? 'widescreen-frame' : ''}`;
-        iframe.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture');
-        iframe.setAttribute('allowfullscreen', 'true');
-        iframe.title = title || 'Google Drive Video Showcase';
+        container.innerHTML = `
+          <div class="relative w-full h-full flex items-center justify-center bg-black overflow-hidden group cursor-pointer select-none" onclick="window.open('${driveViewUrl}', '_blank')">
+            <!-- Full Cinema Poster Frame -->
+            <img src="${posterUrl}" 
+                 onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=${gdriveId}&sz=w1200';" 
+                 alt="${title}" 
+                 class="w-full h-full object-contain opacity-90 group-hover:scale-105 transition-transform duration-500">
 
-        scaler.appendChild(iframe);
-        container.appendChild(scaler);
+            <!-- Cinematic Vignette Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/50 pointer-events-none"></div>
+
+            <!-- Big Glowing Central Play CTA -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-20 pointer-events-none">
+              <!-- Pulsing Gold Play Circle -->
+              <div class="relative mb-3.5">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 text-black flex items-center justify-center shadow-2xl shadow-amber-500/70 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-play text-xl sm:text-2xl translate-x-0.5 text-black"></i>
+                </div>
+                <div class="absolute -inset-2.5 rounded-full border-2 border-amber-400/50 animate-ping pointer-events-none"></div>
+              </div>
+
+              <!-- Clear Action Label -->
+              <span class="px-4 py-2 rounded-xl bg-amber-500 text-black font-black text-xs sm:text-sm shadow-xl flex items-center gap-2 group-hover:bg-amber-400 transition-colors">
+                <i class="fa-solid fa-circle-play text-sm"></i>
+                <span>اضغطي هنا للتشغيل الفوري بدقة 4K</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </span>
+              <span class="text-[11px] text-gray-300 font-medium mt-2 bg-black/60 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md">
+                يعمل فوراً وبأعلى جودة وسرعة على الهاتف والآيفون 📱
+              </span>
+            </div>
+          </div>
+        `;
       } else if (isDirectVideo) {
         const videoEl = document.createElement('video');
         videoEl.src = cleanUrl;
