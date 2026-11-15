@@ -17,9 +17,6 @@
 
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -86,7 +83,7 @@
         radial-gradient(circle 450px at 85% 800px, rgba(140, 60, 10, 0.16) 0%, transparent 100%),
         radial-gradient(circle 380px at 15% 1200px, rgba(150, 70, 12, 0.14) 0%, transparent 100%),
         linear-gradient(180deg, #180e07 0%, #0d0804 35%, #080503 70%, #050302 100%) !important;
-      background-attachment: fixed !important;
+      background-attachment: scroll !important;
       color: var(--text-primary) !important;
       font-family: var(--font-arabic) !important;
       margin: 0;
@@ -97,6 +94,12 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       scroll-behavior: smooth;
+    }
+
+    @media (min-width: 1024px) {
+      html, body {
+        background-attachment: fixed !important;
+      }
     }
 
     html[lang="en"] body {
@@ -1439,7 +1442,7 @@
   <!-- ==========================================================================
        LIGHTBOX VIDEO MODAL (Studio Experience matching Salah Saleh + Mobile Emulation)
        ========================================================================== -->
-  <div class="lightbox-modal" id="lightboxModal" aria-hidden="true" onclick="handleLightboxBackdropClick(event)">
+  <div class="lightbox-modal hidden" id="lightboxModal" aria-hidden="true" onclick="handleLightboxBackdropClick(event)">
     <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
     <div class="lightbox-content-box" id="lightboxContentBox" onclick="event.stopPropagation()">
       
@@ -2115,6 +2118,7 @@
         container.appendChild(iframe);
       }
 
+      modal.classList.remove('hidden');
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -2128,7 +2132,10 @@
     function closeVideoModal() {
       const modal = document.getElementById('lightboxModal');
       const container = document.getElementById('lightboxPlayerContainer');
-      if (modal) modal.classList.remove('active');
+      if (modal) {
+        modal.classList.remove('active');
+        modal.classList.add('hidden');
+      }
       if (container) container.innerHTML = '';
       document.body.style.overflow = '';
     }
