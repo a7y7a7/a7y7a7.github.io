@@ -162,18 +162,6 @@
       backdrop-filter: blur(14px);
     }
 
-    /* Camera Viewfinder HUD */
-    .camera-hud-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
-      padding: 0.45rem 1.25rem;
-      border-radius: 9999px;
-      background: rgba(24, 12, 5, 0.80);
-      border: 1px solid rgba(245, 158, 11, 0.25);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px);
-    }
 
     /* Availability Pill Cinematic */
     .status-pill-avail-cinematic {
@@ -855,6 +843,165 @@
       0% { transform: scale(1); opacity: 0.8; }
       75%, 100% { transform: scale(1.4); opacity: 0; }
     }
+
+    /* ==========================================================================
+       Upgraded Video Lightbox Modal (Studio Experience matching Salah Saleh)
+       ========================================================================== */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .lightbox-content-box {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 480px;
+      height: min(90vh, 840px);
+      max-height: 90vh;
+      background: #0f0a06;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.85), 0 0 40px rgba(245, 158, 11, 0.15);
+    }
+    .lightbox-content-box.widescreen-mode {
+      max-width: 860px;
+      height: auto !important;
+      max-height: 90vh;
+    }
+    .lightbox-header-bar {
+      position: relative;
+      z-index: 20;
+      padding: 0.75rem 1rem;
+      background: rgba(18, 10, 5, 0.95);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+    .lightbox-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .lightbox-close-btn:hover {
+      background: #f59e0b;
+      color: #000;
+    }
+    .lightbox-player-wrapper {
+      flex: 1;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .lightbox-video-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .lightbox-video-frame.widescreen-frame {
+      aspect-ratio: 16 / 9;
+    }
+    /* Google Drive Lightbox Scaler - Desktop Viewport Emulation */
+    .gdrive-iframe-scaler {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+    .gdrive-iframe-scaler.widescreen-frame {
+      aspect-ratio: 16 / 9;
+      max-height: 100%;
+    }
+    .gdrive-preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+      display: block;
+    }
+    .lightbox-footer-bar {
+      position: relative;
+      z-index: 20;
+      background: rgba(18, 10, 5, 0.98);
+      border-top: 1px solid rgba(245, 158, 11, 0.15);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .lightbox-modal { padding: 0.5rem; }
+      .lightbox-content-box {
+        width: 96vw;
+        max-width: 440px;
+        height: 88vh;
+        max-height: 88vh;
+        border-radius: 20px;
+      }
+      .lightbox-content-box.widescreen-mode {
+        height: auto !important;
+        max-height: 88vh;
+      }
+      /* Desktop Viewport Emulation on Mobile for Google Drive:
+         Forces Drive to switch from mobile touch UI to desktop UI,
+         completely eliminating the intrusive center buttons [ ⏪ 10 ] [ ▶ ] [ ⏩ 10 ]
+         and fixing mobile touch/freeze issues */
+      .gdrive-iframe-scaler .gdrive-preview-iframe {
+        width: 155% !important;
+        height: 155% !important;
+        max-width: none !important;
+        max-height: none !important;
+        transform: scale(0.645);
+        transform-origin: center center;
+      }
+      .lightbox-footer-bar {
+        padding: 0.65rem 0.85rem;
+        gap: 0.5rem;
+      }
+    }
   </style>
 </head>
 
@@ -1023,7 +1170,7 @@
         <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 w-full max-w-xl">
           
           <!-- Watch Showreel Button (White Pill with Gold Play Icon) -->
-          <button type="button" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'Ayah Abo Bakr • Master Showcase Reel')" class="btn-action-showreel-white">
+          <button type="button" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'Ayah Abo Bakr • Master Showcase Reel', false)" class="btn-action-showreel-white">
             <span data-i18n="hero_showreel_btn">شاهد الشوريل</span>
             <i class="fa-solid fa-play text-amber-500 text-sm"></i>
           </button>
@@ -1085,7 +1232,7 @@
 
     <!-- Master Showcase Card -->
     <div class="bento-card overflow-hidden p-1.5 sm:p-2 bg-gradient-to-r from-amber-600/20 via-yellow-600/15 to-amber-700/20 border border-amber-500/30 group">
-      <div class="relative aspect-video rounded-2xl overflow-hidden bg-black flex items-center justify-center cursor-pointer" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'Ayah Abo Bakr • Master Showcase Reel')">
+      <div class="relative aspect-video rounded-2xl overflow-hidden bg-black flex items-center justify-center cursor-pointer" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'Ayah Abo Bakr • Master Showcase Reel', false)">
         <!-- Thumbnail -->
         <img src="https://lh3.googleusercontent.com/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY=w1200" 
              onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY&sz=w1200';" 
@@ -1290,49 +1437,50 @@
   </footer>
 
   <!-- ==========================================================================
-       LIGHTBOX VIDEO MODAL (Zero-Lag Mobile Player + Direct Drive Play)
+       LIGHTBOX VIDEO MODAL (Studio Experience matching Salah Saleh + Mobile Emulation)
        ========================================================================== -->
-  <div id="videoModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-2 sm:p-4" onclick="handleModalBackdropClick(event)">
-    <div id="videoModalBox" class="relative w-full max-w-4xl max-h-[92vh] h-auto rounded-2xl overflow-hidden bg-[#100a05] shadow-2xl border border-amber-500/30 flex flex-col" onclick="event.stopPropagation()">
+  <div class="lightbox-modal" id="lightboxModal" aria-hidden="true" onclick="handleLightboxBackdropClick(event)">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-content-box" id="lightboxContentBox" onclick="event.stopPropagation()">
       
-      <!-- Top Modal Bar -->
-      <div class="z-30 px-3 py-2.5 bg-black/90 flex items-center justify-between border-b border-amber-500/20 shrink-0">
+      <!-- Top Header Bar -->
+      <div class="lightbox-header-bar">
         <div class="flex items-center gap-2 min-w-0">
-          <span class="px-2 py-0.5 rounded-lg bg-amber-500 text-black text-[10px] font-black tracking-tight shrink-0">
-            <i class="fa-solid fa-play text-[9px] mr-1"></i> HD 4K
+          <span class="px-2 py-0.5 rounded-lg bg-amber-500 text-black text-[10px] font-black tracking-tight shrink-0 flex items-center gap-1">
+            <i class="fa-solid fa-play text-[8px]"></i> 4K PRO
           </span>
-          <span id="modalVideoTitle" class="text-xs text-gray-200 font-bold truncate max-w-[160px] sm:max-w-md"></span>
+          <div class="min-w-0">
+            <h3 class="text-xs sm:text-sm font-bold text-white truncate max-w-[150px] sm:max-w-xs" id="lightboxProjectTitle">عرض الفيديو</h3>
+            <p class="text-[10px] text-amber-400/80 truncate hidden sm:block" id="lightboxProjectSubtitle">مونتاج سينمائي عالي الجودة</p>
+          </div>
         </div>
 
         <div class="flex items-center gap-2 shrink-0">
-          <!-- Big Direct Drive Button for Instant Phone Playback -->
-          <a id="modalDriveLink" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-xs border border-amber-300/40 flex items-center gap-1.5 font-black transition-all shadow" title="فتح وتشغيل الفيديو بجودة كاملة في درايف">
+          <!-- Direct Drive Streaming Pill -->
+          <a id="lightboxDriveDirectBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-2.5 sm:px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-xs border border-amber-300/40 flex items-center gap-1.5 font-black transition-all shadow" title="فتح وتشغيل الفيديو بجودة كاملة في تطبيق درايف">
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            <span data-i18n="modal_direct_play">تشغيل مباشر ↗</span>
+            <span data-i18n="modal_direct_play">درايف 4K ↗</span>
           </a>
 
           <!-- Close Button -->
-          <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-amber-500 hover:text-black text-gray-300 transition-colors flex items-center justify-center cursor-pointer">
-            <i class="fa-solid fa-xmark text-base"></i>
+          <button class="lightbox-close-btn" onclick="closeVideoModal()" aria-label="Close Video">
+            <i class="fa-solid fa-xmark text-sm"></i>
           </button>
         </div>
       </div>
 
-      <!-- Player Frame Area with guaranteed mobile dimensions -->
-      <div id="modalPlayerContainer" class="relative w-full bg-black flex items-center justify-center overflow-hidden aspect-[9/16] sm:aspect-video max-h-[68vh] min-h-[320px]">
-        <iframe id="modalIframe" class="w-full h-full border-0 hidden" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true"></iframe>
-        <video id="modalVideoPlayer" class="w-full h-full hidden" controls autoplay playsinline webkit-playsinline></video>
-      </div>
+      <!-- Video Player Wrapper (Guaranteed zero mobile overflow) -->
+      <div class="lightbox-player-wrapper" id="lightboxPlayerContainer"></div>
 
-      <!-- Bottom Quick Mobile Assist Bar -->
-      <div class="z-30 px-3 py-2.5 bg-black/95 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-300 shrink-0">
-        <a id="modalDirectStreamBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-black font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.01] transition-transform">
-          <i class="fa-solid fa-circle-play text-sm"></i>
-          <span>لو مشغل المتصفح بطيء أو محظور: اضغطي للتشغيل الفوري في تطبيق درايف ↗</span>
+      <!-- Footer Bar with Direct Drive Help & WhatsApp CTA -->
+      <div class="lightbox-footer-bar">
+        <a id="lightboxFooterDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex-1 py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-all text-center">
+          <i class="fa-solid fa-circle-play text-sm text-amber-400"></i>
+          <span data-i18n="modal_mobile_hint">لو مشغل الهاتف بطيء: اضغطي للتشغيل الفوري في تطبيق درايف ↗</span>
         </a>
-        <a href="https://wa.me/201030806465?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Ayah%D8%8C%20%D8%B1%D8%A3%D9%8A%D8%AA%20%D9%87%D8%B0%D8%A7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%D9%83%D9%90%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%85%D9%85%D8%A7%D8%AB%D9%84" target="_blank" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shrink-0">
+        <a href="https://wa.me/201030806465?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Ayah%D8%8C%20%D8%B1%D8%A3%D9%8A%D8%AA%20%D9%87%D8%B0%D8%A7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%D9%83%D9%90%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%85%D9%85%D8%A7%D8%AB%D9%84" id="lightboxWaBtn" target="_blank" rel="noopener noreferrer" class="py-2 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shrink-0 transition-all shadow">
           <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>طلب فيديو مماثل</span>
+          <span data-i18n="modal_wa_order">طلب فيديو مماثل</span>
         </a>
       </div>
 
@@ -1574,7 +1722,9 @@
         contact_sub: "Available for new projects, documentary films, YouTube series, and brand campaigns. Let's make something iconic!",
         footer_tag: "Ayah Abo Bakr • Video Editor & Colorist",
         footer_rights: "© 2026 All Rights Reserved. Engineered for speed and royal elegance.",
-        modal_direct_play: "Direct Play ↗",
+        modal_direct_play: "Drive 4K ↗",
+        modal_mobile_hint: "If phone player is slow: Tap to stream instantly in Google Drive ↗",
+        modal_wa_order: "Order Similar Video",
         modal_mobile_tip: "If video doesn't play on mobile:",
         vault_title: "Google Drive Reels Vault",
         vault_desc: "Tap any video to play instantly, or search by filename."
@@ -1640,7 +1790,9 @@
         contact_sub: "متاحة لاستلام مشاريع جديدة، أفلام وثائقية، سلاسل يوتيوب، أو إعلانات لعلامتكِ. دعينا نتحدث ونبدأ فوراً!",
         footer_tag: "Ayah Abo Bakr • Video Editor & Colorist",
         footer_rights: "جميع الحقوق محفوظة © 2026. تم التصميم والبرمجة بأعلى معايير السرعة والسلاسة الملكية.",
-        modal_direct_play: "تشغيل مباشر ↗",
+        modal_direct_play: "درايف 4K ↗",
+        modal_mobile_hint: "لو مشغل الهاتف بطيء: اضغطي للتشغيل الفوري في تطبيق درايف ↗",
+        modal_wa_order: "طلب فيديو مماثل",
         modal_mobile_tip: "لو الفيديو معلّق على الموبايل:",
         vault_title: "خزينة فيديوهات جوجل درايف",
         vault_desc: "اضغطي على أي فيديو لتشغيله فوراً أو ابحثي بالاسم."
@@ -1767,7 +1919,7 @@
         }
 
         return `
-          <div class="video-card group cursor-pointer" onclick="openVideoModal('${item.previewUrl}', '${title.replace(/'/g, "\\'")}')">
+          <div class="video-card group cursor-pointer" onclick="openVideoModal('${item.previewUrl}', '${title.replace(/'/g, "\\'")}', ${isPortrait})">
             <!-- Media Poster Container -->
             <div class="relative ${aspectClass} bg-black overflow-hidden">
               
@@ -1799,14 +1951,13 @@
               </div>
 
               <!-- Bottom Bar inside Thumbnail -->
-              <div class="absolute bottom-2 right-2 left-2 z-30 flex items-center justify-between text-[10px] text-gray-300 pointer-events-none">
-                <span class="bg-black/80 backdrop-blur-md px-1.5 py-0.5 rounded border border-white/10 font-mono text-gray-400">
+              <div class="absolute bottom-2 right-2 left-2 z-30 flex items-center justify-between text-[10px] text-gray-300 pointer-events-auto">
+                <span class="bg-black/80 backdrop-blur-md px-1.5 py-0.5 rounded border border-white/10 font-mono text-gray-400 pointer-events-none">
                   ${item.size}
                 </span>
-                <span class="text-amber-400 font-bold flex items-center gap-1">
-                  <span>${isAr ? 'تشغيل' : 'Play'}</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                </span>
+                <a href="https://drive.google.com/file/d/${item.id}/view" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="px-2 py-0.5 rounded-md bg-amber-500/25 hover:bg-amber-400 text-amber-300 hover:text-black border border-amber-500/40 font-bold flex items-center gap-1 transition-all shadow" title="${isAr ? 'تشغيل فوري في تطبيق درايف' : 'Direct Play in Drive'}">
+                  <span>${isAr ? 'درايف ↗' : 'Drive ↗'}</span>
+                </a>
               </div>
             </div>
 
@@ -1859,12 +2010,8 @@
     }
 
     // ==========================================
-    // 5. Video Modal Engine (Google Drive, Local MP4, YouTube)
+    // 5. Video Lightbox Modal Engine (Desktop Viewport Emulation for Mobile)
     // ==========================================
-    const modal = document.getElementById('videoModal');
-    const modalIframe = document.getElementById('modalIframe');
-    const modalVideoPlayer = document.getElementById('modalVideoPlayer');
-
     function formatVideoUrl(url) {
       if (!url) return '';
       url = url.trim();
@@ -1883,79 +2030,108 @@
       return url;
     }
 
-    function openVideoModal(url, title = '') {
+    function openVideoModal(url, title = '', isVertical) {
       if (!url) return;
-      const formatted = formatVideoUrl(url);
-      const isLocalOrDirect = formatted.match(/\.(mp4|mov|webm|ogg|m4v)($|\?)/i) || formatted.startsWith('blob:');
+      const modal = document.getElementById('lightboxModal');
+      const box = document.getElementById('lightboxContentBox');
+      const container = document.getElementById('lightboxPlayerContainer');
+      const titleEl = document.getElementById('lightboxProjectTitle');
+      const subEl = document.getElementById('lightboxProjectSubtitle');
+      const driveTopBtn = document.getElementById('lightboxDriveDirectBtn');
+      const driveFootBtn = document.getElementById('lightboxFooterDirectLink');
+      const waBtn = document.getElementById('lightboxWaBtn');
 
-      const titleEl = document.getElementById('modalVideoTitle');
-      const driveLink = document.getElementById('modalDriveLink');
-      const streamBtn = document.getElementById('modalDirectStreamBtn');
+      if (!modal || !container) return;
+      container.innerHTML = '';
+
+      const cleanUrl = formatVideoUrl(url);
+      const isVert = isVertical !== undefined ? isVertical : !(title.toLowerCase().includes('showcase') || title.includes('الشوريل') || title.includes('دوكيومنتري') || title.toLowerCase().includes('documentary'));
+
+      if (box) {
+        box.classList.toggle('widescreen-mode', !isVert);
+      }
 
       if (titleEl) {
-        titleEl.innerText = title || 'Ayah Abo Bakr • Video Showcase';
+        titleEl.textContent = title || 'Ayah Abo Bakr • Video Showcase';
+      }
+      if (subEl) {
+        subEl.textContent = isVert 
+          ? (currentLang === 'ar' ? 'ريلز رأسي 9:16 • دقة سينمائية عالية' : 'Vertical Reel 9:16 • Cinematic Quality') 
+          : (currentLang === 'ar' ? 'فيديو عرضي 16:9 • دقة 4K UHD' : 'Widescreen 16:9 • 4K UHD');
       }
 
-      let directUrl = formatted;
-      if (url.includes('drive.google.com')) {
-        const fileIdMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
-        const fileId = fileIdMatch ? fileIdMatch[1] : '';
-        directUrl = fileId ? `https://drive.google.com/file/d/${fileId}/view` : url.replace('/preview', '/view');
+      let gdriveId = null;
+      if (cleanUrl.includes('drive.google.com') || cleanUrl.includes('drive.usercontent.google.com')) {
+        const m1 = cleanUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+        const m2 = cleanUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        gdriveId = (m1 && m1[1]) || (m2 && m2[1]);
       }
 
-      if (driveLink) driveLink.href = directUrl;
-      if (streamBtn) streamBtn.href = directUrl;
+      const directDriveUrl = gdriveId ? `https://drive.google.com/file/d/${gdriveId}/view` : cleanUrl;
+      if (driveTopBtn) driveTopBtn.href = directDriveUrl;
+      if (driveFootBtn) driveFootBtn.href = directDriveUrl;
 
-      // Smart aspect ratio detection (9:16 for Reels, 16:9 for Widescreen / Documentaries)
-      const playerContainer = document.getElementById('modalPlayerContainer');
-      const isWidescreen = title.toLowerCase().includes('showcase') || title.includes('الشوريل') || title.includes('دوكيومنتري') || title.toLowerCase().includes('documentary');
-      if (playerContainer) {
-        if (isWidescreen) {
-          playerContainer.className = "relative w-full bg-black flex items-center justify-center overflow-hidden aspect-video max-h-[68vh] min-h-[260px]";
-        } else {
-          playerContainer.className = "relative w-full bg-black flex items-center justify-center overflow-hidden aspect-[9/16] sm:max-w-sm sm:mx-auto max-h-[72vh] min-h-[340px]";
-        }
+      if (waBtn) {
+        const waText = encodeURIComponent(`مرحباً Ayah، أود الاستفسار وطلب تنفيذ فيديو مماثل لـ: "${title}"`);
+        waBtn.href = `https://wa.me/201030806465?text=${waText}`;
       }
 
-      if (isLocalOrDirect) {
-        modalIframe.classList.add('hidden');
-        modalIframe.src = '';
-        modalVideoPlayer.classList.remove('hidden');
-        modalVideoPlayer.src = formatted;
-        modalVideoPlayer.play().catch(() => {});
+      const isDirectVideo = cleanUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('data:video/');
+
+      if (gdriveId) {
+        // High-performance Google Drive preview with Mobile Desktop Viewport Emulation
+        // Eliminates mobile touch overlay freezes & iOS WebKit ITP stalls
+        const scaler = document.createElement('div');
+        scaler.className = `gdrive-iframe-scaler ${!isVert ? 'widescreen-frame' : ''}`;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://drive.google.com/file/d/${gdriveId}/preview`;
+        iframe.className = `lightbox-video-frame gdrive-preview-iframe ${!isVert ? 'widescreen-frame' : ''}`;
+        iframe.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', 'true');
+        iframe.title = title || 'Google Drive Video Showcase';
+
+        scaler.appendChild(iframe);
+        container.appendChild(scaler);
+      } else if (isDirectVideo) {
+        const videoEl = document.createElement('video');
+        videoEl.src = cleanUrl;
+        videoEl.controls = true;
+        videoEl.autoplay = true;
+        videoEl.playsInline = true;
+        videoEl.setAttribute('playsinline', '');
+        videoEl.setAttribute('webkit-playsinline', '');
+        videoEl.className = `lightbox-video-frame ${!isVert ? 'widescreen-frame' : ''}`;
+        videoEl.style.objectFit = 'contain';
+        container.appendChild(videoEl);
+        videoEl.play().catch(() => {});
       } else {
-        modalVideoPlayer.classList.add('hidden');
-        modalVideoPlayer.pause();
-        modalVideoPlayer.src = '';
-        modalIframe.classList.remove('hidden');
-        modalIframe.src = formatted;
+        const iframe = document.createElement('iframe');
+        iframe.src = cleanUrl;
+        iframe.className = `lightbox-video-frame ${!isVert ? 'widescreen-frame' : ''}`;
+        iframe.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', 'true');
+        iframe.title = title || 'Video Showcase';
+        container.appendChild(iframe);
       }
 
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+      modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
-    function handleModalBackdropClick(event) {
-      if (event.target === document.getElementById('videoModal')) {
+    function handleLightboxBackdropClick(event) {
+      if (event.target === document.getElementById('lightboxModal') || event.target === document.getElementById('lightboxBackdrop')) {
         closeVideoModal();
       }
     }
 
     function closeVideoModal() {
-      if (modalIframe) modalIframe.src = '';
-      if (modalVideoPlayer) {
-        modalVideoPlayer.pause();
-        modalVideoPlayer.src = '';
-      }
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = 'auto';
+      const modal = document.getElementById('lightboxModal');
+      const container = document.getElementById('lightboxPlayerContainer');
+      if (modal) modal.classList.remove('active');
+      if (container) container.innerHTML = '';
+      document.body.style.overflow = '';
     }
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeVideoModal();
-    });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -2030,7 +2206,7 @@
           </div>
 
           <div class="flex items-center gap-2 shrink-0">
-            <button onclick="closeAllReelsVault(); openVideoModal('${item.previewUrl}', '${(currentLang === 'ar' ? item.titleAr : item.titleEn).replace(/'/g, "\\'")}')" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold transition-all flex items-center gap-1.5 shadow">
+            <button onclick="closeAllReelsVault(); openVideoModal('${item.previewUrl}', '${(currentLang === 'ar' ? item.titleAr : item.titleEn).replace(/'/g, "\\'")}', true)" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold transition-all flex items-center gap-1.5 shadow">
               <i class="fa-solid fa-play text-[10px]"></i>
               <span>${currentLang === 'ar' ? 'تشغيل' : 'Play'}</span>
             </button>
