@@ -7,8 +7,8 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Ayah Abo Bakr | Video Editor & Colorist Portfolio</title>
-  <meta name="description" content="Ayah Abo Bakr - Video Editor & Colorist Portfolio. Transforming raw footage into cinematic high-retention visual stories." />
+  <title>AYAH ABOBAKR | Video Editor & Colorist Portfolio</title>
+  <meta name="description" content="AYAH ABOBAKR - Video Editor & Colorist Portfolio. Transforming raw footage into cinematic high-retention visual stories." />
 
   <!-- Fonts: Cairo & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,32 +185,47 @@
     .neon-role-badge-amber {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      padding: 0.55rem 1.6rem;
+      gap: 0.65rem;
+      padding: 0.6rem 1.8rem;
       border-radius: 9999px;
-      background: radial-gradient(120% 120% at 50% 0%, rgba(217, 119, 6, 0.40) 0%, rgba(35, 17, 7, 0.90) 100%);
-      border: 1.5px solid #f59e0b;
-      box-shadow: 0 0 25px rgba(217, 119, 6, 0.65), 0 0 45px rgba(245, 158, 11, 0.35), inset 0 0 16px rgba(245, 158, 11, 0.3);
+      background: radial-gradient(120% 120% at 50% 0%, rgba(245, 158, 11, 0.35) 0%, rgba(25, 12, 4, 0.95) 100%);
+      border: 1.5px solid #fbbf24;
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.7), 0 0 50px rgba(217, 119, 6, 0.4), inset 0 0 16px rgba(245, 158, 11, 0.35);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      color: #ffffff !important;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 10px #f59e0b, 0 0 20px #d97706, 0 0 35px #b45309;
+      color: #fffbeb !important;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-shadow: 0 0 12px rgba(251, 191, 36, 0.95), 0 0 24px rgba(245, 158, 11, 0.8), 0 0 36px rgba(217, 119, 6, 0.6);
       animation: amberNeonPulse 2.5s ease-in-out infinite alternate;
       transition: all 0.25s ease;
     }
     @keyframes amberNeonPulse {
       0% {
-        box-shadow: 0 0 18px rgba(217, 119, 6, 0.55), inset 0 0 12px rgba(217, 119, 6, 0.25);
-        border-color: rgba(245, 158, 11, 0.85);
-        text-shadow: 0 0 8px #f59e0b, 0 0 18px #d97706, 0 0 28px rgba(217, 119, 6, 0.8);
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.6), inset 0 0 12px rgba(245, 158, 11, 0.3);
+        border-color: rgba(251, 191, 36, 0.85);
+        text-shadow: 0 0 10px #fbbf24, 0 0 20px #f59e0b, 0 0 30px rgba(217, 119, 6, 0.8);
       }
       100% {
-        box-shadow: 0 0 32px rgba(217, 119, 6, 0.85), 0 0 60px rgba(245, 158, 11, 0.45), inset 0 0 22px rgba(245, 158, 11, 0.5);
-        border-color: #fde68a;
-        text-shadow: 0 0 12px #fde68a, 0 0 25px #f59e0b, 0 0 40px #d97706, 0 0 60px rgba(217, 119, 6, 0.95);
+        box-shadow: 0 0 35px rgba(245, 158, 11, 0.9), 0 0 65px rgba(217, 119, 6, 0.5), inset 0 0 22px rgba(245, 158, 11, 0.55);
+        border-color: #fef08a;
+        text-shadow: 0 0 14px #fef08a, 0 0 28px #fbbf24, 0 0 45px #f59e0b, 0 0 65px rgba(217, 119, 6, 0.95);
       }
+    }
+
+    /* Soundwave Equalizer Bars for HUD */
+    .sound-bar {
+      display: inline-block;
+      width: 2.5px;
+      height: 12px;
+      background: #fbbf24;
+      border-radius: 1px;
+      animation: soundWaveAnim 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes soundWaveAnim {
+      0% { height: 3px; opacity: 0.4; }
+      50% { height: 13px; opacity: 1; }
+      100% { height: 6px; opacity: 0.7; }
     }
 
     /* White Showreel Button */
@@ -866,19 +881,19 @@
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
     .lightbox-content-box {
       position: relative;
       z-index: 10;
       width: 100%;
       max-width: 480px;
-      height: min(90vh, 840px);
-      max-height: 90vh;
-      background: #0f0a06;
+      height: 85vh;
+      max-height: 820px;
+      background: #000;
       border: 1px solid rgba(245, 158, 11, 0.35);
-      border-radius: 24px;
+      border-radius: 1.5rem;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -889,35 +904,53 @@
       height: auto !important;
       max-height: 90vh;
     }
-    .lightbox-header-bar {
-      position: relative;
-      z-index: 20;
-      padding: 0.75rem 1rem;
-      background: rgba(18, 10, 5, 0.95);
-      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      flex-shrink: 0;
-    }
     .lightbox-close-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #e5e7eb;
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      z-index: 60;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.2s;
-      flex-shrink: 0;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: all 0.2s ease;
     }
     .lightbox-close-btn:hover {
-      background: #f59e0b;
-      color: #000;
+      background: rgba(239, 68, 68, 0.85);
+      transform: rotate(90deg);
+    }
+    .lightbox-ext-btn {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      z-index: 60;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .lightbox-ext-btn:hover {
+      background: rgba(245, 158, 11, 0.35);
+      color: #fff;
+      transform: scale(1.08);
     }
     .lightbox-player-wrapper {
       flex: 1;
@@ -934,8 +967,11 @@
     .lightbox-video-frame {
       width: 100%;
       height: 100%;
+      max-height: 100%;
+      background: #000;
       border: none;
       display: block;
+      object-fit: contain;
     }
     .lightbox-video-frame.widescreen-frame {
       aspect-ratio: 16 / 9;
@@ -965,33 +1001,67 @@
     .lightbox-footer-bar {
       position: relative;
       z-index: 20;
-      background: rgba(18, 10, 5, 0.98);
-      border-top: 1px solid rgba(245, 158, 11, 0.15);
-      padding: 0.75rem 1rem;
+      background: rgba(14, 10, 6, 0.98);
+      border-top: 1px solid rgba(245, 158, 11, 0.2);
+      padding: 0.9rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
-      flex-wrap: wrap;
+      gap: 1rem;
       flex-shrink: 0;
+    }
+    .lightbox-meta-info {
+      min-width: 0;
+      flex: 1;
+    }
+    .lightbox-proj-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lightbox-proj-sub {
+      font-size: 0.75rem;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn-lightbox-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      background: #059669;
+      color: #fff !important;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+      flex-shrink: 0;
+    }
+    .btn-lightbox-order:hover {
+      background: #10b981;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
     }
     @media (max-width: 768px) {
       .lightbox-modal { padding: 0.5rem; }
       .lightbox-content-box {
         width: 96vw;
         max-width: 440px;
-        height: 88vh;
-        max-height: 88vh;
-        border-radius: 20px;
+        height: 85vh;
+        max-height: 85vh;
+        border-radius: 1.25rem;
       }
       .lightbox-content-box.widescreen-mode {
         height: auto !important;
         max-height: 88vh;
       }
-      /* Desktop Viewport Emulation on Mobile for Google Drive:
-         Forces Drive to switch from mobile touch UI to desktop UI,
-         completely eliminating the intrusive center buttons [ ⏪ 10 ] [ ▶ ] [ ⏩ 10 ]
-         and fixing mobile touch/freeze issues */
       .gdrive-iframe-scaler .gdrive-preview-iframe {
         width: 155% !important;
         height: 155% !important;
@@ -1001,8 +1071,8 @@
         transform-origin: center center;
       }
       .lightbox-footer-bar {
-        padding: 0.65rem 0.85rem;
-        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
       }
     }
   </style>
@@ -1033,7 +1103,7 @@
     <header class="navbar-pill">
       <!-- Brand Logo (Name in English Everywhere) -->
       <a href="#" class="nav-brand shrink-0">
-        <span class="font-inter font-black text-white text-sm sm:text-base tracking-tight">Ayah Abo Bakr</span>
+        <span class="font-inter font-black text-white text-sm sm:text-base tracking-tight">AYAH ABOBAKR</span>
         <span class="brand-badge text-[9px] px-1.5 py-0.5">PRO</span>
       </a>
 
@@ -1072,7 +1142,7 @@
   <aside class="mobile-nav-drawer" id="mobileNavDrawer">
     <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
       <div class="flex items-center gap-2">
-        <span class="font-inter font-black text-white text-base">Ayah Abo Bakr</span>
+        <span class="font-inter font-black text-white text-base">AYAH ABOBAKR</span>
         <span class="brand-badge">PRO</span>
       </div>
       <button onclick="toggleMobileNav()" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white">
@@ -1119,25 +1189,49 @@
        ========================================================================== -->
   <section class="relative pt-24 sm:pt-28 pb-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto z-10">
 
-    <div class="hero-profile-card">
+    <div class="hero-profile-card relative">
+
+      <!-- Viewfinder Framing Guides (Cinematic Camera Look) -->
+      <div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-amber-500/40 pointer-events-none rounded-tl z-20"></div>
+      <div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-amber-500/40 pointer-events-none rounded-tr z-20"></div>
+      <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-amber-500/40 pointer-events-none rounded-bl z-20"></div>
+      <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-amber-500/40 pointer-events-none rounded-br z-20"></div>
 
       <!-- Profile Card Main Body Area -->
       <div class="profile-card-main-body pt-8 sm:pt-10">
         
-        <!-- Circular Avatar with Glowing Amber Ring -->
+        <!-- Cinema Camera Live Timecode & Format HUD (Matching Reference HUD) -->
+        <div class="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-xl border border-amber-500/30 shadow-2xl text-[10px] sm:text-[11px] font-mono tracking-wider mb-6">
+          <div class="flex items-center gap-0.5 h-3.5 pl-0.5">
+            <span class="sound-bar" style="animation-delay: 0s;"></span>
+            <span class="sound-bar" style="animation-delay: 0.2s;"></span>
+            <span class="sound-bar" style="animation-delay: 0.4s;"></span>
+            <span class="sound-bar" style="animation-delay: 0.15s;"></span>
+            <span class="sound-bar" style="animation-delay: 0.3s;"></span>
+          </div>
+          <span class="text-amber-500/50">•</span>
+          <span class="text-emerald-400 font-bold">PRORES 422HQ</span>
+          <span class="text-amber-500/50">•</span>
+          <span class="text-amber-300 font-bold">FPS 24.00</span>
+          <span class="text-amber-500/50">•</span>
+          <span class="text-amber-300 font-bold">4K UHD</span>
+          <span class="text-amber-500/50">•</span>
+          <span id="heroTimecode" class="text-amber-200 font-bold tracking-widest font-mono">00:00:37:11</span>
+          <span class="text-amber-500/50">•</span>
+          <span class="inline-flex items-center gap-1.5 text-red-500 font-black">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+            REC
+          </span>
+        </div>
+
+        <!-- Circular Avatar with Glowing Amber Ring (Pure Client-Facing) -->
         <div class="profile-avatar-outer-wrap">
           <div class="profile-avatar-frame group">
             <img id="profileAvatar" 
                  src="./avatar.png" 
-                 alt="Ayah Abo Bakr - Video Editor & Colorist" 
-                 class="profile-avatar-img" />
-            
-            <!-- Sleek Camera Overlay for Instant Photo Change -->
-            <label for="avatarFileInput" class="avatar-camera-btn" title="تغيير صورتكِ مباشرة">
-              <i class="fa-solid fa-camera text-base mb-1"></i>
-              <span>تغيير الصورة</span>
-              <input type="file" id="avatarFileInput" accept="image/*" class="hidden" onchange="handleAvatarUpload(event)">
-            </label>
+                 alt="AYAH ABOBAKR - Video Editor & Colorist" 
+                 class="profile-avatar-img"
+                 onerror="this.onerror=null; this.src='./avatar.jpg';" />
 
             <span class="status-indicator-dot" title="متصلة الآن ومتاحة لاستلام مشاريع"></span>
           </div>
@@ -1151,12 +1245,12 @@
           </span>
         </div>
 
-        <!-- Her Name (in Arabic & English via i18n) -->
-        <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-3 font-cairo" id="heroName" data-i18n="hero_name">
-          آية أبو بكر
+        <!-- Her Name (AYAH ABOBAKR in English Everywhere) -->
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-3 font-inter" id="heroName" data-i18n="hero_name">
+          AYAH ABOBAKR
         </h1>
 
-        <!-- Her Professional Role: Warm Glowing Amber Neon Badge -->
+        <!-- Her Professional Role: Ultra Vibrant Neon Gold Badge -->
         <div class="inline-flex items-center justify-center mb-5">
           <div class="neon-role-badge-amber text-base sm:text-xl font-bold font-inter">
             <span>Video Editor & Colorist</span>
@@ -1173,7 +1267,7 @@
         <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 w-full max-w-xl">
           
           <!-- Watch Showreel Button (White Pill with Gold Play Icon) -->
-          <button type="button" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'Ayah Abo Bakr • Master Showcase Reel', false)" class="btn-action-showreel-white">
+          <button type="button" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'AYAH ABOBAKR • Master Showcase Reel', false)" class="btn-action-showreel-white">
             <span data-i18n="hero_showreel_btn">شاهد الشوريل</span>
             <i class="fa-solid fa-play text-amber-500 text-sm"></i>
           </button>
@@ -1235,7 +1329,7 @@
 
     <!-- Master Showcase Card -->
     <div class="bento-card overflow-hidden p-1.5 sm:p-2 bg-gradient-to-r from-amber-600/20 via-yellow-600/15 to-amber-700/20 border border-amber-500/30 group">
-      <div class="relative aspect-video rounded-2xl overflow-hidden bg-black flex items-center justify-center cursor-pointer" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'Ayah Abo Bakr • Master Showcase Reel', false)">
+      <div class="relative aspect-video rounded-2xl overflow-hidden bg-black flex items-center justify-center cursor-pointer" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'AYAH ABOBAKR • Master Showcase Reel', false)">
         <!-- Thumbnail -->
         <img src="https://lh3.googleusercontent.com/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY=w1200" 
              onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY&sz=w1200';" 
@@ -1431,7 +1525,7 @@
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
         <i class="fa-solid fa-clapperboard text-amber-400"></i>
-        <span class="text-gray-300 font-bold font-inter" data-i18n="footer_tag">Ayah Abo Bakr • Video Editor & Colorist</span>
+        <span class="text-gray-300 font-bold font-inter" data-i18n="footer_tag">AYAH ABOBAKR • Video Editor & Colorist</span>
       </div>
       <div data-i18n="footer_rights">
         جميع الحقوق محفوظة © 2026. تم التصميم والبرمجة بأعلى معايير السرعة والسلاسة الملكية.
@@ -1440,50 +1534,35 @@
   </footer>
 
   <!-- ==========================================================================
-       LIGHTBOX VIDEO MODAL (Studio Experience matching Salah Saleh + Mobile Emulation)
+       LIGHTBOX VIDEO MODAL (Studio Experience matching Salah Saleh)
        ========================================================================== -->
   <div class="lightbox-modal hidden" id="lightboxModal" aria-hidden="true" onclick="handleLightboxBackdropClick(event)">
     <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
     <div class="lightbox-content-box" id="lightboxContentBox" onclick="event.stopPropagation()">
       
-      <!-- Top Header Bar -->
-      <div class="lightbox-header-bar">
-        <div class="flex items-center gap-2 min-w-0">
-          <span class="px-2 py-0.5 rounded-lg bg-amber-500 text-black text-[10px] font-black tracking-tight shrink-0 flex items-center gap-1">
-            <i class="fa-solid fa-play text-[8px]"></i> 4K PRO
-          </span>
-          <div class="min-w-0">
-            <h3 class="text-xs sm:text-sm font-bold text-white truncate max-w-[150px] sm:max-w-xs" id="lightboxProjectTitle">عرض الفيديو</h3>
-            <p class="text-[10px] text-amber-400/80 truncate hidden sm:block" id="lightboxProjectSubtitle">مونتاج سينمائي عالي الجودة</p>
-          </div>
-        </div>
+      <!-- Floating Glass Close Button -->
+      <button class="lightbox-close-btn" onclick="closeVideoModal()" aria-label="Close Video" title="إغلاق">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
 
-        <div class="flex items-center gap-2 shrink-0">
-          <!-- Direct Drive Streaming Pill -->
-          <a id="lightboxDriveDirectBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-2.5 sm:px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-xs border border-amber-300/40 flex items-center gap-1.5 font-black transition-all shadow" title="فتح وتشغيل الفيديو بجودة كاملة في تطبيق درايف">
-            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            <span data-i18n="modal_direct_play">درايف 4K ↗</span>
-          </a>
+      <!-- Floating Direct Drive Icon Button (Emergency Fallback Only) -->
+      <a id="lightboxDriveDirectBtn" href="#" target="_blank" rel="noopener noreferrer" class="lightbox-ext-btn" title="فتح بجودة كاملة في تطبيق درايف">
+        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+      </a>
 
-          <!-- Close Button -->
-          <button class="lightbox-close-btn" onclick="closeVideoModal()" aria-label="Close Video">
-            <i class="fa-solid fa-xmark text-sm"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Video Player Wrapper (Guaranteed zero mobile overflow) -->
+      <!-- Video Player Wrapper -->
       <div class="lightbox-player-wrapper" id="lightboxPlayerContainer"></div>
 
-      <!-- Footer Bar with Direct Drive Help & WhatsApp CTA -->
-      <div class="lightbox-footer-bar">
-        <a id="lightboxFooterDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-black font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all text-center shadow-lg hover:brightness-110 active:scale-95">
-          <i class="fa-solid fa-play text-xs text-black"></i>
-          <span data-i18n="modal_mobile_hint">تشغيل فوري في تطبيق درايف بدقة 4K ↗</span>
-        </a>
-        <a href="https://wa.me/201030806465?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Ayah%D8%8C%20%D8%B1%D8%A3%D9%8A%D8%AA%20%D9%87%D8%B0%D8%A7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%D9%83%D9%90%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%85%D9%85%D8%A7%D8%AB%D9%84" id="lightboxWaBtn" target="_blank" rel="noopener noreferrer" class="py-2 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shrink-0 transition-all shadow">
+      <!-- Clean Footer Bar: Title/Specs on Right, WhatsApp CTA on Left -->
+      <div class="lightbox-footer-bar" id="lightboxFooterBar">
+        <div class="lightbox-meta-info">
+          <h3 class="lightbox-proj-title text-white font-bold" id="lightboxProjectTitle">عرض الفيديو</h3>
+          <div class="lightbox-proj-sub text-amber-400/90 text-xs" id="lightboxProjectSubtitle">ريلز رأسي 9:16 • Premiere Pro</div>
+        </div>
+        <a href="https://wa.me/201030806465" id="lightboxWaBtn" target="_blank" rel="noopener noreferrer" class="btn-lightbox-order">
           <i class="fa-brands fa-whatsapp text-sm"></i>
           <span data-i18n="modal_wa_order">طلب فيديو مماثل</span>
+          <i class="fa-solid fa-arrow-left text-xs"></i>
         </a>
       </div>
 
@@ -1671,7 +1750,7 @@
         nav_reviews: "Reviews",
         nav_contact: "Contact",
         nav_wa_cta: "WhatsApp",
-        hero_name: "Ayah Abo Bakr",
+        hero_name: "AYAH ABOBAKR",
         hero_avail: "Available for Projects",
         hero_exp_pill: "5+ Years Experience",
         hero_desc: "Turning raw footage into cinematic visual stories that captivate audiences. Specialized in YouTube, high-retention Reels, and commercial ads.",
@@ -1723,7 +1802,7 @@
         contact_tag: "LET'S CONNECT",
         contact_title: "Have a Project in Mind?",
         contact_sub: "Available for new projects, documentary films, YouTube series, and brand campaigns. Let's make something iconic!",
-        footer_tag: "Ayah Abo Bakr • Video Editor & Colorist",
+        footer_tag: "AYAH ABOBAKR • Video Editor & Colorist",
         footer_rights: "© 2026 All Rights Reserved. Engineered for speed and royal elegance.",
         modal_direct_play: "Drive 4K ↗",
         modal_mobile_hint: "Stream Instantly in Drive 4K ↗",
@@ -1739,7 +1818,7 @@
         nav_reviews: "التقييمات",
         nav_contact: "تواصل معي",
         nav_wa_cta: "واتساب",
-        hero_name: "آية أبو بكر",
+        hero_name: "AYAH ABOBAKR",
         hero_avail: "متاحة لاستلام مشاريع",
         hero_exp_pill: "5+ سنوات خبرة عملية",
         hero_desc: "أحوّل لقطاتكِ وأفكاركِ إلى قصص سينمائية تأسر الجمهور. متخصصة في مونتاج اليوتيوب، الريلز عالية الاستبقاء، والإعلانات التجارية.",
@@ -1791,7 +1870,7 @@
         contact_tag: "LET'S CONNECT",
         contact_title: "هل لديكِ فكرة مشروع فيديو؟",
         contact_sub: "متاحة لاستلام مشاريع جديدة، أفلام وثائقية، سلاسل يوتيوب، أو إعلانات لعلامتكِ. دعينا نتحدث ونبدأ فوراً!",
-        footer_tag: "Ayah Abo Bakr • Video Editor & Colorist",
+        footer_tag: "AYAH ABOBAKR • Video Editor & Colorist",
         footer_rights: "جميع الحقوق محفوظة © 2026. تم التصميم والبرمجة بأعلى معايير السرعة والسلاسة الملكية.",
         modal_direct_play: "درايف 4K ↗",
         modal_mobile_hint: "تشغيل فوري في تطبيق درايف بدقة 4K ↗",
@@ -1870,6 +1949,35 @@
         };
         reader.readAsDataURL(file);
       }
+    }
+
+    function initLiveTimecode() {
+      const tcEl = document.getElementById('heroTimecode');
+      if (!tcEl) return;
+      let frames = 11;
+      let seconds = 37;
+      let minutes = 0;
+      let hours = 0;
+      setInterval(() => {
+        frames++;
+        if (frames >= 24) {
+          frames = 0;
+          seconds++;
+          if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+              minutes = 0;
+              hours++;
+            }
+          }
+        }
+        const fStr = frames.toString().padStart(2, '0');
+        const sStr = seconds.toString().padStart(2, '0');
+        const mStr = minutes.toString().padStart(2, '0');
+        const hStr = hours.toString().padStart(2, '0');
+        tcEl.textContent = `${hStr}:${mStr}:${sStr}:${fStr}`;
+      }, 1000 / 24);
     }
 
     function loadSavedAvatar() {
@@ -2041,7 +2149,6 @@
       const titleEl = document.getElementById('lightboxProjectTitle');
       const subEl = document.getElementById('lightboxProjectSubtitle');
       const driveTopBtn = document.getElementById('lightboxDriveDirectBtn');
-      const driveFootBtn = document.getElementById('lightboxFooterDirectLink');
       const waBtn = document.getElementById('lightboxWaBtn');
 
       if (!modal || !container) return;
@@ -2055,7 +2162,7 @@
       }
 
       if (titleEl) {
-        titleEl.textContent = title || 'Ayah Abo Bakr • Video Showcase';
+        titleEl.textContent = title || 'AYAH ABOBAKR • Video Showcase';
       }
       if (subEl) {
         subEl.textContent = isVert 
@@ -2072,7 +2179,6 @@
 
       const directDriveUrl = gdriveId ? `https://drive.google.com/file/d/${gdriveId}/view` : cleanUrl;
       if (driveTopBtn) driveTopBtn.href = directDriveUrl;
-      if (driveFootBtn) driveFootBtn.href = directDriveUrl;
 
       if (waBtn) {
         const waText = encodeURIComponent(`مرحباً Ayah، أود الاستفسار وطلب تنفيذ فيديو مماثل لـ: "${title}"`);
@@ -2082,42 +2188,24 @@
       const isDirectVideo = cleanUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('data:video/');
 
       if (gdriveId) {
-        const driveViewUrl = `https://drive.google.com/file/d/${gdriveId}/view`;
-        const posterUrl = `https://lh3.googleusercontent.com/d/${gdriveId}=w1200`;
+        const scaler = document.createElement('div');
+        scaler.className = `gdrive-iframe-scaler ${!isVert ? 'widescreen-frame' : ''}`;
 
-        container.innerHTML = `
-          <div class="relative w-full h-full flex items-center justify-center bg-black overflow-hidden group cursor-pointer select-none" onclick="window.open('${driveViewUrl}', '_blank')">
-            <!-- Full Cinema Poster Frame -->
-            <img src="${posterUrl}" 
-                 onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=${gdriveId}&sz=w1200';" 
-                 alt="${title}" 
-                 class="w-full h-full object-contain opacity-90 group-hover:scale-105 transition-transform duration-500">
+        // Instant Poster Frame eliminates any black screen while iframe initializes
+        const posterBg = document.createElement('div');
+        posterBg.className = 'absolute inset-0 bg-cover bg-center z-0 opacity-40 blur-sm';
+        posterBg.style.backgroundImage = `url('https://lh3.googleusercontent.com/d/${gdriveId}=w800')`;
+        scaler.appendChild(posterBg);
 
-            <!-- Cinematic Vignette Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/50 pointer-events-none"></div>
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://drive.google.com/file/d/${gdriveId}/preview`;
+        iframe.className = `lightbox-video-frame gdrive-preview-iframe relative z-10 ${!isVert ? 'widescreen-frame' : ''}`;
+        iframe.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', 'true');
+        iframe.title = title || 'AYAH ABOBAKR Video Showcase';
 
-            <!-- Big Glowing Central Play CTA -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-20 pointer-events-none">
-              <!-- Pulsing Gold Play Circle -->
-              <div class="relative mb-3.5">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 text-black flex items-center justify-center shadow-2xl shadow-amber-500/70 group-hover:scale-110 transition-transform">
-                  <i class="fa-solid fa-play text-xl sm:text-2xl translate-x-0.5 text-black"></i>
-                </div>
-                <div class="absolute -inset-2.5 rounded-full border-2 border-amber-400/50 animate-ping pointer-events-none"></div>
-              </div>
-
-              <!-- Clear Action Label -->
-              <span class="px-4 py-2 rounded-xl bg-amber-500 text-black font-black text-xs sm:text-sm shadow-xl flex items-center gap-2 group-hover:bg-amber-400 transition-colors">
-                <i class="fa-solid fa-circle-play text-sm"></i>
-                <span>اضغطي هنا للتشغيل الفوري بدقة 4K</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </span>
-              <span class="text-[11px] text-gray-300 font-medium mt-2 bg-black/60 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md">
-                يعمل فوراً وبأعلى جودة وسرعة على الهاتف والآيفون 📱
-              </span>
-            </div>
-          </div>
-        `;
+        scaler.appendChild(iframe);
+        container.appendChild(scaler);
       } else if (isDirectVideo) {
         const videoEl = document.createElement('video');
         videoEl.src = cleanUrl;
@@ -2136,7 +2224,7 @@
         iframe.className = `lightbox-video-frame ${!isVert ? 'widescreen-frame' : ''}`;
         iframe.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture');
         iframe.setAttribute('allowfullscreen', 'true');
-        iframe.title = title || 'Video Showcase';
+        iframe.title = title || 'AYAH ABOBAKR Video Showcase';
         container.appendChild(iframe);
       }
 
@@ -2397,6 +2485,7 @@
       const initialLang = localStorage.getItem('portfolio_language') || 'ar';
       applyLanguage(initialLang);
       loadSavedAvatar();
+      initLiveTimecode();
       setupFilterButtons();
       renderProjectsGrid();
       renderTestimonialsGrid();
