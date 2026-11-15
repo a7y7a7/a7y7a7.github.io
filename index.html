@@ -1109,7 +1109,6 @@
 
       <!-- Desktop Links -->
       <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-300">
-        <a href="#showreel" class="hover:text-amber-300 transition-colors" data-i18n="nav_showreel">الشوريل</a>
         <a href="#portfolio" class="hover:text-amber-300 transition-colors" data-i18n="nav_work">الأعمال (43)</a>
         <a href="#tools" class="hover:text-amber-300 transition-colors" data-i18n="nav_tools">البرامج</a>
         <a href="#reviews" class="hover:text-amber-300 transition-colors" data-i18n="nav_reviews">التقييمات</a>
@@ -1151,10 +1150,6 @@
     </div>
 
     <div class="flex flex-col gap-4 text-sm font-semibold">
-      <a href="#showreel" onclick="toggleMobileNav()" class="p-2.5 rounded-xl hover:bg-white/5 text-gray-200 flex items-center gap-3">
-        <i class="fa-solid fa-film text-amber-400 w-5"></i>
-        <span data-i18n="nav_showreel">الشوريل الإبداعي</span>
-      </a>
       <a href="#portfolio" onclick="toggleMobileNav()" class="p-2.5 rounded-xl hover:bg-white/5 text-gray-200 flex items-center gap-3">
         <i class="fa-solid fa-layer-group text-amber-400 w-5"></i>
         <span data-i18n="nav_work">معرض الأعمال (43 فيديو)</span>
@@ -1266,15 +1261,9 @@
         <!-- Direct Action Buttons Matching Reference Image -->
         <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 w-full max-w-xl">
           
-          <!-- Watch Showreel Button (White Pill with Gold Play Icon) -->
-          <button type="button" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'AYAH ABOBAKR • Master Showcase Reel', false)" class="btn-action-showreel-white">
-            <span data-i18n="hero_showreel_btn">شاهد الشوريل</span>
-            <i class="fa-solid fa-play text-amber-500 text-sm"></i>
-          </button>
-
           <!-- Explore Works Button (Dark Amber Translucent Glass) -->
           <a href="#portfolio" class="btn-action-browse-glass">
-            <span data-i18n="hero_work_btn">تصفح الأعمال</span>
+            <span data-i18n="hero_work_btn">تصفح الأعمال (43 فيديو)</span>
             <i class="fa-solid fa-arrow-down text-xs"></i>
           </a>
 
@@ -1283,6 +1272,13 @@
             <i class="fa-brands fa-whatsapp text-lg"></i>
             <span data-i18n="hero_wa_btn">مراسلة واتساب فورية</span>
           </a>
+
+          <!-- SHOWREEL_BUTTON_HIDDEN (يمكن إعادته لاحقاً)
+          <button type="button" onclick="openVideoModal('https://drive.google.com/file/d/1Ppu-ZAsr-okeCXIthU4CD-IiTR1onhJY/preview', 'AYAH ABOBAKR • Master Showcase Reel', false)" class="btn-action-showreel-white">
+            <span data-i18n="hero_showreel_btn">شاهد الشوريل</span>
+            <i class="fa-solid fa-play text-amber-500 text-sm"></i>
+          </button>
+          -->
 
         </div>
 
@@ -1318,9 +1314,9 @@
   </section>
 
   <!-- ==========================================================================
-       FEATURED MASTER SHOWREEL SECTION
+       FEATURED MASTER SHOWREEL SECTION (مخفي مؤقتاً لحين إعادته لاحقاً)
        ========================================================================== -->
-  <section id="showreel" class="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+  <section id="showreel" class="hidden" style="display: none !important;">
     <div class="text-center mb-8">
       <span class="inline-block text-xs font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 px-3.5 py-1 rounded-full border border-amber-500/25 mb-2" data-i18n="showreel_tag">FEATURED MASTER REEL</span>
       <h2 class="text-2xl sm:text-3xl font-black text-white" data-i18n="showreel_title">الشوريل الإبداعي</h2>
